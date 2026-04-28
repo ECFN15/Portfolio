@@ -96,33 +96,56 @@ export default function ProjectDetail() {
           pinSpacing: false,
         })
 
-        // Each gallery image scales & fades as it enters / leaves
-        pinSection.querySelectorAll('.gallery-item').forEach((item) => {
+        // Each gallery item: cinematic clip-path reveal + continuous inner parallax
+        pinSection.querySelectorAll('.gallery-item').forEach((item, i) => {
+          const inner = item.querySelector('.gallery-inner')
+          const img = item.querySelector('img')
+          const direction = i % 2 === 0 ? 1 : -1
+
+          // Initial state: image is masked from bottom + slightly enlarged within
+          gsap.set(inner, { clipPath: 'inset(0% 0% 100% 0%)' })
+          gsap.set(img, { scale: 1.18, yPercent: -4 })
+
+          // Reveal: clip-path slides upward like a page turning
+          gsap.to(inner, {
+            clipPath: 'inset(0% 0% 0% 0%)',
+            duration: 1.4,
+            ease: 'expo.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 82%',
+              toggleActions: 'play none none reverse',
+            },
+          })
+
+          // Continuous parallax on the inner <img>: scale down + slow upward drift
+          gsap.to(img, {
+            scale: 1,
+            yPercent: -14,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 0.6,
+            },
+          })
+
+          // Subtle lateral nudge — alternates left/right for editorial rhythm
           gsap.fromTo(
             item,
-            { scale: 0.85, opacity: 0.3 },
+            { xPercent: direction * 2 },
             {
-              scale: 1,
-              opacity: 1,
-              duration: 1,
-              ease: 'power2.out',
+              xPercent: direction * -2,
+              ease: 'none',
               scrollTrigger: {
                 trigger: item,
-                start: 'top 85%',
-                end: 'top 35%',
-                scrub: true,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.2,
               },
             },
           )
-          gsap.to(item, {
-            opacity: 0.25,
-            scrollTrigger: {
-              trigger: item,
-              start: 'bottom 35%',
-              end: 'bottom top',
-              scrub: true,
-            },
-          })
         })
       }
 
@@ -166,10 +189,13 @@ export default function ProjectDetail() {
           <img
             src={project.cover}
             alt={project.title}
-            className="cover-img h-full w-full object-cover opacity-55 contrast-110"
+            className="cover-img h-full w-full object-cover opacity-80 contrast-110"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink-950/40 via-ink-950/30 to-ink-950" />
+          {/* Gradient: transparent at top, dark towards bottom (where text sits) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink-950/30 to-ink-950" />
+          {/* Subtle navbar legibility gradient — only top 96px */}
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-ink-950/35 to-transparent" />
         </div>
 
         {/* Crumb */}
@@ -260,12 +286,12 @@ export default function ProjectDetail() {
                   }`}
                   style={{ willChange: 'transform' }}
                 >
-                  <div className="relative w-full overflow-hidden rounded-[calc(1.5rem-0.25rem)]">
+                  <div className="gallery-inner relative w-full overflow-hidden rounded-[calc(1.5rem-0.25rem)]">
                     <img
                       src={src}
                       alt={`${project.title} — planche ${i + 1}`}
                       loading="lazy"
-                      className="block h-auto w-full object-cover"
+                      className="block h-auto w-full object-cover will-change-transform"
                     />
                   </div>
                   <div className="mt-3 flex items-center justify-between px-3 pb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-bone-50/40">
