@@ -146,13 +146,13 @@ export default function Hero() {
 
       {/* H1 */}
       <h1 className="h-display font-display text-balance mx-auto max-w-6xl text-center font-display text-bone-50">
-        <span className="block overflow-hidden">
+        <span className="block overflow-hidden pb-[0.18em]">
           <span className="hero-word inline-block will-change-transform">Des</span>{' '}
           <span className="hero-word inline-block will-change-transform">interfaces</span>{' '}
           <span className="hero-word inline-block will-change-transform">qui</span>{' '}
           <span className="hero-word inline-block will-change-transform">respirent,</span>
         </span>
-        <span className="block overflow-hidden italic text-bone-50/80">
+        <span className="block overflow-hidden pb-[0.22em] italic text-bone-50/80">
           <span className="hero-word inline-block will-change-transform">scrollées</span>{' '}
           <span className="hero-word inline-block will-change-transform">comme</span>{' '}
           <span className="hero-word inline-block will-change-transform">un</span>{' '}

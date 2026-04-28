@@ -182,7 +182,7 @@ export default function ProjectDetail() {
 
         {/* Big title */}
         <h1 className="font-display mx-auto w-full max-w-7xl font-medium tracking-tight text-bone-50 h-detail">
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.2em]">
             {project.title.split(' ').map((w, i) => (
               <span key={i} className="detail-word inline-block pr-4 will-change-transform">
                 {w}

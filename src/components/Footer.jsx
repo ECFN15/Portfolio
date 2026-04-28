@@ -38,11 +38,11 @@ export default function Footer() {
         </div>
 
         <h2 className="font-display text-balance max-w-6xl font-display font-medium tracking-tight">
-          <span className="block overflow-hidden text-[clamp(3rem,11vw,11rem)] leading-[0.88]">
+          <span className="block overflow-hidden pb-[0.18em] text-[clamp(3rem,11vw,11rem)] leading-[0.88]">
             <span className="cta-word inline-block will-change-transform">Démarrons</span>{' '}
             <span className="cta-word inline-block will-change-transform">votre</span>
           </span>
-          <span className="block overflow-hidden text-[clamp(3rem,11vw,11rem)] leading-[0.88] italic text-bone-50/70">
+          <span className="block overflow-hidden pb-[0.22em] text-[clamp(3rem,11vw,11rem)] leading-[0.88] italic text-bone-50/70">
             <span className="cta-word inline-block will-change-transform">prochaine</span>{' '}
             <span className="cta-word inline-block will-change-transform">page.</span>
           </span>
