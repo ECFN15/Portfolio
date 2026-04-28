@@ -51,7 +51,7 @@ export default function ProjectsShowcase() {
     { span: 'md:col-span-6', ratio: 'aspect-[4/5]', size: 'tall' },
     { span: 'md:col-span-6', ratio: 'aspect-[4/5]', size: 'tall' },
     { span: 'md:col-span-8', ratio: 'aspect-[16/10]', size: 'wide' },
-    { span: 'md:col-span-4', ratio: 'aspect-[16/10]', size: 'compact' },
+    { span: 'md:col-span-4', ratio: 'aspect-[4/5]', size: 'compact' },
     { span: 'md:col-span-12', ratio: 'aspect-[16/9]', size: 'massive' },
   ]
 
