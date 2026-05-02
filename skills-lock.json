@@ -1,17 +1,72 @@
 {
   "version": 1,
   "skills": {
+    "clean-saas": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "3ba8c84a74fe2a5070767be00a30b1cfe122cd76eee3109a555eaeb8bfadd0c1"
+    },
+    "cyber-neon": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "4a572a2956738afde7109dd1f079166ea6de924ad19fde58ad989670d3d5de38"
+    },
+    "dark-ui": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "4b3817405cffd6832d3bc9fa77a9ae939f6a593d5c96dda9e8bb048e46b0c875"
+    },
     "design-taste-frontend": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
       "skillPath": "skills/taste-skill/SKILL.md",
       "computedHash": "d823593e24d7493ab740db8f082cbe3b148ed29af9e804d11f5302ad79e4b96d"
     },
+    "editorial-minimal": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "beeb4b5e4e3ea3a9b515a9ece06e433339b2f337a951ebbd1d8bc76deb947371"
+    },
+    "editorial-type": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "fa29b9ea476b5a59b40c33ad0323edd0db20dd6042b251f7747690330ab071d5"
+    },
+    "experimental-type": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "3f86e269f75440632e234cd63dd423237e260a494014d21b8ab15a382e0ee9b1"
+    },
+    "expressive-brand": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "49f1ba7db0addc9b6d00853e85425d0ade3b9961cde2718c80d934d8bdd6e367"
+    },
+    "geometric-modern": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "cc91d7465acb6bf2ff588a3bad2ef0d274d9e2e64771bbd41a7dad7fe0a01c7c"
+    },
+    "glossy-modern": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "8c1ab69d065f730e73667ea00e3f84c3592abe10caabfa2609f30edcab2daffa"
+    },
     "gpt-taste": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
       "skillPath": "skills/gpt-tasteskill/SKILL.md",
       "computedHash": "7bd1bfdda0e51016ca222693401a65fc0dd9bf9487e0bd5b1740ba510f6f963a"
+    },
+    "high-contrast": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "e2e671ac279e4b97c80cb12fa179d71325f2896de19d1783b77b430d91742156"
+    },
+    "high-end-design": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "9af301650733648314f2cd90b6149b96ec4e3e08afcc00ffe338fe73f167487a"
     },
     "high-end-visual-design": {
       "source": "Leonxlnx/taste-skill",
@@ -31,17 +86,77 @@
       "skillPath": "skills/brutalist-skill/SKILL.md",
       "computedHash": "e66e5a2a8b73cef79ab6546459c665e8b983645689c5f3772f7eed8b9f1e8e0e"
     },
+    "light-ui": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "f618b7961a13fa2ba2030d9f399f723e559d5481d5dcc8cf0c23ba24070cbdea"
+    },
+    "minimal-design": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "ca12ab96ef800a39d2ff25aacab17da4364f8e009c255831d99e9b3d8b3405e6"
+    },
     "minimalist-ui": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
       "skillPath": "skills/minimalist-skill/SKILL.md",
       "computedHash": "7e88897e0371184e97a82b8d9ef080323c13f21eb067b58ef71eb05173a08ac2"
     },
+    "monochrome-ui": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "2676df3eae17a4fe9c32f4527cbb127167b2e280bf50472c465b92df531484c2"
+    },
+    "motion": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "1fa8b0971318d26f4e8d22140e4256968423691fd8f074f3d085e16f8e8f5a47"
+    },
+    "pastel": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "d8c07f79d23d87acea5f748419954b31d88af2e2cd1ca295a4d04a04a0224a39"
+    },
+    "playful-design": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "6a037af82e6d0d693a70073773331b288787a66ac327069e03b3d75a3dfeb5ee"
+    },
     "redesign-existing-projects": {
       "source": "Leonxlnx/taste-skill",
       "sourceType": "github",
       "skillPath": "skills/redesign-skill/SKILL.md",
       "computedHash": "47eced3e960a2c961d3cbee11fa1216264f589344b586a5cbd03967cd6b9c54b"
+    },
+    "serif-display": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "c4c64098bde99dab7b3448153ee0a9d8d66326c2fc299d602b4ff1074729adde"
+    },
+    "soft-gradients": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "3caf8d94ff9410ef251bea0a88c5d9cba53f3ec4a0943ea5832d032db8093745"
+    },
+    "technical-sans": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "f1e9d5556b9df2014d7e867a736b3a2e996bc51b690d68882881882870de6e59"
+    },
+    "technical-ui": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "909d88f85b045b5dd12586f16822ade198d4f0ca0c70c2005f87755753755004"
+    },
+    "utilitarian": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "b5387361d670fbfd651b88bddee2219c8c65ddbf0bad66531fb39664cb83a220"
+    },
+    "vibrant-accents": {
+      "source": "C:\\Users\\matth\\Desktop\\design-skills-db\\publish\\refero-design-skills",
+      "sourceType": "local",
+      "computedHash": "c196b276344eada97be7734542cc824452e8fe9ead34b24cf30a17a824d1c4ee"
     }
   }
 }
