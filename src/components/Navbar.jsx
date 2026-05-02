@@ -26,6 +26,7 @@ export default function Navbar() {
 
   const links = [
     { label: 'Travaux', to: '/#projects' },
+    { label: 'Skills', to: '/skills', route: true },
     { label: 'Tarifs', to: '/#pricing' },
     { label: 'Contact', to: 'mailto:hello@atelier.studio', external: true },
   ]
@@ -59,6 +60,14 @@ export default function Navbar() {
                 >
                   {l.label}
                 </a>
+              ) : l.route ? (
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  className="rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-bone-50/70 transition-colors duration-500 ease-soft-spring hover:text-bone-50"
+                >
+                  {l.label}
+                </Link>
               ) : (
                 <a
                   key={l.label}
@@ -106,18 +115,31 @@ export default function Navbar() {
           open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
       >
-        {links.map((l, i) => (
-          <a
-            key={l.label}
-            href={l.to}
-            className={`font-display text-4xl font-medium tracking-tight transition-all duration-700 ease-soft-spring ${
-              open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-            }`}
-            style={{ transitionDelay: open ? `${120 + i * 80}ms` : '0ms' }}
-          >
-            {l.label}
-          </a>
-        ))}
+        {links.map((l, i) =>
+          l.route ? (
+            <Link
+              key={l.label}
+              to={l.to}
+              className={`font-display text-4xl font-medium tracking-tight transition-all duration-700 ease-soft-spring ${
+                open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              }`}
+              style={{ transitionDelay: open ? `${120 + i * 80}ms` : '0ms' }}
+            >
+              {l.label}
+            </Link>
+          ) : (
+            <a
+              key={l.label}
+              href={l.to}
+              className={`font-display text-4xl font-medium tracking-tight transition-all duration-700 ease-soft-spring ${
+                open ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              }`}
+              style={{ transitionDelay: open ? `${120 + i * 80}ms` : '0ms' }}
+            >
+              {l.label}
+            </a>
+          ),
+        )}
       </div>
     </>
   )
