@@ -202,12 +202,12 @@ function SkillCard({ skill, index, span, ratio, selected, onSelect }) {
     <button
       type="button"
       onClick={onSelect}
-      className={`skill-card group col-span-1 ${span} text-left`}
+      className={`skill-card group col-span-1 ${span} text-left focus:outline-none focus-visible:outline-none`}
       style={{ '--skill-accent': skill.accent }}
     >
       <div
         className={`h-full rounded-[2rem] border p-1.5 transition-all duration-700 ease-soft-spring ${
-          selected ? 'border-white/22 bg-white/[0.08]' : 'border-white/10 bg-white/[0.035] hover:bg-white/[0.06]'
+          selected ? 'border-white/10 bg-white/[0.08]' : 'border-white/10 bg-white/[0.035] hover:bg-white/[0.06]'
         }`}
       >
         <div className={`relative flex h-full ${ratio} overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink-900 p-6 inset-highlight md:p-7`}>
