@@ -3,309 +3,648 @@ name: technical-sans
 description: "Use this skill to create Technical Sans visual design systems that feel technical, crisp, rational, precise, engineered, legible. USE FOR: developer tools, AI products, technical SaaS, documentation, infrastructure, precise product interfaces. DO NOT USE FOR: unrelated backend work, non-visual tasks, or when an existing product design system must be followed exactly."
 ---
 
-# Technical Sans
+# Technical Sans Skill
+
+## Mandatory `<design_plan>`
+
+Before substantial UI code, output a compact `<design_plan>` block. Include:
+
+1. **Use case:** page/app type, audience, primary action, emotional target.
+2. **Style direction:** one Technical Sans archetype below.
+3. **Operating mode:** density, motion, decoration, contrast, radius, and asset burden.
+4. **First viewport:** nav type, H1 width/line strategy, code/API/docs/architecture proof, CTA treatment, next-section hint.
+5. **System contracts:** type, color, surface, radius, spacing, depth, state, and motion tokens.
+6. **Component plan:** at least four concrete Technical Sans components with states.
+7. **Motion plan:** command, deploy, docs, or code transition, timing, performance guardrail, and reduced-motion fallback.
+8. **Anti-slop sweep:** top three failure modes for this style and how you will avoid them.
+
+If the request is tiny, do this mentally and keep the final answer concise.
+
 
 ## Core Directive
 
-You are designing in the Technical Sans style. The output must feel technical, crisp, rational, precise, engineered, legible. Do not merely apply a color theme; build a coherent visual system across layout, typography, color, component geometry, imagery, motion, and interaction states.
+You are a senior frontend design engineer specializing in Technical Sans. The output must feel technical, crisp, rational, precise, engineered, legible. Do not merely skin default components with a color palette. Build a visual operating system where typography, alignment, code/data proof, diagrams, and restrained interaction make the product feel engineered.
 
-Use this skill when the user asks for developer tools, AI products, technical SaaS, documentation, infrastructure, precise product interfaces.
+Use this skill for developer tools, AI products, technical SaaS, documentation, infrastructure, precise product interfaces.
 
-## Mandatory Workflow
 
-Before writing UI code or final visual instructions:
+Before writing code for a substantial UI, output a compact `<design_plan>` block. Include:
 
-1. Identify the product type, audience, primary action, and emotional target.
-2. Choose one layout archetype from the reference database.
-3. Choose one typography strategy, one color strategy, one component geometry rule, and one motion rule.
-4. State the anti-slop risks for this style.
-5. Build the interface with real sections, real states, and responsive behavior.
-6. Run the pre-output checklist at the end.
+1. **Use case:** product category, technical audience, primary action, credibility target.
+2. **Style direction:** one Technical Sans source pack below.
+3. **Typography contract:** display sans, UI sans, mono, weights, tracking, code/data roles.
+4. **First viewport:** nav, H1 line strategy, code/data/architecture proof, CTA treatment, next-section hint.
+5. **System contracts:** color, surface, radius, spacing, state, diagram, and motion rules.
+6. **Component plan:** at least four concrete components with states.
+7. **Motion plan:** tab, command, code reveal, deploy timeline, table update, reduced motion.
+8. **Anti-slop sweep:** name the likely fake-technical failure modes and avoid them.
 
-If the task is substantial, load [references/refero-style-database.md](references/refero-style-database.md) before designing. If the user asks for source-specific inspiration, inspect [references/sources/](references/sources/).
+If the request is tiny, do this mentally and keep the final answer concise.
 
-## Non-Negotiable Style Rules
+## Non-Negotiable Principles
 
-- Use typography, alignment, and density to communicate technical trust.
-- Show real controls, code, data, diagrams, or workflow evidence.
-- Keep surfaces clean and repeated components consistent.
+- Typography, alignment, density, and real technical evidence communicate trust.
+- Show code, diagrams, CLI, docs, workflow, or data instead of generic tech gradients.
+- Mono is a tool for code/data, not the whole brand unless the product demands it.
+- A technical landing page must include inspectable proof before abstract claims.
+
+## Style Operating Mode
+
+| Control | Setting |
+| --- | --- |
+| density | Medium-high; enough inspectable detail to feel real, less dense than a full workstation. |
+| motion | Low-medium; command, deploy, tab, code reveal, doc preview, graph/table transitions. |
+| decoration | Low; lines, syntax, diagrams, shadows, and precision grids replace decorative imagery. |
+| contrast | Crisp light or dark, with code/data zones clearly separated. |
+| radius | 4-6px for compact technical systems, 9-20px for warmer cards, 32-9999px only for source-specific pills. |
+| type | Technical sans plus mono code; display/serif contrast only in Antimetal or Mercury-like moments. |
+| assets | Code blocks, API responses, terminal windows, architecture diagrams, screenshots, changelog/version cards. |
+
+## Signature System
+
+- Evidence Before Abstraction: code sample, API response, dashboard, terminal, or architecture diagram appears early.
+- Technical Type Ladder: display sans, UI sans, mono labels, and code blocks have distinct jobs.
+- Precision Grid: alignment and spacing should feel engineered, not decorative.
+- Syntax As Color: syntax highlighting can become the accent system when used sparingly.
+
+## Differentiation
+
+Use Technical Sans when developer tools, AI products, technical SaaS, documentation, infrastructure, precise product interfaces. If removing the code/API/diagram proof, token rules, or signature components leaves a generic page, this skill is the right lens and the signature object must stay. Use `technical-ui` for operational work surfaces; use this for technical marketing, docs, code proof, and developer product identity.
+## Raw Archetype Packs
+
+Choose one pack. Technical Sans loses definition when Antimetal's mixed dark hero, Plain's green workbench, Cursor's warm ivory, Linear's dark command center, and Mercury's spacious finance dark all collide.
+
+| Source | Use When | Palette | Type | Radius / Spacing | Components | Carry Forward | Avoid |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Antimetal, "Mixed Infrastructure Editorial" | Cloud, infra, security, AI ops needing dramatic technical credibility but a usable light product body. | `#001033` dark hero, `#1b2540` navy text, `#d0f100` chartreuse CTA, `#e0f6ff` cold border, `#f8f9fc` product canvas, `#ffffff` cards, `#6b7184` muted. | abcdFont/Inter for UI, 400-480; ivarText/Fraunces display only for large editorial moments. | 4px base, 80px section gap, 20px card padding, 16px badge, 20px feature cards, 9999px CTA pill. | Chartreuse CTA pill, dark ghost pill, white product cards, floating badges, sharp text input. | Dark hero can hand off to pale operational dashboard. | Do not use chartreuse for every metric or body highlight. |
+| Plain, "Crisp Support Workbench" | Support, communication, API tooling, workflow products, admin surfaces. | `#ffffff`, `#f3fbe9`, `#f9f6f1`, `#0a2414`, `#283a2e`, `#607166`, `#1ad379`, `#17b267`, `#ffbac3`. | ABC Favorit/Inter, weights 400/500, display 80px 400 `-0.02em`, mono with `0.015em`. | 4px base, 40px sections, 24px card padding/gaps, 9px cards, 6px controls. | Green action button, muted ghost, workbench card, dark forest module, mono metadata row. | Make the UI operational from the first screen. | Do not make green a decorative wash or use heavy weights. |
+| Cursor, "Warm Ivory Software Studio" | Developer tools that need tactile warmth, type craft, and panel stacking. | `#f7f7f4` parchment, `#262510` ink, `#7a7974` muted, `#141414` deep, `#e6e5e0`, `#cdcdc9`, `#f54e00` outline action, `#c08532`, `#34785c`. | CursorGothic/system, 400, OpenType `ss09 ss08 tnum`; Berkeley Mono for code; Lato for utility. | 8px gaps, 4px compact radius, 8px distinct radius, layered shadows. | Outlined primary button, floating software card, code panel, transparent input, compact nav. | Let outline actions feel native to developer software. | Do not replace stacked shadows with generic black elevation. |
+| Linear, "Dark Command-Center Sans" | Focused dark developer/productivity landing, issue tracking, observability, team workflow. | `#08090a`, `#0f1011`, `#161718`, `#23252a`, `#323334`, `#f7f8f8`, `#d0d6e0`, `#8a8f98`, `#e4f222`, `#5e6ad2`, `#27a644`, `#eb5757`. | Inter Variable 300/400/510/590, tight negative tracking; Berkeley/IBM Plex Mono for code/data. | 4px base, 24px section gap, 12px card padding, 8px gaps, 2px tags, 4px badges, 6px controls/cards. | Lime primary, graphite card, sidebar nav item, subtle link, code/data block. | Small neutral steps and one bright action color make the system technical. | Do not add rainbow syntax or broad gradients. |
+| Mercury, "Spacious Dark Financial Technical" | Finance, banking, infrastructure, mature technical products needing space and authority. | `#171721`, `#1e1e2a`, `#272735`, `#70707d`, `#c3c3cc`, `#ededf3`, `#5266eb`, `#cdddff`, `#ffffff`. | Arcadia/Inter/Manrope, display weights 360-530, positive tracking around 0.01-0.02em. | 80-120px sections, 12-32px gaps, 32/40px buttons, 32px inputs, 4px containers, few cards. | Blue primary pill, ghost header pill, text-only nav, joined email input, border-list feature link. | Use air and type weight, not density, for authority. | Do not over-card or over-shadow spacious dark layouts. |
+
+## Semantic Token Packs
+
+### Mixed Infra Pack
+
+```css
+:root {
+  --canvas: #f8f9fc;
+  --surface: #ffffff;
+  --hero: #001033;
+  --text: #1b2540;
+  --text-muted: #6b7184;
+  --line: #b1b5c0;
+  --cold-line: #e0f6ff;
+  --action: #d0f100;
+  --action-text: #1b2540;
+  --radius-control: 9999px;
+  --radius-card: 20px;
+  --radius-badge: 16px;
+}
+```
+
+### Warm Workbench Pack
+
+```css
+:root {
+  --canvas: #ffffff;
+  --surface: #f9f6f1;
+  --surface-soft: #f3fbe9;
+  --surface-dark: #283a2e;
+  --text: #0a2414;
+  --text-muted: #607166;
+  --line: #dbe7d0;
+  --action: #1ad379;
+  --action-alt: #17b267;
+  --highlight: #ffbac3;
+  --radius-control: 6px;
+  --radius-card: 9px;
+}
+```
+
+### Ivory Studio Pack
+
+```css
+:root {
+  --canvas: #f7f7f4;
+  --surface: #fffefa;
+  --surface-muted: #e6e5e0;
+  --text: #262510;
+  --text-muted: #7a7974;
+  --line: #cdcdc9;
+  --action: #f54e00;
+  --positive: #4ade80;
+  --secondary-action: #34785c;
+  --radius-control: 4px;
+  --radius-card: 8px;
+  --shadow-panel: 0 1px 0 rgba(20,20,20,.14), 0 18px 48px rgba(20,20,20,.14);
+}
+```
+
+### Dark Command Pack
+
+```css
+:root {
+  --canvas: #08090a;
+  --surface: #0f1011;
+  --surface-raised: #161718;
+  --text: #f7f8f8;
+  --text-muted: #8a8f98;
+  --line: #323334;
+  --line-strong: #383b3f;
+  --action: #e4f222;
+  --action-text: #08090a;
+  --accent-blue: #5e6ad2;
+  --radius-control: 6px;
+  --radius-tag: 2px;
+}
+```
+
+### Spacious Dark Pack
+
+```css
+:root {
+  --canvas: #171721;
+  --surface: #1e1e2a;
+  --surface-soft: #272735;
+  --text: #ededf3;
+  --text-muted: #c3c3cc;
+  --line: #70707d;
+  --action: #5266eb;
+  --action-soft: #cdddff;
+  --action-text: #ffffff;
+  --radius-control: 32px;
+  --radius-container: 4px;
+}
+```
+
+Token rules:
+
+- `--action` should be the only strong action color in a viewport.
+- Syntax colors must be local to code blocks unless the source explicitly uses a single action color as brand identity.
+- Use `--line` heavily. Technical Sans relies on hairlines, grids, and card seams more than decoration.
+- Do not make low-contrast mono text a style affectation. Mono content must remain readable.
+
+### Execution Token Contract
+
+Every Technical Sans build must declare these tokens before component styling. Source packs can tune values, but components must use this vocabulary.
+
+```css
+:root {
+  --canvas: #ffffff;
+  --surface: #f7f9fc;
+  --surface-muted: #eef3f8;
+  --text: #111827;
+  --text-muted: #617083;
+  --line: #d8e0ea;
+  --action: #155dfc;
+  --action-strong: #0036ff;
+  --radius-control: 8px;
+  --radius-card: 10px;
+  --radius-panel: 14px;
+  --font-sans: Geist, Inter, system-ui, sans-serif;
+  --font-display: "Aeonik", "Suisse Intl", var(--font-sans);
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+  --type-mono-xs: 500 10px/1.4 var(--font-mono);
+  --type-mono-sm: 500 11px/1.4 var(--font-mono);
+  --type-meta: 500 12px/1.45 var(--font-sans);
+  --type-body-sm: 400 13px/1.55 var(--font-sans);
+  --type-body: 400 15px/1.62 var(--font-sans);
+  --type-ui: 600 14px/1.4 var(--font-sans);
+  --type-card: 600 20px/1.18 var(--font-sans);
+  --type-section-sm: 600 28px/1.08 var(--font-display);
+  --type-section: 600 42px/1.02 var(--font-display);
+  --type-display: 600 clamp(46px, 8vw, 82px)/.92 var(--font-display);
+  --track-mono-xs: .16em;
+  --track-mono-sm: .10em;
+  --track-section: -.025em;
+  --track-display: -.04em;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 48px;
+  --s-9: 64px;
+  --s-10: 80px;
+  --s-11: 96px;
+  --shadow-flat: none;
+  --shadow-card: 0 1px 2px rgba(0,0,0,.04), 0 0 0 1px rgba(0,0,0,.04);
+  --shadow-panel: 0 8px 32px rgba(15,23,42,.08);
+  --shadow-hero: 0 32px 90px rgba(15,23,42,.12);
+  --shadow-modal: 0 24px 80px rgba(15,23,42,.16);
+  --shadow-action: 0 6px 18px color-mix(in srgb, var(--action), transparent 72%);
+  --status-success-bg: #ecfdf5;
+  --status-success-fg: #047857;
+  --status-info-bg: #eef4ff;
+  --status-info-fg: #3152d4;
+  --status-warning-bg: #fffbeb;
+  --status-warning-fg: #b45309;
+  --status-danger-bg: #fff1f2;
+  --status-danger-fg: #b91c1c;
+  --status-neutral-bg: #f3f4f6;
+  --status-neutral-fg: #617083;
+  --state-hover-bg: color-mix(in srgb, var(--action), var(--surface) 90%);
+  --state-selected-bg: color-mix(in srgb, var(--action), var(--surface) 84%);
+  --state-focus-ring: 0 0 0 3px color-mix(in srgb, var(--action), transparent 72%);
+  --ease-product: cubic-bezier(.2,.8,.2,1);
+}
+```
+
+Pairing rules:
+
+- `hero-block`: `font: var(--type-display)`, `letter-spacing: var(--track-display)`, `text-wrap: balance`, `max-width: 22ch`.
+- `section-head`: `font: var(--type-section)`, `letter-spacing: var(--track-section)`, `max-width: 18ch`.
+- `card-block`: title uses `--type-card`, body uses `--type-body`, metadata uses `--type-meta`.
+- `data-label`: use `--type-mono-sm`, uppercase only for tags, code, coordinates, IDs, or status.
+- `status-pill`: always uses one `--status-{role}-bg/fg` pair plus text, never color alone.
+
+Tailwind to token mapping:
+
+| Tailwind default | Technical Sans token |
+| --- | --- |
+| `text-xs`, `text-sm` | `--type-body-sm` or `--type-meta` |
+| `text-base`, `text-lg` | `--type-body` or `--type-card` |
+| `text-2xl`, `text-3xl` | `--type-card` or `--type-section-sm` |
+| `text-4xl`, `text-5xl` | `--type-section` |
+| `text-6xl`, `text-7xl` | `--type-display` |
+| `p-3`, `p-4`, `p-5` | `var(--s-3)`, `var(--s-4)`, `var(--s-5)` |
+| `gap-3`, `gap-4`, `gap-6` | `var(--s-3)`, `var(--s-4)`, `var(--s-6)` |
+| `rounded-md`, `rounded-xl`, `rounded-2xl` | `--radius-control`, `--radius-card`, `--radius-panel` |
+| `shadow-sm`, `shadow-md` | `var(--shadow-card)` |
+| `shadow-lg`, `shadow-xl` | `var(--shadow-panel)` or `var(--shadow-hero)` |
+| `shadow-2xl` | `var(--shadow-modal)` |
+
+Status words:
+
+| Role | Words |
+| --- | --- |
+| `success` | Approved, Synced, Live, Paid, Complete, Stable |
+| `info` | Active, In review, Processing, Current, Draft |
+| `warning` | Pending, Stale, Slow, Watch, Needs review |
+| `danger` | Failed, Blocked, Critical, Error, Escalate |
+| `neutral` | Empty, Disabled, Skipped, Archived, Ready passive |
+
+Token rule: if a value can be expressed by `ts`/style tokens, do not invent raw Tailwind scale, arbitrary rgba shadows, or new status hex.
+## First Viewport Protocol
+
+- **Nav:** product/documentation/integration links plus a clear CTA. For dark sources, nav can be transparent over hero; for Plain/Cursor, nav should feel like part of the workbench.
+- **H1:** precise product noun. Use 2-3 desktop lines. Avoid vague AI/infra claims without a technical object.
+- **Hero proof:** choose code hero, CLI command, API response, deploy timeline, architecture diagram, docs preview, or product screenshot.
+- **CTA:** action color from the selected source. Pair with a ghost or docs link. Buttons must include focus-visible, disabled, loading.
+- **Next-section hint:** show docs tabs, integration table, changelog, deploy status, metric/code strip, or architecture modules.
+
+## Archetype Picker
+
+| Archetype | Layout Behavior | Best Use | Required Proof |
+| --- | --- | --- | --- |
+| Developer Landing | Code/CLI hero, docs preview, integration proof. | SDK, API, infra, AI dev tools. | Real command, response, and copy button. |
+| Mixed Infra Launch | Dark atmospheric hero to light dashboard body. | Cloud/security/AI ops. | Product UI bridge from hero to dashboard. |
+| Warm Dev Studio | Ivory canvas, stacked software panels, outline actions. | IDE, agent, productivity dev tools. | Floating panel with real files/code. |
+| Dark Command Brand | Compact dark page with issue/log/data proof. | Team tools, observability, productivity. | Sidebar/list/code proof with active states. |
+| Spacious Technical Finance | Airy dark type-led page with joined inputs and border lists. | Finance, banking, mature B2B tech. | Product proof plus restrained conversion input. |
+| Docs-App Hybrid | Docs nav, code sample, live preview, version/change note. | Documentation and developer onboarding. | Tabs, copy state, error/empty states. |
+
+## Signature Components
+
+### Core Component Kit
+
+Use these components before inventing new surfaces. Rename in implementation if needed, but preserve the props, states, and token usage.
+
+```tsx
+type TechnicalSansState = "default" | "hover" | "selected" | "loading" | "empty" | "error" | "success";
+type TechnicalSansStatus = "success" | "info" | "warning" | "danger" | "neutral";
+
+export function TechnicalSansStatusPill({ role, children }: { role: TechnicalSansStatus; children: React.ReactNode }) {
+  return <span className="technical-sans-status-pill" data-role={role}>{children}</span>;
+}
+
+export function CodeHeroContract({ state = "default" }: { state?: TechnicalSansState }) {
+  return <section className="technical-sans-hero-object" data-state={state} aria-label="Technical Sans proof object" />;
+}
+
+export function CliCommandBarContract({ title, meta, state = "default" }: { title: string; meta: string; state?: TechnicalSansState }) {
+  return <article className="technical-sans-card" data-state={state}><span>{meta}</span><strong>{title}</strong></article>;
+}
+
+export function DocsSidebarContract({ items }: { items: string[] }) {
+  return <nav className="technical-sans-rail">{items.map((item, index) => <button data-active={index === 0} key={item}>{item}</button>)}</nav>;
+}
+
+export function TechnicalSansSectionHeader({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
+  return <header className="technical-sans-section-head"><span>{eyebrow}</span><h2>{title}</h2><p>{children}</p></header>;
+}
+```
+
+```css
+.technical-sans-status-pill {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  padding: var(--s-1) 10px;
+  border-radius: 999px;
+  font: var(--type-mono-sm);
+  letter-spacing: var(--track-mono-sm);
+  background: var(--status-neutral-bg);
+  color: var(--status-neutral-fg);
+}
+.technical-sans-status-pill[data-role="success"] { background: var(--status-success-bg); color: var(--status-success-fg); }
+.technical-sans-status-pill[data-role="info"] { background: var(--status-info-bg); color: var(--status-info-fg); }
+.technical-sans-status-pill[data-role="warning"] { background: var(--status-warning-bg); color: var(--status-warning-fg); }
+.technical-sans-status-pill[data-role="danger"] { background: var(--status-danger-bg); color: var(--status-danger-fg); }
+.technical-sans-hero-object {
+  min-height: clamp(320px, 48vw, 620px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  box-shadow: var(--shadow-hero);
+  overflow: hidden;
+}
+.technical-sans-card {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition: background 180ms var(--ease-product), box-shadow 180ms var(--ease-product), transform 180ms var(--ease-product);
+}
+.technical-sans-card[data-state="selected"] { background: var(--state-selected-bg); box-shadow: var(--shadow-panel); }
+.technical-sans-card[data-state="loading"] { opacity: .62; pointer-events: none; }
+.technical-sans-card[data-state="error"] { border-color: var(--status-danger-fg); }
+.technical-sans-card > span { font: var(--type-meta); color: var(--text-muted); }
+.technical-sans-card > strong { font: var(--type-card); color: var(--text); }
+.technical-sans-rail { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.technical-sans-rail button { padding: var(--s-2) var(--s-4); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface); font: var(--type-ui); color: var(--text-muted); }
+.technical-sans-rail button[data-active="true"] { background: var(--state-selected-bg); color: var(--text); box-shadow: var(--state-focus-ring); }
+.technical-sans-section-head { display: grid; gap: var(--s-3); max-width: 760px; }
+.technical-sans-section-head > span { font: var(--type-mono-xs); letter-spacing: var(--track-mono-xs); text-transform: uppercase; color: var(--text-muted); }
+.technical-sans-section-head h2 { margin: 0; font: var(--type-section); letter-spacing: var(--track-section); text-wrap: balance; color: var(--text); }
+.technical-sans-section-head p { margin: 0; font: var(--type-body); color: var(--text-muted); }
+@media (max-width: 760px) {
+  .technical-sans-hero-object { min-height: 280px; }
+  .technical-sans-rail { overflow-x: auto; flex-wrap: nowrap; }
+}
+```
+### Code Hero
+
+Use when the product promises developer speed, API clarity, or AI/infrastructure setup.
+
+```tsx
+type CodeHeroStatus = "ready" | "copied" | "error";
+
+export function CodeHero({ status = "ready" }: { status?: CodeHeroStatus }) {
+  return (
+    <section className="code-hero" data-status={status}>
+      <div className="code-tabs" role="tablist" aria-label="Install method">
+        {["npm", "curl", "python"].map((tab, i) => <button role="tab" aria-selected={i === 0} key={tab}>{tab}</button>)}
+      </div>
+      <pre className="code-block"><code>{`npm install @acme/sdk\nacme deploy --env production`}</code></pre>
+      <footer className="code-footer">
+        <span>v2.4.0</span>
+        <button>{status === "copied" ? "Copied" : "Copy command"}</button>
+      </footer>
+    </section>
+  );
+}
+```
+
+```css
+.code-hero {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card, 8px);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-panel, none);
+}
+.code-tabs { display: flex; gap: 4px; padding: 8px; border-bottom: 1px solid var(--line); }
+.code-tabs button {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-muted);
+  font: 500 13px/1 var(--font-sans, Inter, sans-serif);
+}
+.code-tabs button[aria-selected="true"] { color: var(--text); background: color-mix(in srgb, var(--surface), var(--line) 24%); border-color: var(--line); }
+.code-block { margin: 0; padding: 18px; overflow: auto; font: 13px/1.6 var(--font-mono, "Geist Mono", monospace); }
+.code-footer { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 0 12px; border-top: 1px solid var(--line); color: var(--text-muted); }
+.code-footer button { min-height: 32px; border-radius: var(--radius-control); border: 1px solid var(--line); background: transparent; color: var(--text); padding: 0 10px; }
+.code-hero[data-status="copied"] .code-footer button { border-color: var(--action); color: var(--action); }
+.code-hero[data-status="error"] { border-color: #eb5757; }
+```
+
+States: loading command, copied, failed command, selected language tab, keyboard focus, horizontal overflow on small screens.
+
+### CLI Command Bar
+
+- Use a single-line command with prompt marker, environment selector, copy/run button, and output status.
+- Keep height stable at 44-52px.
+- Add `aria-live="polite"` for output status.
+- Mobile: allow horizontal scroll in code area, keep action button reachable.
+
+### API Response Card
+
+- Include endpoint, method, latency, status, and JSON body.
+- Syntax colors are local to tokens: keys, strings, numbers, comments, error.
+- Add tabs for Request / Response / Errors.
+- Error state should show realistic status (`401`, `429`, `500`) and recovery.
+
+### Architecture Diagram
+
+- Use CSS grid/SVG/canvas only if labels stay selectable or accessible elsewhere.
+- Nodes: client, edge, worker, database, queue, analytics.
+- Lines should have direction and optional labels (`webhook`, `stream`, `batch`).
+- Hover/focus reveals latency, owner, or protocol. Reduced motion keeps arrows static.
+
+### Deploy Timeline
+
+- Steps: Commit, Build, Test, Migrate, Deploy, Verify.
+- Each step has status, timestamp, duration, and log link.
+- States: queued, running, passed, failed, skipped, rolled back.
+- Row flash only on state change; never animate layout height.
+
+### Docs Sidebar
+
+- Sections grouped by task: Start, Authenticate, Send data, Webhooks, Errors, SDKs.
+- Active item uses text weight, border/fill, and `aria-current`.
+- Mobile becomes a top dropdown or command palette.
+
+### Technical Pricing
+
+- Include usage units (`events/month`, `seats`, `compute min`, `retention`), not just marketing plan names.
+- Recommended plan uses border/fill and utility copy, not scale.
+- Billing states: calculating usage, over limit, trial ending, payment failed.
+
+## State Language
+
+```tsx
+const technicalSansState = {
+  idle: "bg-[var(--surface)] text-[var(--text)] border-[var(--line)]",
+  hover: "hover:border-[color-mix(in_srgb,var(--line),var(--text)_20%)] hover:bg-[color-mix(in_srgb,var(--surface),var(--line)_16%)]",
+  focus: "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--action)] focus-visible:ring-offset-2",
+  selected: "data-[selected=true]:border-[var(--action)] data-[selected=true]:text-[var(--text)]",
+  running: "data-[state=running]:before:bg-[var(--action)]",
+  loading: "aria-busy:pointer-events-none aria-busy:cursor-progress",
+  disabled: "disabled:text-[var(--text-muted)] disabled:cursor-not-allowed disabled:opacity-70",
+  error: "border-[#eb5757] bg-[color-mix(in_srgb,#eb5757,transparent_90%)] text-[var(--text)]",
+  success: "border-[#27a644] bg-[color-mix(in_srgb,#27a644,transparent_90%)] text-[var(--text)]"
+};
+```
+
+Rules:
+
+- Do not style success as a generic green border without text. Show "Build passed", "Webhook delivered", "Deploy verified".
+- Error states should include the failed technical object and recovery: "Token expired. Re-authenticate." or "Migration failed at step 04."
+- Loading states can use skeleton lines or terminal cursor, but content dimensions must stay stable.
+- Disabled states should stay readable; disabled is lower priority, not invisible.
+
+## Motion System
+
+## Complete Page Protocols
+
+```tsx
+// Developer Landing
+<main data-skill="technical-sans" data-archetype="developer-landing">
+  <CodeHeroContract command="npx product init" />
+  <APIResponseCardContract status={200} />
+  <ArchitectureDiagramContract nodes={["client", "edge", "db"]} />
+  <DeployTimelineContract state="success" />
+</main>
+
+// Documentation Surface
+<main data-skill="technical-sans" data-archetype="documentation-surface">
+  <DocsSidebarContract sections={["Start", "API", "Examples"]} />
+  <CLICommandBarContract command="deploy --prod" />
+  <TechnicalPricingContract plans={["Build", "Scale", "Enterprise"]} />
+</main>
+```
+```tsx
+// Developer Landing
+<main data-skill="technical-sans" data-archetype="developer-landing">
+  <CodeHeroContract command="npx product init" />
+  <APIResponseCardContract status={200} />
+  <ArchitectureDiagramContract nodes={["client", "edge", "db"]} />
+  <DeployTimelineContract state="success" />
+</main>
+
+// Documentation Surface
+<main data-skill="technical-sans" data-archetype="documentation-surface">
+  <DocsSidebarContract sections={["Start", "API", "Examples"]} />
+  <CLICommandBarContract command="deploy --prod" />
+  <TechnicalPricingContract plans={["Build", "Scale", "Enterprise"]} />
+</main>
+```
+| Pattern | Use | Timing | Behavior |
+| --- | --- | --- | --- |
+| Code tab transition | Switching SDK languages or request/response views. | 140-220ms | Crossfade code lines and move x 4-8px; preserve block height. |
+| Command execution | CLI bar run/copy. | 300-900ms | Cursor blink, then status text; no layout jumps. |
+| Deploy row flash | Step completes/fails. | 450-700ms | Action/error tint fades to surface; chip text changes immediately. |
+| Focus pulse | Copy button, command input, API key field. | 500ms | Ring alpha pulse only. |
+| Diagram path | Architecture edge highlight. | 600-1200ms | Stroke dash or opacity, reduced motion shows static highlighted path. |
+| Panel open | Docs sidebar, details drawer, changelog. | 180-240ms | Transform/opacity on overlay or preallocated panel. |
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  [data-motion],
+  .code-hero *,
+  .deploy-step,
+  .diagram-edge {
+    animation: none !important;
+    transition-duration: .01ms !important;
+    transform: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
 
 ## Absolute Bans
 
-- Do not use generic tech gradients instead of product evidence.
-- Do not make all text monospace.
-- Do not overload the interface with fake terminal details.
+- No fake terminal text that does not parse as a plausible command.
+- No random glowing gradients as proof of technicality.
+- No mono for body paragraphs unless the brand demands it.
+- No syntax rainbow sprayed across non-code UI.
+- No vague "AI-powered infrastructure" claim without code/data/diagram proof.
+- No hidden focus states on copy buttons, tabs, API key fields, or docs links.
+- No hover lift as the main interaction. Use border, fill, syntax, row highlight, or command state.
 
-## Reference Database
+## Reference Use
 
-The detailed Refero-derived analysis lives outside this main skill file to keep runtime context lean:
+For deeper source extraction, load `references/refero-style-database.md`. For source-specific inspiration, load only the selected file under `references/sources/`.
+## Production Patterns
 
-- Full consolidated database: [references/refero-style-database.md](references/refero-style-database.md)
-- Raw source notes: [references/sources/](references/sources/)
+### Type Ladder
 
-Primary sources used:
+- Display: 48-80px, tight or source-specific tracking, used for H1/H2 only.
+- UI: 13-18px, clear line height, used for nav/buttons/body.
+- Metadata: 12-13px, often medium weight or mono, used for versions/status/timestamps.
+- Code: 12-14px mono, line-height 1.45-1.65, horizontal scroll allowed.
 
-- Antimetal - Technical Sans Source Notes: 
-- Plain - Technical Sans Source Notes: 
-- Cursor - Technical Sans Source Notes: 
-- Linear - Technical Sans Source Notes: 
-- Mercury - Technical Sans Source Notes: 
+### Button Families
 
-## Source Direction Matrix
+- Antimetal: chartreuse filled pill for conversion, dark ghost pill on the hero, light ghost pill on product surfaces. Never make all buttons chartreuse.
+- Plain: compact green filled action with dark text, pale ghost action with green border/text, small 6px radius. Good for tool commands.
+- Cursor: orange outlined action and transparent inputs. Primary can be outline-first if the rest of the page has strong software-panel proof.
+- Linear: lime filled action for the main command, transparent links for secondary navigation, no large glossy buttons.
+- Mercury: blue primary pill, ghost header pill, and text-only nav. Avoid card-like button groups in spacious dark layouts.
 
-Use this matrix to choose a source direction quickly, then load the full reference only if the task needs deeper specificity.
+### Form And Input Patterns
 
-| Source | What To Extract | Use It For |
-| --- | --- | --- |
-| Antimetal - Technical Sans Source Notes | Visual system reference | mixed expression, layout rhythm, component behavior |
-| Plain - Technical Sans Source Notes | Visual system reference | light expression, layout rhythm, component behavior |
-| Cursor - Technical Sans Source Notes | Visual system reference | light expression, layout rhythm, component behavior |
-| Linear - Technical Sans Source Notes | Visual system reference | dark expression, layout rhythm, component behavior |
-| Mercury - Technical Sans Source Notes | Visual system reference | dark expression, layout rhythm, component behavior |
+- API key fields: use mono value, reveal/copy buttons, "last used" metadata, and clear revoked/expired states.
+- Joined email input: use only in Mercury-like spacious dark pages; field and CTA must align exactly and share height.
+- Search/docs input: include keyboard hint, focused ring, no-results state, and recent searches.
+- Terminal prompt input: keep prompt marker fixed width, use monospace for the command, and make the run/copy action accessible.
 
-## Design Engine
+### Diagram Rules
 
-### Direction Selection
+- Use labels on every node; icons alone are not technical proof.
+- Use directional edges with protocol labels: `REST`, `webhook`, `stream`, `batch`, `SQL`, `vector`.
+- Keep node shapes consistent with the chosen source radius. Cursor can be 4/8px, Linear 6px, Mercury 4px containers with pill controls.
+- If diagram motion is present, it must highlight a specific path and end in a readable static state.
 
-When using this skill, choose one clear direction before designing. Do not average all references into a bland middle. The direction should be described in one sentence using this shape:
+### Code Content Rules
 
-`This interface is a Technical Sans system for [audience] that feels technical, crisp, rational, precise, engineered, legible and uses [layout move], [type move], [color move], and [component move] to make [primary action] obvious.`
+- Commands should be plausible for the domain: install, authenticate, deploy, ingest, subscribe, query, migrate.
+- API responses should include status, latency, request ID, and at least one realistic field.
+- Code samples should never be lorem ipsum. Use typed names, environment variables, endpoint paths, or SDK methods.
+- Copy buttons need copied, error, and disabled states. Copy success should update text, not rely on color alone.
 
-If you cannot fill that sentence, stop and inspect the reference database before producing UI.
+### Surface Ladder
 
-### Required Design Plan
+- Dark hero or page canvas if source demands.
+- Product surface for code/API/diagram.
+- Nested code/readout panel.
+- Active line or selected row.
+- Status chip with label and state.
 
-Before code, include a compact design plan with:
+### Mobile Rules
 
-1. Product type and audience.
-2. Chosen Technical Sans sub-direction.
-3. First viewport composition.
-4. Typography strategy.
-5. Color and accent policy.
-6. Component geometry rule.
-7. Motion rule.
-8. Anti-slop risks specific to this style.
+- Code blocks may scroll horizontally; do not wrap commands into unreadable fragments.
+- Architecture diagrams collapse into stacked nodes plus an ordered flow list.
+- Docs sidebars become a select, drawer, or command palette.
+- Hero CTAs stack with full-width targets only when labels remain readable.
+- Dark pages need extra spacing on mobile so dense technical labels do not merge into one black block.
+- Preserve visible line-height in code; clipped descenders make the whole system feel careless.
 
-The plan should be short but decisive. It should prevent generic defaults before they appear.
+### Copy Rules
 
-### Visual System Contract
-
-The final design must define these contracts:
-
-- **Surface contract:** what backgrounds, panels, cards, overlays, and modals look like.
-- **Type contract:** how hero, section, body, label, metadata, and CTA typography differ.
-- **Color contract:** what each accent means and where it is forbidden.
-- **Geometry contract:** radius, border, shadow, spacing, and alignment rules.
-- **Evidence contract:** what proves the product, brand, object, or workflow is real.
-- **Interaction contract:** hover, focus, active, loading, empty, error, and success behavior.
-
-### Quality Bar
-
-The output should feel intentionally art-directed but production-aware. It must not be a moodboard, a generic landing page, or a style pasted on top of default components.
-
-## Pattern Arsenal
-
-Use these patterns as starting points. Pick only the ones that match the user request.
-
-### Pattern A: Signature Hero
-
-Purpose: make the style visible immediately.
-
-Rules:
-
-- The H1 must carry a clear product or brand promise.
-- The hero visual must show a real object, interface, workflow, scene, or material cue.
-- The primary CTA must be readable and visually dominant.
-- Avoid small decorative badges unless they support trust, status, or category.
-- On mobile, preserve the style but reduce typographic risk.
-
-### Pattern B: Evidence Section
-
-Purpose: prevent the design from becoming pure mood.
-
-Use one of:
-
-- product screenshot
-- workflow sequence
-- feature grid with concrete examples
-- material/product gallery
-- customer proof
-- data readout
-- case-study index
-
-Rules:
-
-- Evidence should be inspectable.
-- Do not blur, darken, crop, or decorate evidence until it stops being useful.
-- Pair evidence with concise explanatory copy.
-
-### Pattern C: System Section
-
-Purpose: show that the visual identity can repeat.
-
-Include:
-
-- 3 to 5 reusable modules
-- consistent spacing
-- consistent component geometry
-- real headings and body text
-- visible interaction affordances
-
-Rules:
-
-- Do not use cards if rows, bands, or split sections are more appropriate.
-- Do not vary every card color or radius.
-- Let the style repeat through rules, not randomness.
-
-### Pattern D: Conversion Or Action Section
-
-Purpose: make the page usable.
-
-Rules:
-
-- Repeat the primary action language.
-- Keep forms, pricing, checkout, booking, or signup calmer than decorative sections.
-- Maintain strong contrast and clear focus states.
-- Do not hide commitment details in tiny text.
-
-### Pattern E: Final Closure
-
-Purpose: end the page with brand confidence.
-
-Use:
-
-- strong footer typography
-- compact navigation
-- repeated visual motif
-- final CTA
-- source-aware color or material cue
-
-Avoid a generic footer dump. The ending should feel designed.
-
-## Implementation Guardrails
-
-### Layout Guardrails
-
-- Use stable responsive constraints: max-widths, aspect ratios, grid tracks, and spacing tokens.
-- Do not let hover states resize cards or shift adjacent content.
-- Avoid nested card-in-card layouts unless the inner card is a true control or modal.
-- Prefer full-width sections or unframed layouts for major page bands.
-- Keep text within containers on mobile; reduce scale before allowing awkward wrapping.
-
-### Typography Guardrails
-
-- Do not default to Inter unless the existing project already uses it and the style still needs it.
-- Use display type for identity, not for long reading.
-- Keep body copy readable on the actual background.
-- Avoid all-caps paragraphs.
-- Do not use tiny text to imitate sophistication.
-
-### Color Guardrails
-
-- Assign every color a role before using it.
-- Do not use accent color for body text.
-- Keep disabled, placeholder, and metadata text accessible.
-- Ensure semantic colors are not confused with brand decoration.
-- Test light, dark, image, and gradient surfaces separately.
-
-### Motion Guardrails
-
-- Use transform and opacity for motion.
-- Respect reduced motion.
-- Avoid constant decorative loops.
-- Keep hover feedback fast and clear.
-- Use scroll motion only when it explains sequence or creates real narrative.
-
-### Asset Guardrails
-
-- Use real or generated visual assets that reveal the product, place, object, state, or gameplay.
-- Avoid purely atmospheric stock imagery when users need to inspect the subject.
-- Do not use SVG hero illustrations when a real/generated bitmap image would better carry the category.
-- Keep image crops intentional across desktop and mobile.
-
-## Execution Protocol
-
-### 1. Select A Direction
-
-Pick one dominant direction. Do not blend every source at once. The chosen direction should answer:
-
-- What should the first viewport feel like?
-- What should the user understand first?
-- What should be visually repeated across the page or app?
-- What should be deliberately avoided?
-
-### 2. Build The System
-
-Define:
-
-- color tokens and semantic roles
-- typography scale and pairings
-- section rhythm and page density
-- component radius, border, shadow, and surface rules
-- imagery style and crop logic
-- hover, focus, loading, empty, error, and success states
-
-### 3. Create Real Screens
-
-Do not stop at moodboards or generic sections. Create complete screens with:
-
-- navigation
-- hero or primary task area
-- proof or product evidence
-- reusable feature/workflow modules
-- conversion/action area
-- footer or closure
-- responsive behavior
-
-### 4. Apply Motion Carefully
-
-Use motion only for:
-
-- reveal
-- transition
-- feedback
-- continuity
-- attention routing
-
-Avoid motion that delays comprehension, hides controls, harms accessibility, or exists only as decoration.
+Use nouns from the system: build, deploy, webhook, token, event, workflow, queue, schema, trace, endpoint, migration, region, branch. Avoid generic copy like "seamless experiences" unless paired with concrete proof.
 
 ## Pre-Output Checklist
 
-Before delivering, verify:
-
-- The first viewport clearly expresses Technical Sans.
-- The primary action is obvious.
-- Typography is readable and intentionally scaled.
-- Color roles are semantic and consistent.
-- Components share a coherent geometry.
-- The design avoids every ban listed above.
-- Mobile layout preserves the style without overflow or cramped text.
-- Focus, hover, active, disabled, loading, empty, error, and success states are accounted for.
-- Any referenced imagery is concrete and useful.
-- The final result would not be mistaken for a generic template.
-
-## Last-Mile Correction Rules
-
-If the result feels generic, strengthen typography, section rhythm, and source-specific visual decisions. If it feels noisy, remove colors, effects, and components until the primary hierarchy becomes obvious. If it feels pretty but unusable, make controls, states, and content structure more conventional while preserving the style's identity.
-
-## Prompt Pack
-
-### General Prompt
-
-Design a Technical Sans interface that feels technical, crisp, rational, precise, engineered, legible. Build a coherent system, not a skin: define layout, type, color, component geometry, imagery, motion, states, and responsive behavior. Use the reference database only to extract transferable rules, not to clone a source.
-
-### Website Prompt
-
-Create a complete Technical Sans website with navigation, a first viewport that states the product clearly, product or brand evidence, reusable sections, a clear conversion path, and a designed footer. The style must be visible in the first viewport and must remain usable on mobile.
-
-### App Prompt
-
-Create a Technical Sans app interface for repeated use. Prioritize the main workflow, control placement, information density, readable state design, and keyboard-accessible interactions. Preserve the style through surfaces, typography, spacing, and component behavior rather than decorative effects.
-
-### Redesign Prompt
-
-Redesign the existing interface in a Technical Sans direction. Preserve functionality and information architecture unless the user asks otherwise. Remove generic AI design patterns, assign tokens, improve hierarchy, define states, and make the first screen feel specific.
-
-### Critique Prompt
-
-Audit this design against Technical Sans. Identify generic defaults, weak hierarchy, misuse of color, bad typography, missing states, poor mobile behavior, and places where the style is decorative instead of structural.
+- First viewport contains a real code/API/diagram proof.
+- One Technical Sans archetype is clearly dominant.
+- Execution tokens are declared and component CSS uses them.
+- Typography uses named pairings, not raw Tailwind defaults.
+- Spacing uses `--s-*` or style tokens, not mixed arbitrary padding.
+- Radius, depth, and state colors use the token contract.
+- Status labels use role mapping plus `--status-{role}-bg/fg`.
+- Components include hover, focus-visible, selected, loading, empty, error, and success where relevant.
+- Motion maps to command/deploy transition and has a reduced-motion fallback.
+- Mobile layout preserves the style without overflow, unreadable text, or hidden controls.

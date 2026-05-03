@@ -1,4 +1,4 @@
-# GRAZA — Style Reference
+﻿# GRAZA â€” Style Reference
 > Artisanal provisions on a sunny countertop
 
 **URL:** https://graza.co
@@ -6,18 +6,18 @@
 **Theme:** light
 **Category Tags:** Pastel, Warm, Food/DTC, Artisanal, Editorial Serif
 
-## Tokens — Colors (creamy + food greens/yellows)
+## Tokens â€” Colors (creamy + food greens/yellows)
 | Name | Value | Token | Role |
 |------|-------|-------|------|
-| Buttermilk | `#fff4ec` | `--color-buttermilk` | **Page bg** — creamy off-white (warmer than white) |
+| Buttermilk | `#fff4ec` | `--color-buttermilk` | **Page bg** â€” creamy off-white (warmer than white) |
 | Farmhouse Gray | `#f6e6d9` | `--color-farmhouse-gray` | Secondary bg, aged paper feel |
-| Grove Green | `#3c422` | `--color-grove-green` | **Primary text + interactive** — desaturated green |
-| Zest Yellow | `#d1e030` | `--color-zest-yellow` | **CTA button bg** — vivid citrus |
+| Grove Green | `#3c4422` | `--color-grove-green` | **Primary text + interactive** â€” desaturated green |
+| Zest Yellow | `#d1e030` | `--color-zest-yellow` | **CTA button bg** â€” vivid citrus |
 | Avocado Cream | `#9eef80` | `--color-avocado-cream` | Secondary accent, playful sections bg |
 | Sunbeam Yellow | `#fbd535` | `--color-sunbeam-yellow` | Tertiary, sparingly used impact |
 | Harvest Ochre | `#e8d6c8` | `--color-harvest-ochre` | Decorative warm shading |
 
-## Typography (3 fonts — bold pairing!)
+## Typography (3 fonts â€” bold pairing!)
 ### ITC Garamond Condensed (Display)
 - Weights: 400. Sizes: **46, 48, 72, 102, 120px**
 - Line height: 0.90, 1.00, 1.60. Letter-spacing: -0.031, -0.03, -0.021
@@ -25,7 +25,7 @@
 
 ### GT Alpina Typewriter (Body)
 - Weights: 400, 500, 700. Sizes: 12, 16, 18, 20px
-- **Custom monospaced for ALL body** — modern technical contrast
+- **Custom monospaced for ALL body** â€” modern technical contrast
 
 ### Apercu (Badges)
 - Weight 400. Size 13px. Geometric sans for compact labels
@@ -72,14 +72,14 @@ Transparent bg, Grove Green text + border, 8px radius, 16px all-side padding.
 **Brightly lit product photography + food lifestyle shots.** Tightly cropped on textured backgrounds. **Full-bleed OR contained in 20px-radius soft-edged cards.** Photos overlap text/color blocks. Brand-colored whimsical illustrations on packaging. Outlined Grove Green icons. Showcases product appeal + culinary inspiration.
 
 ## Layout
-**Max-width 1440px centered**, generous surrounding white space. Hero: full-bleed photography + overlaid text. Sections alternate Buttermilk ↔ Farmhouse Gray ↔ Sunbeam ↔ Avocado backgrounds. Two-column with imagery + text reversing for variety. Spacious. Sticky minimal top nav.
+**Max-width 1440px centered**, generous surrounding white space. Hero: full-bleed photography + overlaid text. Sections alternate Buttermilk â†” Farmhouse Gray â†” Sunbeam â†” Avocado backgrounds. Two-column with imagery + text reversing for variety. Spacious. Sticky minimal top nav.
 
 ## Motion Notes
 - Hover: subtle Zest Yellow intensity shift on CTAs
 - Scroll-triggered reveal of food photography
 - Section background color transitions create visual rhythm
 - 20px radius images create "polaroid floating" feel
-- No aggressive motion — warm, calm, artisanal
+- No aggressive motion â€” warm, calm, artisanal
 
 ## Do's
 - ITC Garamond Condensed for ALL display headings (72, 102, 120px), -0.03em
@@ -103,4 +103,4 @@ Transparent bg, Grove Green text + border, 8px radius, 16px all-side padding.
 Brightland, Oatly, Fly By Jing, Haus
 
 ## Key Insight
-**The artisanal pastel:** classic serif (Garamond Condensed) + monospace typewriter pairing creates "rustic craft + modern tech" tension. Creamy warm bg `#fff4ec` instead of cold white. **Desaturated green text `#3c422` instead of black** — fundamental warmth signal. Citrus Zest Yellow for CTA. Each section gets its own warm bg color (Buttermilk → Farmhouse Gray → Avocado → Sunbeam) creating "kitchen pantry" rhythm. 20px image radius is the signature softness on photos.
+**The artisanal pastel:** classic serif (Garamond Condensed) + monospace typewriter pairing creates "rustic craft + modern tech" tension. Creamy warm bg `#fff4ec` instead of cold white. **Desaturated green text `#3c4422` instead of black** â€” fundamental warmth signal. Citrus Zest Yellow for CTA. Each section gets its own warm bg color (Buttermilk â†’ Farmhouse Gray â†’ Avocado â†’ Sunbeam) creating "kitchen pantry" rhythm. 20px image radius is the signature softness on photos.

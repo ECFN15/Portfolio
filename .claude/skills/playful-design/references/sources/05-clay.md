@@ -21,7 +21,7 @@ need energy without losing authority.
 | Pitch Black | `#000000` | Primary text and button backgrounds |
 | Ghost White | `#ffffff` | Page and card surfaces |
 | Cloud Gray | `#f9f8f6` | Subtle section/card background |
-| Inkwell | `#55534` | Secondary body text |
+| Inkwell | `#55534a` | Secondary body text |
 | Platinum Gray | `#e6e8ec` | Borders and separators |
 | Oatmeal | `#dad4c8` | Warm border tone |
 | Clay Violet | `#3859f9` | Primary brand link/accent |
@@ -68,4 +68,3 @@ need energy without losing authority.
 - Do not add new shadows.
 - Do not make saturated colors into large text blocks.
 - Do not deviate from the set type scale.
-

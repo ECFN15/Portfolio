@@ -3,309 +3,882 @@ name: dark-ui
 description: "Use this skill to create Dark UI visual design systems that feel focused, immersive, premium, technical, calm, deep. USE FOR: dark dashboards, AI tools, premium apps, developer consoles, command centers, immersive product interfaces. DO NOT USE FOR: unrelated backend work, non-visual tasks, or when an existing product design system must be followed exactly."
 ---
 
-# Dark UI
+# Dark UI Skill
+
+## Mandatory `<design_plan>`
+
+Before substantial UI code, output a compact `<design_plan>` block. Include:
+
+1. **Use case:** page/app type, audience, primary action, emotional target.
+2. **Style direction:** one Dark UI archetype below.
+3. **Operating mode:** density, motion, decoration, contrast, radius, and asset burden.
+4. **First viewport:** nav type, H1 width/line strategy, dark product surface with logs, panels, command input, or metrics, CTA treatment, next-section hint.
+5. **System contracts:** type, color, surface, radius, spacing, depth, state, and motion tokens.
+6. **Component plan:** at least four concrete Dark UI components with states.
+7. **Motion plan:** panel depth, reveal, or focus transition, timing, performance guardrail, and reduced-motion fallback.
+8. **Anti-slop sweep:** top three failure modes for this style and how you will avoid them.
+
+If the request is tiny, do this mentally and keep the final answer concise.
+
 
 ## Core Directive
 
-You are designing in the Dark UI style. The output must feel focused, immersive, premium, technical, calm, deep. Do not merely apply a color theme; build a coherent visual system across layout, typography, color, component geometry, imagery, motion, and interaction states.
+Build Dark UI as a calm, legible product environment with depth, focus, and operational confidence. Unlike Cyber Neon, Dark UI does not need pure black, theatrical glow, scanline atmosphere, or constant emitted light. It uses a charcoal/navy surface ladder, restrained accents, clear state design, and product proof. The result should feel premium and usable for hours, not like a nightclub interface.
 
-Use this skill when the user asks for dark dashboards, AI tools, premium apps, developer consoles, command centers, immersive product interfaces.
+Use this skill for dark dashboards, AI tools, premium apps, developer consoles, command centers, analytics products, writing tools, financial surfaces, and immersive product interfaces where users need to read, decide, compare, configure, and act.
 
-## Mandatory Workflow
 
-Before writing UI code or final visual instructions:
+For substantial UI work, output a compact `<design_plan>` block before code:
 
-1. Identify the product type, audience, primary action, and emotional target.
-2. Choose one layout archetype from the reference database.
-3. Choose one typography strategy, one color strategy, one component geometry rule, and one motion rule.
-4. State the anti-slop risks for this style.
-5. Build the interface with real sections, real states, and responsive behavior.
-6. Run the pre-output checklist at the end.
+1. Use case, audience, primary workflow, and emotional target.
+2. Archetype chosen from this skill.
+3. Surface ladder: page, base panel, raised panel, selected panel, overlay, focus.
+4. First viewport: nav, product proof, action hierarchy, and next-section hint.
+5. Component plan: at least four dark product components with states.
+6. Motion plan: reveal, panel depth, data motion, and reduced-motion behavior.
+7. Anti-slop sweep: top three failure modes and how the build avoids them.
 
-If the task is substantial, load [references/refero-style-database.md](references/refero-style-database.md) before designing. If the user asks for source-specific inspiration, inspect [references/sources/](references/sources/).
+For tiny tasks, keep the plan internal. For app shells, dashboards, redesigns, and full pages, include it.
 
-## Non-Negotiable Style Rules
+## Style Operating Mode
 
-- Separate surfaces through tone, borders, and state, not just black fills.
-- Use readable body text and visible focus states on every dark surface.
-- Reserve accent color for action, selection, status, or progress.
+| Control | Setting |
+| --- | --- |
+| density | Medium-high for apps, medium for websites. |
+| motion | Medium. Use depth, panel reveal, smooth state transition, and subtle background drift. |
+| decoration | Low-medium. Use depth, lines, and atmospheric light sparingly. |
+| contrast | Dark substrate with readable text and clearly stepped surfaces. |
+| radius | 8-14px for product panels, 999px for segmented controls. |
+| type | Modern sans with mono for code/data only. |
+| assets | Product screenshots, command panels, agent messages, graphs, dark photography. |
+
+## Signature System
+
+- Surface Ladder: every panel uses a distinct tone or border; active panels receive accent edge or raised contrast.
+- Command Center Rhythm: large central task panel + side utility rail + bottom status/metadata band.
+- Premium Darkness: deep navy/charcoal with one cool accent feels more refined than pure black.
+- Readable Microcopy: metadata can be muted, but core labels and values must pass contrast.
+
+## Differentiation
+
+Use Dark UI when dark dashboards, AI tools, premium apps, developer consoles, command centers, immersive product interfaces. If removing the dark product surface, token rules, or signature components leaves a generic page, this skill is the right lens and the signature object must stay. Use `cyber-neon` when emitted light and kinetic signal are the identity; use `technical-ui` when workflow density matters more than atmosphere.
+## Non-Negotiable Principles
+
+- Make darkness from a ladder, not a bucket of black. Every surface must have a role.
+- Prefer charcoal, navy, ink, and slate over pure black except in media wells or terminal blocks.
+- Accent color has a job: action, selection, progress, risk, or status. It is not body text decoration.
+- Depth comes from tone, border, translucency, and crisp focus, not heavy blurred shadows.
+- Text must be comfortable at small sizes. Muted copy is still readable.
+- A dark app needs quiet empty, loading, error, success, and disabled states.
+- Dark UI is calmer than Cyber Neon: fewer glowing edges, less scanline texture, less theatrical motion, more product density.
+
+
+## Charcoal/Navy Surface Ladder
+
+Use this ladder before choosing colors. Values may adapt to a brand, but the step relationships should remain.
+
+| Layer | Role | Typical token | Usage |
+| --- | --- | --- | --- |
+| Page | Ambient backdrop | `--du-bg` | Full app/page background; deep charcoal or navy. |
+| Base | Main work surface | `--du-surface-1` | Primary app shell, large sections, dashboard canvas. |
+| Raised | Grouped modules | `--du-surface-2` | Cards, panels, nav, drawers. |
+| Interactive | Clickable module | `--du-surface-3` | Buttons, rows, selectable cards, inputs. |
+| Selected | Active module | `--du-surface-selected` | Current tab, active row, chosen plan, focused conversation. |
+| Overlay | Modal/popover | `--du-overlay` | Dialogs, menus, command palettes; slightly clearer and higher contrast. |
+| Focus | Accessibility | `--du-focus` | Visible rings and active outlines. |
+
+Surface rules:
+- The page and base surface should differ by at least a visible tone step.
+- Borders are usually `rgba(255,255,255,.06-.12)` or accent-tinted for active states.
+- Selected surfaces need more than color: add label, icon, border, or positional indicator.
+- Avoid giant transparent cards over busy gradients; use protected readable panels.
+
+## Raw-Derived Archetypes
+
+### beehiiv Galactic SaaS
+
+Use when a SaaS marketing/product interface needs deep navy, confident display type, pill CTAs, and a magenta/blue accent moment. It works for creator tools, growth tools, newsletters, and product launches.
+
+Carry forward:
+- Deep navy background with white headline and restrained magenta/blue accent.
+- Bipolar geometry: pill CTAs with cleaner rectangular feature cards.
+- Feature/testimonial cards with dark fill and strong typographic hierarchy.
+- Accent gradient reserved for a hero CTA or one high-value path.
+
+Avoid:
+- Turning every button into a gradient.
+- Generic "space" decoration without product evidence.
+
+### Fey Financial Dark
+
+Use for finance, portfolio, analytics, watchlists, and calm decision tools. The raw signal is multi-tier black/gray panels, one precise accent, app preview cards, notification bubbles, and polished chart space.
+
+Carry forward:
+- Single-font discipline and clear numeric hierarchy.
+- App preview cards with balanced margins and high contrast.
+- Compact pills for alerts, holdings, and selected filters.
+- Smooth reveal and scroll behavior that feels expensive.
+
+Avoid:
+- Neon styling that makes financial data feel untrustworthy.
+- Muted numbers that users cannot compare quickly.
+
+### Bun Synthwave Dev Tool
+
+Use for developer tooling, runtime benchmarks, CLIs, docs, code panels, and performance narratives. It brings charcoal canvas, mono code, command input, performance bars, and restrained highlight colors.
+
+Carry forward:
+- Charcoal/smoke surfaces with strong code readability.
+- Command line input as a signature component.
+- Bar graphs and benchmark proof.
+- Body/system font with mono only where useful.
+
+Avoid:
+- Making all text mono.
+- Using cute novelty colors in dense code/data sections.
+
+### Circle Soft Galactic Community
+
+Use for community, membership, social product, education, and collaborative apps where dark should feel soft and human. It uses rounded controls, translucent highlight cards, and soft pastel accents.
+
+Carry forward:
+- Extreme pill controls for onboarding and primary paths.
+- Gentle card contrast and friendly empty states.
+- Dark-themed feature cards with warm text and calm icons.
+- Input fields that feel safe and approachable.
+
+Avoid:
+- Over-rounding dense admin tables.
+- Low-contrast pastel text on dark surfaces.
+
+### Superwhisper Celestial Command
+
+Use for AI tools, voice products, productivity apps, and premium utilities. It combines dark command surfaces with occasional light download/action slabs, success/warning badges, and gradient feature modules.
+
+Carry forward:
+- Command input, transcription or agent thread as hero proof.
+- Light-on-dark and dark-on-light controls where action clarity demands it.
+- Badges for success/warning with restrained color.
+- A mostly calm interface with one celestial accent field.
+
+Avoid:
+- White cards sprinkled randomly through a dark page.
+- Background gradients behind small body text.
+
+## Semantic Token Packs
+
+### Ink Product
+
+```css
+:root {
+  --du-bg: #080a0f;
+  --du-surface-1: #0d1018;
+  --du-surface-2: #141824;
+  --du-surface-3: #1b2130;
+  --du-surface-selected: #20283a;
+  --du-overlay: #111827;
+  --du-text: #f7f8fb;
+  --du-muted: #a2a9b8;
+  --du-subtle: #737b8d;
+  --du-line: rgba(255,255,255,.09);
+  --du-line-strong: rgba(255,255,255,.16);
+  --du-accent: #7c8cff;
+  --du-accent-text: #eef0ff;
+  --du-success: #43d18b;
+  --du-warning: #f4b84a;
+  --du-danger: #ff667a;
+  --du-focus: #9aa7ff;
+  --du-radius-panel: 12px;
+  --du-radius-control: 999px;
+}
+```
+
+### Navy Premium
+
+```css
+:root {
+  --du-bg: #060419;
+  --du-surface-1: #0d0b24;
+  --du-surface-2: #171433;
+  --du-surface-3: #211d44;
+  --du-surface-selected: #2b2656;
+  --du-overlay: #12102b;
+  --du-text: #ffffff;
+  --du-muted: #c4c2d6;
+  --du-subtle: #8b88a9;
+  --du-line: rgba(196,194,214,.14);
+  --du-accent: #8b7cff;
+  --du-accent-2: #ff5ec4;
+  --du-success: #4ade80;
+  --du-warning: #f5c451;
+  --du-danger: #ff6384;
+  --du-focus: #c7c2ff;
+  --du-radius-panel: 16px;
+}
+```
+
+### Charcoal Developer
+
+```css
+:root {
+  --du-bg: #1f2027;
+  --du-surface-1: #282a36;
+  --du-surface-2: #303341;
+  --du-surface-3: #3a3e4f;
+  --du-surface-selected: #41465c;
+  --du-overlay: #232631;
+  --du-text: #f4f4f6;
+  --du-muted: #b7bac7;
+  --du-subtle: #858a99;
+  --du-line: rgba(255,255,255,.10);
+  --du-accent: #f6c177;
+  --du-success: #a6e3a1;
+  --du-warning: #f6c177;
+  --du-danger: #ff7b93;
+  --du-focus: #f6c177;
+  --du-radius-panel: 8px;
+}
+```
+
+### Execution Token Contract
+
+Every Dark UI build must declare these tokens before component styling. Source packs can tune values, but components must use this vocabulary.
+
+```css
+:root {
+  --canvas: #08090c;
+  --surface: #11131a;
+  --surface-muted: #171a23;
+  --text: #f7f8fb;
+  --text-muted: #a7adbb;
+  --line: #2a2f3a;
+  --action: #7c8cff;
+  --action-strong: #a5b4ff;
+  --radius-control: 10px;
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --font-sans: Geist, Inter, system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+  --type-mono-xs: 500 10px/1.4 var(--font-mono);
+  --type-mono-sm: 500 11px/1.4 var(--font-mono);
+  --type-meta: 500 12px/1.45 var(--font-sans);
+  --type-body-sm: 400 13px/1.55 var(--font-sans);
+  --type-body: 400 15px/1.62 var(--font-sans);
+  --type-ui: 600 14px/1.4 var(--font-sans);
+  --type-card: 600 20px/1.18 var(--font-sans);
+  --type-section-sm: 600 28px/1.08 var(--font-display);
+  --type-section: 600 42px/1.02 var(--font-display);
+  --type-display: 600 clamp(46px, 8vw, 82px)/.92 var(--font-display);
+  --track-mono-xs: .16em;
+  --track-mono-sm: .10em;
+  --track-section: -.025em;
+  --track-display: -.04em;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 48px;
+  --s-9: 64px;
+  --s-10: 80px;
+  --s-11: 96px;
+  --shadow-flat: none;
+  --shadow-card: 0 0 0 1px rgba(255,255,255,.06), 0 12px 32px rgba(0,0,0,.22);
+  --shadow-panel: 0 20px 70px rgba(0,0,0,.34);
+  --shadow-hero: 0 40px 110px rgba(0,0,0,.48);
+  --shadow-modal: 0 24px 80px rgba(15,23,42,.16);
+  --shadow-action: 0 6px 18px color-mix(in srgb, var(--action), transparent 72%);
+  --status-success-bg: rgba(52,211,153,.14);
+  --status-success-fg: #34d399;
+  --status-info-bg: rgba(96,165,250,.14);
+  --status-info-fg: #60a5fa;
+  --status-warning-bg: rgba(251,191,36,.16);
+  --status-warning-fg: #fbbf24;
+  --status-danger-bg: rgba(248,113,113,.16);
+  --status-danger-fg: #f87171;
+  --status-neutral-bg: rgba(255,255,255,.08);
+  --status-neutral-fg: #a7adbb;
+  --state-hover-bg: color-mix(in srgb, var(--action), var(--surface) 90%);
+  --state-selected-bg: color-mix(in srgb, var(--action), var(--surface) 84%);
+  --state-focus-ring: 0 0 0 3px color-mix(in srgb, var(--action), transparent 72%);
+  --ease-product: cubic-bezier(.2,.8,.2,1);
+}
+```
+
+Pairing rules:
+
+- `hero-block`: `font: var(--type-display)`, `letter-spacing: var(--track-display)`, `text-wrap: balance`, `max-width: 22ch`.
+- `section-head`: `font: var(--type-section)`, `letter-spacing: var(--track-section)`, `max-width: 18ch`.
+- `card-block`: title uses `--type-card`, body uses `--type-body`, metadata uses `--type-meta`.
+- `data-label`: use `--type-mono-sm`, uppercase only for tags, code, coordinates, IDs, or status.
+- `status-pill`: always uses one `--status-{role}-bg/fg` pair plus text, never color alone.
+
+Tailwind to token mapping:
+
+| Tailwind default | Dark UI token |
+| --- | --- |
+| `text-xs`, `text-sm` | `--type-body-sm` or `--type-meta` |
+| `text-base`, `text-lg` | `--type-body` or `--type-card` |
+| `text-2xl`, `text-3xl` | `--type-card` or `--type-section-sm` |
+| `text-4xl`, `text-5xl` | `--type-section` |
+| `text-6xl`, `text-7xl` | `--type-display` |
+| `p-3`, `p-4`, `p-5` | `var(--s-3)`, `var(--s-4)`, `var(--s-5)` |
+| `gap-3`, `gap-4`, `gap-6` | `var(--s-3)`, `var(--s-4)`, `var(--s-6)` |
+| `rounded-md`, `rounded-xl`, `rounded-2xl` | `--radius-control`, `--radius-card`, `--radius-panel` |
+| `shadow-sm`, `shadow-md` | `var(--shadow-card)` |
+| `shadow-lg`, `shadow-xl` | `var(--shadow-panel)` or `var(--shadow-hero)` |
+| `shadow-2xl` | `var(--shadow-modal)` |
+| `bg-black` everywhere | stepped surface ladder: `--canvas`, `--surface`, `--surface-muted` |
+| `text-gray-500` on core labels | `--text-muted` only for secondary metadata |
+
+Status words:
+
+| Role | Words |
+| --- | --- |
+| `success` | Approved, Synced, Live, Paid, Complete, Stable |
+| `info` | Active, In review, Processing, Current, Draft |
+| `warning` | Pending, Stale, Slow, Watch, Needs review |
+| `danger` | Failed, Blocked, Critical, Error, Escalate |
+| `neutral` | Empty, Disabled, Skipped, Archived, Ready passive |
+
+Token rule: if a value can be expressed by `du`/style tokens, do not invent raw Tailwind scale, arbitrary rgba shadows, or new status hex.
+## Accent Job Lock
+
+| Accent role | Allowed usage | Forbidden usage |
+| --- | --- | --- |
+| Primary action | Main CTA, selected nav, important submit button. | Every card title or paragraph keyword. |
+| Selection | Active tab, chosen row, selected plan, selected message. | Decoration with no state meaning. |
+| Progress | Loading step, chart highlight, deployment stage. | Continuous animated strip behind content. |
+| Status | Success, warning, danger, online/offline. | Reusing one status color for marketing emphasis. |
+| Focus | Keyboard and accessibility ring. | Invisible outline or focus only by opacity. |
+
+## First Viewport Protocol
+
+Dark UI first viewports should prove product quality immediately:
+
+- Nav: app-like rail, compact topbar, command nav, or calm marketing nav with active state.
+- Headline: concrete product/category; avoid vague atmospheric slogans.
+- Proof: show an app shell, dashboard, command palette, agent thread, code/log panel, chart, or workflow.
+- CTA: one primary action, one secondary action. Secondary may be ghost or text but must be visible.
+- Fold hint: show a row of modules, metrics, pricing, docs, or workflow continuation.
+
+For apps, the first screen may be the actual workspace rather than a hero. In that case, prioritize navigability, filters, loading/error states, and data density over a marketing H1.
+
+## Signature Components
+
+Use at least four for full-page or app work.
+
+| Component | Use | Required states |
+| --- | --- | --- |
+| `DarkCommandInput` | AI prompt, CLI, search, action launcher, command palette. | idle, focus, typing, loading, error, submitted, disabled. |
+| `StackedInsightPanel` | Summary, analytics, recommendations, account health. | loading, empty, stale, success, error. |
+| `StatusSidebar` | Navigation, filters, incidents, spaces, projects. | collapsed, expanded, active, alert, keyboard focus. |
+| `LogConsole` | Deploys, runtime logs, code output, audit events. | streaming, paused, copied, error, empty. |
+| `MetricGlassCard` | KPI and trend cards in premium dashboards. | idle, hover, selected, loading, degraded. |
+| `AgentThread` | AI conversations, notes, transcription, review queues. | user, assistant, pending, failed, regenerated. |
+| `DeployTimeline` | Progress, workflows, imports, syncing. | queued, active, complete, failed, cancelled. |
+| `FocusRingControl` | Buttons, segmented controls, toggles, tabs. | hover, focus-visible, pressed, selected, disabled. |
+
+### Core Component Kit
+
+Use these components before inventing new surfaces. Rename in implementation if needed, but preserve the props, states, and token usage.
+
+```tsx
+type DarkUiState = "default" | "hover" | "selected" | "loading" | "empty" | "error" | "success";
+type DarkUiStatus = "success" | "info" | "warning" | "danger" | "neutral";
+
+export function DarkUiStatusPill({ role, children }: { role: DarkUiStatus; children: React.ReactNode }) {
+  return <span className="dark-ui-status-pill" data-role={role}>{children}</span>;
+}
+
+export function DarkCommandInputContract({ state = "default" }: { state?: DarkUiState }) {
+  return <section className="dark-ui-hero-object" data-state={state} aria-label="Dark UI proof object" />;
+}
+
+export function StackedInsightPanelContract({ title, meta, state = "default" }: { title: string; meta: string; state?: DarkUiState }) {
+  return <article className="dark-ui-card" data-state={state}><span>{meta}</span><strong>{title}</strong></article>;
+}
+
+export function StatusSidebarContract({ items }: { items: string[] }) {
+  return <nav className="dark-ui-rail">{items.map((item, index) => <button data-active={index === 0} key={item}>{item}</button>)}</nav>;
+}
+
+export function DarkUiSectionHeader({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
+  return <header className="dark-ui-section-head"><span>{eyebrow}</span><h2>{title}</h2><p>{children}</p></header>;
+}
+```
+
+```css
+.dark-ui-status-pill {
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  padding: var(--s-1) 10px;
+  border-radius: 999px;
+  font: var(--type-mono-sm);
+  letter-spacing: var(--track-mono-sm);
+  background: var(--status-neutral-bg);
+  color: var(--status-neutral-fg);
+}
+.dark-ui-status-pill[data-role="success"] { background: var(--status-success-bg); color: var(--status-success-fg); }
+.dark-ui-status-pill[data-role="info"] { background: var(--status-info-bg); color: var(--status-info-fg); }
+.dark-ui-status-pill[data-role="warning"] { background: var(--status-warning-bg); color: var(--status-warning-fg); }
+.dark-ui-status-pill[data-role="danger"] { background: var(--status-danger-bg); color: var(--status-danger-fg); }
+.dark-ui-hero-object {
+  min-height: clamp(320px, 48vw, 620px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface);
+  box-shadow: var(--shadow-hero);
+  overflow: hidden;
+}
+.dark-ui-card {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  transition: background 180ms var(--ease-product), box-shadow 180ms var(--ease-product), transform 180ms var(--ease-product);
+}
+.dark-ui-card[data-state="selected"] { background: var(--state-selected-bg); box-shadow: var(--shadow-panel); }
+.dark-ui-card[data-state="loading"] { opacity: .62; pointer-events: none; }
+.dark-ui-card[data-state="error"] { border-color: var(--status-danger-fg); }
+.dark-ui-card > span { font: var(--type-meta); color: var(--text-muted); }
+.dark-ui-card > strong { font: var(--type-card); color: var(--text); }
+.dark-ui-rail { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.dark-ui-rail button { padding: var(--s-2) var(--s-4); border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface); font: var(--type-ui); color: var(--text-muted); }
+.dark-ui-rail button[data-active="true"] { background: var(--state-selected-bg); color: var(--text); box-shadow: var(--state-focus-ring); }
+.dark-ui-section-head { display: grid; gap: var(--s-3); max-width: 760px; }
+.dark-ui-section-head > span { font: var(--type-mono-xs); letter-spacing: var(--track-mono-xs); text-transform: uppercase; color: var(--text-muted); }
+.dark-ui-section-head h2 { margin: 0; font: var(--type-section); letter-spacing: var(--track-section); text-wrap: balance; color: var(--text); }
+.dark-ui-section-head p { margin: 0; font: var(--type-body); color: var(--text-muted); }
+@media (max-width: 760px) {
+  .dark-ui-hero-object { min-height: 280px; }
+  .dark-ui-rail { overflow-x: auto; flex-wrap: nowrap; }
+}
+```
+## Component Blueprints
+
+### DarkCommandInput
+
+Structure:
+- Outer shell uses raised surface and clear border.
+- Input text sits on a base field, not directly on page background.
+- Action button has the only strong accent fill.
+- Shortcuts and mode pills are muted but readable.
+- Error copy appears below without changing shell height.
+
+```tsx
+type DarkCommandState = "idle" | "typing" | "loading" | "error" | "submitted" | "disabled";
+
+export function DarkCommandInput({ state = "idle" }: { state?: DarkCommandState }) {
+  return (
+    <form className="du-command" data-state={state}>
+      <div className="du-command__field">
+        <span className="du-command__mode">AI</span>
+        <label className="sr-only" htmlFor="dark-command">Command</label>
+        <input id="dark-command" placeholder="Ask, search, or run a workflow" disabled={state === "disabled"} />
+        <kbd>Cmd K</kbd>
+      </div>
+      <button disabled={state === "loading" || state === "disabled"}>
+        {state === "loading" ? "Running" : "Run"}
+      </button>
+      {state === "error" && <p className="du-command__message">The workflow stopped. Review inputs and retry.</p>}
+    </form>
+  );
+}
+```
+
+```css
+.du-command {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 10px;
+  color: var(--du-text);
+  background: var(--du-surface-2);
+  border: 1px solid var(--du-line);
+  border-radius: var(--du-radius-panel);
+}
+.du-command__field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 12px;
+  background: var(--du-surface-1);
+  border: 1px solid var(--du-line);
+  border-radius: calc(var(--du-radius-panel) - 4px);
+}
+.du-command input {
+  min-width: 0;
+  color: var(--du-text);
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+.du-command:focus-within {
+  border-color: var(--du-focus);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--du-focus), transparent 74%);
+}
+.du-command button {
+  min-height: 44px;
+  padding: 0 18px;
+  color: var(--du-accent-text, #fff);
+  background: var(--du-accent);
+  border: 0;
+  border-radius: calc(var(--du-radius-panel) - 4px);
+}
+.du-command__message {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--du-danger);
+}
+@media (max-width: 560px) {
+  .du-command { grid-template-columns: 1fr; }
+  .du-command button { width: 100%; }
+}
+```
+
+### StackedInsightPanel
+
+Use for dashboards and AI summaries. The stack should show hierarchy: headline insight, supporting metrics, evidence, and action.
+
+State behavior:
+- Loading: skeleton rows in the same structure.
+- Empty: explain what event or data source is needed.
+- Stale: show timestamp and refresh action.
+- Error: include recovery path.
+- Success: confirm update with subtle status color, not confetti.
+
+```tsx
+export function StackedInsightPanel({ status = "ready" }: { status?: "ready" | "loading" | "empty" | "error" }) {
+  return (
+    <section className="du-insight" data-status={status}>
+      <header>
+        <p>Portfolio health</p>
+        <strong>{status === "loading" ? "Calculating..." : "3 risks need review"}</strong>
+      </header>
+      <div className="du-insight__grid">
+        <span><b>12</b> accounts</span>
+        <span><b>4.8%</b> drift</span>
+        <span><b>18m</b> updated</span>
+      </div>
+      <button>Open review</button>
+    </section>
+  );
+}
+```
+
+```css
+.du-insight {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(180deg, var(--du-surface-2), var(--du-surface-1));
+  border: 1px solid var(--du-line);
+  border-radius: var(--du-radius-panel);
+}
+.du-insight header {
+  display: grid;
+  gap: 6px;
+}
+.du-insight header p {
+  margin: 0;
+  color: var(--du-muted);
+  font-size: 13px;
+}
+.du-insight header strong {
+  color: var(--du-text);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  line-height: 1;
+}
+.du-insight__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.du-insight__grid span {
+  min-width: 0;
+  padding: 12px;
+  background: var(--du-surface-3);
+  border: 1px solid var(--du-line);
+  border-radius: 10px;
+}
+@media (max-width: 640px) {
+  .du-insight__grid { grid-template-columns: 1fr; }
+}
+```
+
+### StatusSidebar
+
+Use for app navigation, filters, incident lists, project spaces, or settings.
+
+Rules:
+- Active item gets a selected surface and left/right indicator.
+- Alert item gets badge plus label, not color alone.
+- Collapsed state keeps tooltips or accessible labels.
+- Mobile becomes bottom tabs, drawer, or compact top filter row.
+
+### LogConsole
+
+Use for developer consoles, observability, audit trails, and background jobs.
+
+Rules:
+- Mono only inside log rows and timestamps.
+- Streaming state should append rows without shifting the header.
+- Paused state freezes scroll and shows resume action.
+- Error rows use danger token plus readable copy.
+- Copy action provides success feedback.
+
+```css
+.du-log {
+  overflow: hidden;
+  background: #0a0c12;
+  border: 1px solid var(--du-line);
+  border-radius: var(--du-radius-panel);
+}
+.du-log__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--du-surface-2);
+  border-bottom: 1px solid var(--du-line);
+}
+.du-log__body {
+  max-height: 360px;
+  overflow: auto;
+  padding: 12px 14px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #d7dce8;
+}
+.du-log__row[data-kind="error"] { color: var(--du-danger); }
+.du-log__row[data-kind="success"] { color: var(--du-success); }
+```
+
+### AgentThread
+
+Use for AI chat, review queues, voice transcripts, and assistive workflows.
+
+Rules:
+- User and assistant messages differ by surface and alignment, not novelty bubbles everywhere.
+- Pending messages include progress language and cancel option.
+- Failed generation includes retry and report actions.
+- Regenerated content should indicate version or timestamp.
+- Mobile keeps input sticky only if it does not cover the latest message.
+
+## App Shell Patterns
+
+### Command Center
+
+Use for monitoring, operations, analytics, and admin tools.
+
+- Left sidebar: spaces, systems, filters, or projects.
+- Topbar: search/command, date range, user actions.
+- Main grid: primary chart/table plus secondary insight panels.
+- Right rail: alerts, notes, details, or activity.
+- Bottom band: sync status, environment, version, or bulk actions.
+
+### AI Workspace
+
+Use for copilots, writing tools, agent products, voice tools, and review assistants.
+
+- Center: thread, canvas, transcript, or selected artifact.
+- Input: command bar or composer with mode controls.
+- Side panels: context, sources, history, settings.
+- Status: model, latency, confidence, file/data state.
+- Empty state: example prompts tied to actual product tasks.
+
+### Developer Console
+
+Use for docs, CLI tools, runtimes, infrastructure, and deployments.
+
+- Command or install snippet near top.
+- Code/log card with copy states.
+- Benchmark or metric proof.
+- Integration table or environment selector.
+- Clear error states with recovery commands.
+
+### Premium Product Dark
+
+Use for polished marketing pages with real product surfaces.
+
+- Hero object is a screenshot, device, canvas, or rendered product.
+- Headline stays readable; ambient light sits behind object.
+- CTA and secondary action are high contrast.
+- Proof sections use app modules, not generic feature cards.
+
+## Motion System
+
+## Complete Page Protocols
+
+```tsx
+// AI Workspace
+<main data-skill="dark-ui" data-archetype="ai-workspace">
+  <DarkUINav mode="compact" primaryAction="Run task" />
+  <DarkCommandInputContract state="selected" />
+  <AgentThreadContract messages={conversationWithSources} />
+  <StackedInsightPanelContract title="Context" meta="12 files indexed" />
+  <StatusSidebarContract items={["Ready", "Queued", "Blocked"]} />
+</main>
+
+// Ops Command
+<main data-skill="dark-ui" data-archetype="ops-command">
+  <MetricGlassCardContract title="Incidents" meta="2 open" state="warning" />
+  <LogConsoleContract stream={deployEvents} />
+  <DeployTimelineContract state="loading" />
+  <DarkUIStatusPill role="danger">Escalated</DarkUIStatusPill>
+</main>
+```
+```tsx
+// AI Workspace
+<main data-skill="dark-ui" data-archetype="ai-workspace">
+  <DarkUINav mode="compact" primaryAction="Run task" />
+  <DarkCommandInputContract state="selected" />
+  <AgentThreadContract messages={conversationWithSources} />
+  <StackedInsightPanelContract title="Context" meta="12 files indexed" />
+  <StatusSidebarContract items={["Ready", "Queued", "Blocked"]} />
+</main>
+
+// Ops Command
+<main data-skill="dark-ui" data-archetype="ops-command">
+  <MetricGlassCardContract title="Incidents" meta="2 open" state="warning" />
+  <LogConsoleContract stream={deployEvents} />
+  <DeployTimelineContract state="loading" />
+  <DarkUIStatusPill role="danger">Escalated</DarkUIStatusPill>
+</main>
+```
+Dark UI motion should feel smooth and expensive:
+
+- Panel entrance: opacity + 12-24px translate, once per section.
+- Active nav: indicator slides between items, not full component resize.
+- Chart growth: bars scale from origin, values appear after motion.
+- Loading: skeleton and progress, not flashy shimmer across the whole page.
+- Background drift: optional, very slow, low contrast, never behind dense text.
+- Command completion: brief state change, icon swap, or progress line.
+
+```css
+@keyframes du-panel-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes du-bar-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.du-reveal { animation: du-panel-in 520ms cubic-bezier(.16,1,.3,1) both; }
+.du-bar { transform-origin: left center; animation: du-bar-grow 900ms cubic-bezier(.16,1,.3,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .du-reveal, .du-bar { animation: none !important; transform: none !important; }
+}
+```
+
+Reduced motion:
+- Keep selected states, focus rings, and loading labels visible.
+- Replace animated chart growth with final values.
+- Disable background drift and looping shimmer.
+- Preserve UI state through text, icons, borders, and surface tone.
+
 
 ## Absolute Bans
 
-- Do not use muddy gray-on-black for important text.
-- Do not make panels indistinguishable from the background.
-- Do not use gradients to hide weak hierarchy.
-
-## Reference Database
-
-The detailed Refero-derived analysis lives outside this main skill file to keep runtime context lean:
-
-- Full consolidated database: [references/refero-style-database.md](references/refero-style-database.md)
-- Raw source notes: [references/sources/](references/sources/)
-
-Primary sources used:
-
-- beehiiv — Style Reference: 
-- Fey — Style Reference: 
-- Bun — Style Reference: 
-- Circle — Style Reference: 
-- Superwhisper — Style Reference: 
-
-## Source Direction Matrix
-
-Use this matrix to choose a source direction quickly, then load the full reference only if the task needs deeper specificity.
-
-| Source | What To Extract | Use It For |
-| --- | --- | --- |
-| beehiiv — Style Reference | Visual system reference | layout rhythm, component behavior, palette discipline |
-| Fey — Style Reference | Visual system reference | layout rhythm, component behavior, palette discipline |
-| Bun — Style Reference | Visual system reference | layout rhythm, component behavior, palette discipline |
-| Circle — Style Reference | Visual system reference | layout rhythm, component behavior, palette discipline |
-| Superwhisper — Style Reference | Visual system reference | layout rhythm, component behavior, palette discipline |
-
-## Design Engine
-
-### Direction Selection
-
-When using this skill, choose one clear direction before designing. Do not average all references into a bland middle. The direction should be described in one sentence using this shape:
-
-`This interface is a Dark UI system for [audience] that feels focused, immersive, premium, technical, calm, deep and uses [layout move], [type move], [color move], and [component move] to make [primary action] obvious.`
-
-If you cannot fill that sentence, stop and inspect the reference database before producing UI.
-
-### Required Design Plan
-
-Before code, include a compact design plan with:
-
-1. Product type and audience.
-2. Chosen Dark UI sub-direction.
-3. First viewport composition.
-4. Typography strategy.
-5. Color and accent policy.
-6. Component geometry rule.
-7. Motion rule.
-8. Anti-slop risks specific to this style.
-
-The plan should be short but decisive. It should prevent generic defaults before they appear.
-
-### Visual System Contract
-
-The final design must define these contracts:
-
-- **Surface contract:** what backgrounds, panels, cards, overlays, and modals look like.
-- **Type contract:** how hero, section, body, label, metadata, and CTA typography differ.
-- **Color contract:** what each accent means and where it is forbidden.
-- **Geometry contract:** radius, border, shadow, spacing, and alignment rules.
-- **Evidence contract:** what proves the product, brand, object, or workflow is real.
-- **Interaction contract:** hover, focus, active, loading, empty, error, and success behavior.
-
-### Quality Bar
-
-The output should feel intentionally art-directed but production-aware. It must not be a moodboard, a generic landing page, or a style pasted on top of default components.
-
-## Pattern Arsenal
-
-Use these patterns as starting points. Pick only the ones that match the user request.
-
-### Pattern A: Signature Hero
-
-Purpose: make the style visible immediately.
-
-Rules:
-
-- The H1 must carry a clear product or brand promise.
-- The hero visual must show a real object, interface, workflow, scene, or material cue.
-- The primary CTA must be readable and visually dominant.
-- Avoid small decorative badges unless they support trust, status, or category.
-- On mobile, preserve the style but reduce typographic risk.
-
-### Pattern B: Evidence Section
-
-Purpose: prevent the design from becoming pure mood.
-
-Use one of:
-
-- product screenshot
-- workflow sequence
-- feature grid with concrete examples
-- material/product gallery
-- customer proof
-- data readout
-- case-study index
-
-Rules:
-
-- Evidence should be inspectable.
-- Do not blur, darken, crop, or decorate evidence until it stops being useful.
-- Pair evidence with concise explanatory copy.
-
-### Pattern C: System Section
-
-Purpose: show that the visual identity can repeat.
-
-Include:
-
-- 3 to 5 reusable modules
-- consistent spacing
-- consistent component geometry
-- real headings and body text
-- visible interaction affordances
-
-Rules:
-
-- Do not use cards if rows, bands, or split sections are more appropriate.
-- Do not vary every card color or radius.
-- Let the style repeat through rules, not randomness.
-
-### Pattern D: Conversion Or Action Section
-
-Purpose: make the page usable.
-
-Rules:
-
-- Repeat the primary action language.
-- Keep forms, pricing, checkout, booking, or signup calmer than decorative sections.
-- Maintain strong contrast and clear focus states.
-- Do not hide commitment details in tiny text.
-
-### Pattern E: Final Closure
-
-Purpose: end the page with brand confidence.
-
-Use:
-
-- strong footer typography
-- compact navigation
-- repeated visual motif
-- final CTA
-- source-aware color or material cue
-
-Avoid a generic footer dump. The ending should feel designed.
-
-## Implementation Guardrails
-
-### Layout Guardrails
-
-- Use stable responsive constraints: max-widths, aspect ratios, grid tracks, and spacing tokens.
-- Do not let hover states resize cards or shift adjacent content.
-- Avoid nested card-in-card layouts unless the inner card is a true control or modal.
-- Prefer full-width sections or unframed layouts for major page bands.
-- Keep text within containers on mobile; reduce scale before allowing awkward wrapping.
-
-### Typography Guardrails
-
-- Do not default to Inter unless the existing project already uses it and the style still needs it.
-- Use display type for identity, not for long reading.
-- Keep body copy readable on the actual background.
-- Avoid all-caps paragraphs.
-- Do not use tiny text to imitate sophistication.
-
-### Color Guardrails
-
-- Assign every color a role before using it.
-- Do not use accent color for body text.
-- Keep disabled, placeholder, and metadata text accessible.
-- Ensure semantic colors are not confused with brand decoration.
-- Test light, dark, image, and gradient surfaces separately.
-
-### Motion Guardrails
-
-- Use transform and opacity for motion.
-- Respect reduced motion.
-- Avoid constant decorative loops.
-- Keep hover feedback fast and clear.
-- Use scroll motion only when it explains sequence or creates real narrative.
-
-### Asset Guardrails
-
-- Use real or generated visual assets that reveal the product, place, object, state, or gameplay.
-- Avoid purely atmospheric stock imagery when users need to inspect the subject.
-- Do not use SVG hero illustrations when a real/generated bitmap image would better carry the category.
-- Keep image crops intentional across desktop and mobile.
-
-## Execution Protocol
-
-### 1. Select A Direction
-
-Pick one dominant direction. Do not blend every source at once. The chosen direction should answer:
-
-- What should the first viewport feel like?
-- What should the user understand first?
-- What should be visually repeated across the page or app?
-- What should be deliberately avoided?
-
-### 2. Build The System
-
-Define:
-
-- color tokens and semantic roles
-- typography scale and pairings
-- section rhythm and page density
-- component radius, border, shadow, and surface rules
-- imagery style and crop logic
-- hover, focus, loading, empty, error, and success states
-
-### 3. Create Real Screens
-
-Do not stop at moodboards or generic sections. Create complete screens with:
-
-- navigation
-- hero or primary task area
-- proof or product evidence
-- reusable feature/workflow modules
-- conversion/action area
-- footer or closure
-- responsive behavior
-
-### 4. Apply Motion Carefully
-
-Use motion only for:
-
-- reveal
-- transition
-- feedback
-- continuity
-- attention routing
-
-Avoid motion that delays comprehension, hides controls, harms accessibility, or exists only as decoration.
+- No muddy gray-on-black for important text.
+- No indistinguishable panel stack.
+- No gradient fog to cover weak hierarchy.
+- No raw Tailwind typography, spacing, radius, color, or shadow defaults when a style token exists.
+- No generic centered hero without the style's required proof/media/type object.
+- No status colors without semantic role mapping and visible text.
+- No component states left implicit: include hover, focus-visible, selected, loading, empty, error, success where relevant.
+
+## Reference Use
+
+For deeper source extraction, load `references/refero-style-database.md`. For source-specific inspiration, load only the selected file under `references/sources/`.
+## State Pattern
+
+```tsx
+const darkUiState = {
+  idle: "bg-[color:var(--du-surface-2)] border-[color:var(--du-line)]",
+  hover: "hover:bg-[color:var(--du-surface-3)] hover:border-[color:var(--du-line-strong)]",
+  focus: "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--du-focus)]",
+  selected: "data-[selected=true]:bg-[color:var(--du-surface-selected)] data-[selected=true]:border-[color:var(--du-accent)]",
+  loading: "aria-busy:pointer-events-none aria-busy:cursor-wait",
+  disabled: "disabled:pointer-events-none disabled:text-[color:var(--du-subtle)] disabled:bg-[color:var(--du-surface-1)]",
+  error: "data-[state=error]:border-[color:var(--du-danger)] data-[state=error]:text-[color:var(--du-danger)]",
+  success: "data-[state=success]:border-[color:var(--du-success)] data-[state=success]:text-[color:var(--du-success)]"
+};
+```
+
+## Typography Rules
+
+- Use one modern sans family for most UI.
+- Use mono for code, logs, command shortcuts, technical IDs, and metric labels only.
+- Keep body copy between 14px and 18px with comfortable line-height.
+- For dashboard numbers, use tabular figures if available.
+- Avoid negative letter spacing. Use 0 letter spacing unless the existing system requires otherwise.
+- Do not make muted text smaller and lower contrast at the same time in critical rows.
+
+## Content Evidence Rules
+
+Dark UI becomes convincing when the screen contains operational evidence. Replace vague cards with concrete product matter:
+
+- For AI products, show source chips, confidence, model state, pending work, and editable output.
+- For finance, show value, delta, timeframe, risk label, and data freshness on the same surface.
+- For developer tools, show command, result, runtime, environment, and recovery path.
+- For command centers, show severity, owner, timestamp, status, and next action.
+- For premium product pages, use real screenshot crops, feature states, integration names, and plan limits.
+
+Do not fill dark panels with empty marketing adjectives. A calm dark interface needs specifics because the palette is quiet; content carries much of the perceived quality.
+
+## Accessibility And Contrast
+
+- Body text and core labels must pass contrast on their exact surface.
+- Focus states must be visible on every surface level.
+- Selection cannot be color-only: use indicator, icon, check, label, or surface change.
+- Error states need recovery copy and action.
+- Disabled states must remain legible enough to explain why unavailable.
+- Avoid large blur behind dense text.
+- Keep tables scannable with row hover, column alignment, and sticky context where useful.
+
+## Mobile Rules
+
+- Collapse sidebars into drawers, bottom tabs, or top segmented controls.
+- Stack dashboards by priority: action/status first, primary data second, secondary panels after.
+- Keep command input accessible but avoid covering content with a sticky composer.
+- Reduce panel padding only after reducing columns.
+- Ensure long workspace names, metric labels, and CTAs wrap intentionally.
+- Preserve dark surface steps; do not flatten everything into one mobile card stack.
+
+## Anti-Patterns
+
+- Pure black everywhere with no surface ladder.
+- Cyber Neon scanlines, holograms, and glow spam in a calm product UI.
+- Low-contrast gray copy used for important values.
+- Cards inside cards with no hierarchy.
+- Huge decorative gradients behind dashboards.
+- Accent color used as paragraph emphasis.
+- Mono font applied to the whole interface.
+- Tables without hover/focus/empty/error states.
+- Loading states that collapse layout.
+- Disabled buttons that disappear.
 
 ## Pre-Output Checklist
 
-Before delivering, verify:
-
-- The first viewport clearly expresses Dark UI.
-- The primary action is obvious.
-- Typography is readable and intentionally scaled.
-- Color roles are semantic and consistent.
-- Components share a coherent geometry.
-- The design avoids every ban listed above.
-- Mobile layout preserves the style without overflow or cramped text.
-- Focus, hover, active, disabled, loading, empty, error, and success states are accounted for.
-- Any referenced imagery is concrete and useful.
-- The final result would not be mistaken for a generic template.
-
-## Last-Mile Correction Rules
-
-If the result feels generic, strengthen typography, section rhythm, and source-specific visual decisions. If it feels noisy, remove colors, effects, and components until the primary hierarchy becomes obvious. If it feels pretty but unusable, make controls, states, and content structure more conventional while preserving the style's identity.
-
-## Prompt Pack
-
-### General Prompt
-
-Design a Dark UI interface that feels focused, immersive, premium, technical, calm, deep. Build a coherent system, not a skin: define layout, type, color, component geometry, imagery, motion, states, and responsive behavior. Use the reference database only to extract transferable rules, not to clone a source.
-
-### Website Prompt
-
-Create a complete Dark UI website with navigation, a first viewport that states the product clearly, product or brand evidence, reusable sections, a clear conversion path, and a designed footer. The style must be visible in the first viewport and must remain usable on mobile.
-
-### App Prompt
-
-Create a Dark UI app interface for repeated use. Prioritize the main workflow, control placement, information density, readable state design, and keyboard-accessible interactions. Preserve the style through surfaces, typography, spacing, and component behavior rather than decorative effects.
-
-### Redesign Prompt
-
-Redesign the existing interface in a Dark UI direction. Preserve functionality and information architecture unless the user asks otherwise. Remove generic AI design patterns, assign tokens, improve hierarchy, define states, and make the first screen feel specific.
-
-### Critique Prompt
-
-Audit this design against Dark UI. Identify generic defaults, weak hierarchy, misuse of color, bad typography, missing states, poor mobile behavior, and places where the style is decorative instead of structural.
+- First viewport contains a real dark product surface.
+- One Dark UI archetype is clearly dominant.
+- Execution tokens are declared and component CSS uses them.
+- Typography uses named pairings, not raw Tailwind defaults.
+- Spacing uses `--s-*` or style tokens, not mixed arbitrary padding.
+- Radius, depth, and state colors use the token contract.
+- Status labels use role mapping plus `--status-{role}-bg/fg`.
+- Components include hover, focus-visible, selected, loading, empty, error, and success where relevant.
+- Motion maps to panel depth transition and has a reduced-motion fallback.
+- Mobile layout preserves the style without overflow, unreadable text, or hidden controls.

@@ -408,7 +408,7 @@ Core tokens:
   --play-saas-black: #000000;
   --play-saas-white: #ffffff;
   --play-saas-cloud: #f9f8f6;
-  --play-saas-inkwell: #55534;
+  --play-saas-inkwell: #55534a;
   --play-saas-border: #e6e8ec;
   --play-saas-oatmeal: #dad4c8;
   --play-saas-violet: #3859f9;
@@ -1540,7 +1540,7 @@ Best for playful SaaS.
   --canvas: #ffffff;
   --soft: #f9f8f6;
   --text: #000000;
-  --muted: #55534;
+  --muted: #55534a;
   --primary: #000000;
   --link: #3859f9;
   --card-orange: #ff7614;

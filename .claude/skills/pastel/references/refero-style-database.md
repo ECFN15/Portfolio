@@ -1,7 +1,7 @@
----
+﻿---
 name: pastel
 description: |
-  Pastel aesthetic for the web — soft creamy off-white backgrounds, restrained-but-warm
+  Pastel aesthetic for the web â€” soft creamy off-white backgrounds, restrained-but-warm
   palettes, single-typeface or curated-pairing typography, organic shapes balanced with
   intentional restraint. Use when user requests "soft", "warm", "calm", "approachable",
   "creator-friendly", "wellness", "DTC food/beverage", or "playful pastel SaaS" sites.
@@ -19,9 +19,9 @@ sources:
   - podia.com
 ---
 
-# Pastel — Design Skill
+# Pastel â€” Design Skill
 
-> **A skill for building soft, warm, light-canvas websites that feel curated and human. Distilled from 6 award-winning Pastel-tagged sites curated by Refero. Pastel here is NOT pastel rainbows — it's a discipline of warm off-whites + ONE saturated accent + curated typography.**
+> **A skill for building soft, warm, light-canvas websites that feel curated and human. Distilled from 6 award-winning Pastel-tagged sites curated by Refero. Pastel here is NOT pastel rainbows â€” it's a discipline of warm off-whites + ONE saturated accent + curated typography.**
 
 ---
 
@@ -76,16 +76,16 @@ Despite being called "pastel", every site uses **one fully saturated color** as 
 The pastel-ness comes from the canvas. The accent is **intentionally bold** to provide contrast.
 
 ### 1.3 Decorative Multi-Pastel (Optional)
-Some Pastel sites layer additional muted decorative colors (Palette Supply's earth tones, Recess's lavender/coral gradients, Podia's feature card colors). These are **decorative bg only** — never CTAs, never body text.
+Some Pastel sites layer additional muted decorative colors (Palette Supply's earth tones, Recess's lavender/coral gradients, Podia's feature card colors). These are **decorative bg only** â€” never CTAs, never body text.
 
 ### 1.4 Generous Spacing as the "Soft" Signal
 Every Pastel site is "spacious" or has 40-100px section gaps. Pastel feels soft because there's so much breathing room.
 
 ### 1.5 Bipolar Radius Choices (More Than Motion)
 Pastel sites take stronger radius positions than Motion sites:
-- Pastel pill (8.8px / 10px / 11px) — Pastel, GRAZA, Heavyweight-style
-- Extreme pill (100px / 56px / 90px) — Palette Supply, Podia, Moving Parts
-- Sharp 0px (intentional contrast) — Recess, Podcorn
+- Pastel pill (8.8px / 10px / 11px) â€” Pastel, GRAZA, Heavyweight-style
+- Extreme pill (100px / 56px / 90px) â€” Palette Supply, Podia, Moving Parts
+- Sharp 0px (intentional contrast) â€” Recess, Podcorn
 
 ### 1.6 Imagery is Lifestyle or Illustration
 - Lifestyle photography (light, warm, curated): GRAZA, Recess, Podia
@@ -99,7 +99,7 @@ Never the cold "stock SaaS hero" of generic templates.
 - Single typeface, multiple weights: Pastel (Figtree), Recess (Sharp Grotesk), Podia (StabilGrotesk)
 - Curated pairing of contrasts: GRAZA (Garamond + Typewriter), Podcorn (Gilroy + Georgia), Palette Supply (PPSupply + esbuild)
 
-The pastel feel comes from **typographic warmth** — humanist sans-serifs, light weights (100, 300), or classic serifs.
+The pastel feel comes from **typographic warmth** â€” humanist sans-serifs, light weights (100, 300), or classic serifs.
 
 ---
 
@@ -127,7 +127,7 @@ The pastel feel comes from **typographic warmth** — humanist sans-serifs, ligh
 ### 2.3 PASTEL CLOUD DREAMSCAPE (Recess)
 **Vibe:** Sky-glow gradients, sharp corners, violet+lavender palette
 **Theme:** light
-**Palette:** 3 sky gradients (cyan→violet→rose) + violets + 1 candy-red alert
+**Palette:** 3 sky gradients (cyanâ†’violetâ†’rose) + violets + 1 candy-red alert
 **Typography:** Sharp Grotesk Web (single font, 400/500/700)
 **Radius:** **0px** (sharp contrast to organic forms!), 50% icon circles
 **Section gap:** 48-80px
@@ -181,14 +181,14 @@ The pastel feel comes from **typographic warmth** — humanist sans-serifs, ligh
 
 ### 3.2 The Single-CTA-Color Rule (Pastel-Specific)
 
-Pastel sites are **stricter** about single-accent than Motion sites — the soft canvas demands the CTA stand out:
+Pastel sites are **stricter** about single-accent than Motion sites â€” the soft canvas demands the CTA stand out:
 
 | Site | CTA | When |
 |------|-----|------|
 | Pastel | `#165dfb` Deep Sea Blue | Filled button bg |
 | Palette Supply | `#3051a8` Indigo Punch | Filled pill button bg |
 | Recess | `#a2b0ff` Lavender Mist (with `#25385b` text) | Filled button bg |
-| GRAZA | `#d1e030` Zest Yellow (with `#3c422` text) | Filled button bg |
+| GRAZA | `#d1e030` Zest Yellow (with `#3c4422` text) | Filled button bg |
 | Podcorn | `#090335` Inkwell Indigo (with `#e1edf2` text) | Filled button bg |
 | Podia | `#06040e` Ink Black (with `#e1edf2` text) | Filled button bg |
 
@@ -216,7 +216,7 @@ When sites use multiple pastel colors, they're for **decorative card backgrounds
 --gradient-sky-glow-a: linear-gradient(rgb(236,245,246), rgb(235,235,253), rgb(251,206,205));
 ```
 
-These are **decorative bg layers** — they do not appear as button colors, body text, or borders.
+These are **decorative bg layers** â€” they do not appear as button colors, body text, or borders.
 
 ### 3.4 Text Color: NEVER Pure Black
 
@@ -227,15 +227,15 @@ Every Pastel site avoids `#000000` for primary text. They use **near-blacks with
 | Pastel | Midnight Ink | `#111111` |
 | Palette Supply | Graphite | `#141212` |
 | Recess | Sky Violet | `#25385b` (violet!) |
-| GRAZA | Grove Green | `#3c422` (green!) |
+| GRAZA | Grove Green | `#3c4422` (green!) |
 | Podcorn | Inkwell Indigo | `#090335` (indigo!) |
 | Podia | Ink Black | `#06040e` (near-black with violet) |
 
-**Rule:** Primary text uses a tinted near-black (slight violet/green/blue/indigo undertone). This is a critical Pastel signal — pure `#000` reads as too cold.
+**Rule:** Primary text uses a tinted near-black (slight violet/green/blue/indigo undertone). This is a critical Pastel signal â€” pure `#000` reads as too cold.
 
 ### 3.5 Color Anti-Slop
 
-❌ **REJECT** for Pastel:
+âŒ **REJECT** for Pastel:
 ```css
 /* The "default Tailwind" pastel that's not actually warm */
 background: #f9fafb;
@@ -245,7 +245,7 @@ color: #111827;
 
 These are *cool* gray-tinted. Pastel needs warm or distinct hue tint.
 
-✅ **USE** documented Pastel canvases:
+âœ… **USE** documented Pastel canvases:
 ```css
 background: #fff4ec;  /* GRAZA buttermilk warm */
 background: #fff4f2;  /* Podcorn coral pink */
@@ -352,7 +352,7 @@ Every Pastel site marks density as "spacious" or "comfortable" with generous gap
 | Podcorn | comfortable | 75px |
 | Podia | comfortable | 40px |
 
-**Rule:** Section gap ≥ 40px minimum. 60-80px is the sweet spot.
+**Rule:** Section gap â‰¥ 40px minimum. 60-80px is the sweet spot.
 
 ### 5.2 Card Padding Variance
 
@@ -397,20 +397,20 @@ Unlike Motion sites (which are full-bleed), some Pastel sites **use max-width**:
 
 ### 6.1 Three Radius Stances in Pastel
 
-#### Stance 1 — Soft Uniform (Pastel-style)
+#### Stance 1 â€” Soft Uniform (Pastel-style)
 - Pastel: 8.8px default, 10px buttons
 - Heavyweight (motion): 11px everywhere
 - Friendly soft uniform value
 
-#### Stance 2 — Extreme Pill (Palette Supply, Podia)
+#### Stance 2 â€” Extreme Pill (Palette Supply, Podia)
 - Palette Supply: 100px buttons/inputs, 12px cards, 1000px tags
 - Podia: **56px cards**, 16px buttons
 - The "candy" pill effect
 
-#### Stance 3 — Sharp Contrast (Recess, Podcorn)
+#### Stance 3 â€” Sharp Contrast (Recess, Podcorn)
 - Recess: 0px everywhere except 50% icon circles
 - Podcorn: 0px everywhere except 8px modals
-- "Sharp pastel" — intentional contrast to soft canvas
+- "Sharp pastel" â€” intentional contrast to soft canvas
 
 ### 6.2 The Decimal-Radius Pattern
 
@@ -492,7 +492,7 @@ Pastel sites avoid drop shadows almost entirely:
 Recess uses gradient bg for hero impact:
 ```css
 background: linear-gradient(rgb(236, 245, 246), rgb(235, 235, 253), rgb(251, 206, 205));
-/* cyan → soft violet → warm rose */
+/* cyan â†’ soft violet â†’ warm rose */
 ```
 
 Subtle, ambient, never loud.
@@ -505,7 +505,7 @@ Subtle, ambient, never loud.
 ### 8.1 The Pastel Filled Button
 
 ```css
-/* Pattern A — Vivid CTA on tinted canvas (Pastel, GRAZA) */
+/* Pattern A â€” Vivid CTA on tinted canvas (Pastel, GRAZA) */
 .btn-cta {
   background: var(--color-cta);          /* the ONE saturated color */
   color: var(--color-cta-text);          /* often dark, not white */
@@ -524,7 +524,7 @@ Subtle, ambient, never loud.
 }
 /* GRAZA */
 .cta-graza {
-  background: #d1e030; color: #3c422;
+  background: #d1e030; color: #3c4422;
   border-radius: 10px; padding: 24px 35px;
 }
 /* Recess */
@@ -565,7 +565,7 @@ Subtle, ambient, never loud.
 ### 8.3 The Pastel Card
 
 ```css
-/* Pattern A — Transparent card (Pastel, Podcorn) */
+/* Pattern A â€” Transparent card (Pastel, Podcorn) */
 .card-transparent {
   background: rgba(0, 0, 0, 0);
   border: none;
@@ -574,14 +574,14 @@ Subtle, ambient, never loud.
   border-radius: 0;
 }
 
-/* Pattern B — Soft warm card (GRAZA, Pastel) */
+/* Pattern B â€” Soft warm card (GRAZA, Pastel) */
 .card-soft {
   background: var(--surface-1);          /* white */
   border-radius: 8.8px;                   /* or 10/12px */
   padding: 30-55px;                       /* generous */
 }
 
-/* Pattern C — Multi-color feature card (Podia, Palette Supply) */
+/* Pattern C â€” Multi-color feature card (Podia, Palette Supply) */
 .feature-card-sky {
   background: #a5c8d8;                    /* one of the pastel decorative */
   color: #06040e;
@@ -594,7 +594,7 @@ Subtle, ambient, never loud.
   padding: 64px;                          /* huge padding */
 }
 
-/* Pattern D — Soft photo card (GRAZA) */
+/* Pattern D â€” Soft photo card (GRAZA) */
 .photo-card {
   border-radius: 20px;                    /* 20px is signature */
   overflow: hidden;
@@ -604,7 +604,7 @@ Subtle, ambient, never loud.
 ### 8.4 The Input Field
 
 ```css
-/* Pattern A — Underline input (Recess) */
+/* Pattern A â€” Underline input (Recess) */
 .input-underline {
   background: transparent;
   color: var(--color-text);
@@ -614,7 +614,7 @@ Subtle, ambient, never loud.
   padding: 12px 0;
 }
 
-/* Pattern B — Pill input (Palette Supply) */
+/* Pattern B â€” Pill input (Palette Supply) */
 .input-pill {
   background: var(--surface-1);
   color: var(--color-text);
@@ -623,7 +623,7 @@ Subtle, ambient, never loud.
   padding: 16px 20px;
 }
 
-/* Pattern C — Standard rounded (Pastel, GRAZA, Podia) */
+/* Pattern C â€” Standard rounded (Pastel, GRAZA, Podia) */
 .input-soft {
   background: var(--surface-1);
   border: 1px solid var(--color-outline);
@@ -635,7 +635,7 @@ Subtle, ambient, never loud.
 ### 8.5 The Tag/Badge
 
 ```css
-/* Pattern A — Pill badge (GRAZA, Palette Supply) */
+/* Pattern A â€” Pill badge (GRAZA, Palette Supply) */
 .badge-pill {
   background: transparent;
   color: var(--color-text);
@@ -647,7 +647,7 @@ Subtle, ambient, never loud.
   text-transform: uppercase;
 }
 
-/* Pattern B — Solid soft badge (Pastel) */
+/* Pattern B â€” Solid soft badge (Pastel) */
 .badge-soft {
   background: var(--color-cta);
   color: var(--color-text-on-cta);
@@ -910,7 +910,7 @@ Pastel sites are **anti-motion** compared to Motion archetypes. Their motion is:
 
 ### 11.4 Background Color Section Transitions
 
-The motion comes from **scrolling through alternating warm bgs** — the rhythm itself is calming.
+The motion comes from **scrolling through alternating warm bgs** â€” the rhythm itself is calming.
 
 ### 11.5 Things to AVOID
 
@@ -930,7 +930,7 @@ Pastel = restraint. Motion = expression. Pick one.
 
 ### 12.1 Color Anti-Slop
 
-❌ **REJECT** — these scream "default Tailwind SaaS template":
+âŒ **REJECT** â€” these scream "default Tailwind SaaS template":
 ```css
 background: #f9fafb;        /* gray-50, too cool */
 background: #ffffff;        /* pure white, too cold */
@@ -941,14 +941,14 @@ color: #000000;             /* pure black, harsh */
 border: #e5e7eb;            /* gray-200, generic */
 ```
 
-✅ **USE** — documented Pastel canvases:
+âœ… **USE** â€” documented Pastel canvases:
 ```css
 background: #fff4ec;        /* GRAZA buttermilk */
 background: #fff4f2;        /* Podcorn coral pink */
 background: #f2f0e9;        /* Palette Supply cream */
 background: #f5f5f4;        /* Pastel ghost (slightly warm) */
 color: #25385b;             /* Recess violet text */
-color: #3c422;              /* GRAZA grove green text */
+color: #3c4422;              /* GRAZA grove green text */
 color: #090335;             /* Podcorn inkwell indigo */
 --accent: #d1e030;          /* GRAZA zest yellow */
 --accent: #a2b0ff;          /* Recess lavender mist */
@@ -957,13 +957,13 @@ color: #090335;             /* Podcorn inkwell indigo */
 
 ### 12.2 Typography Anti-Slop
 
-❌ **REJECT**:
+âŒ **REJECT**:
 - Inter as everything (overused everywhere)
 - 4+ unrelated fonts
 - Default tracking on all sizes
 - Headings smaller than 40px
 
-✅ **USE**:
+âœ… **USE**:
 - Single typeface with multiple weights, OR curated pair
 - Custom fonts loaded via @font-face
 - Tracking adjusted per size (-0.02 to -0.03em on display, -0.01 to -0.02em on body)
@@ -972,14 +972,14 @@ color: #090335;             /* Podcorn inkwell indigo */
 
 ### 12.3 Radius Anti-Slop
 
-❌ **REJECT**:
+âŒ **REJECT**:
 ```css
 --radius-md: 6px;
 --radius-lg: 8px;
 /* The bland Material cascade */
 ```
 
-✅ **USE** — pick a Pastel stance:
+âœ… **USE** â€” pick a Pastel stance:
 - Decimal precision (8.8px Pastel)
 - Extreme pill (100px Palette Supply, 56px Podia)
 - Sharp 0px contrast (Recess, Podcorn)
@@ -987,13 +987,13 @@ color: #090335;             /* Podcorn inkwell indigo */
 
 ### 12.4 Layout Anti-Slop
 
-❌ **REJECT**:
+âŒ **REJECT**:
 - Hero with stock photo + overlay text + 2 buttons
 - "Trusted by Microsoft Apple Google" logo bar
 - 3-column "Features" with icon-circle + title + 2 lines
 - Glass morphism with `backdrop-filter: blur()`
 
-✅ **USE**:
+âœ… **USE**:
 - Centered headline with single CTA
 - Alternating warm-bg sections with content blocks
 - 3-4 column feature grids with text-rich cards
@@ -1001,25 +1001,25 @@ color: #090335;             /* Podcorn inkwell indigo */
 
 ### 12.5 Component Anti-Slop
 
-❌ **REJECT**:
+âŒ **REJECT**:
 - "shadcn-style" cards with `border + shadow + 12px radius`
 - Generic Material outlined buttons with focus ring
 - Generic Bootstrap-style alerts in red/yellow/green
 
-✅ **USE**:
+âœ… **USE**:
 - Transparent cards on alternating bg sections
 - Pastel-canvas-aware inputs (underline OR pill OR soft rounded)
 - Custom alert styling using site's accent color
 
 ### 12.6 Decoration Anti-Slop
 
-❌ **REJECT**:
+âŒ **REJECT**:
 - Gradient orbs in viewport corners
 - Glassmorphism panels
 - Generic 3D "Apple-style" shapes
 - Stock photo with overlay
 
-✅ **USE**:
+âœ… **USE**:
 - Whimsical illustrations (Podcorn, Recess clouds)
 - Abstract color blocks (Palette Supply)
 - Lifestyle photography in soft-radius cards
@@ -1033,29 +1033,29 @@ color: #090335;             /* Podcorn inkwell indigo */
 ```
 What is the brand's product?
 
-├─ "Calm SaaS / Productivity / Tools"
-│   → ARCHITECTURAL BLUEPRINT (Pastel)
-│   → Single Figtree, vivid blue CTA, 8.8px radius
-│
-├─ "Creative tools / Design resources / Agency"
-│   → WARM CREATIVE TOOLKIT (Palette Supply)
-│   → Custom fonts (PPSupply), 100px pill buttons, multi-earth-tone decorative
-│
-├─ "DTC Wellness / Beverage / Lifestyle"
-│   → PASTEL CLOUD DREAMSCAPE (Recess)
-│   → Sky gradients, sharp 0px corners, lavender + violet
-│
-├─ "Food / Artisanal / Gourmet DTC"
-│   → ARTISANAL PROVISIONS (GRAZA)
-│   → Garamond + Typewriter, buttermilk bg, zest yellow CTA, 1440px max-width
-│
-├─ "Marketplace / Content platform / SaaS for creators"
-│   → SOFT-EDGED DIGITAL CANVAS (Podcorn)
-│   → Coral pink bg, sharp 0px corners, Georgia serif accent, 1105px max-width
-│
-└─ "Multi-feature SaaS / Course platform / Community tools"
-    → PLAYFUL MARKET STALL (Podia)
-    → StabilGrotesk single font, 56px pill cards, multi-pastel feature cards
+â”œâ”€ "Calm SaaS / Productivity / Tools"
+â”‚   â†’ ARCHITECTURAL BLUEPRINT (Pastel)
+â”‚   â†’ Single Figtree, vivid blue CTA, 8.8px radius
+â”‚
+â”œâ”€ "Creative tools / Design resources / Agency"
+â”‚   â†’ WARM CREATIVE TOOLKIT (Palette Supply)
+â”‚   â†’ Custom fonts (PPSupply), 100px pill buttons, multi-earth-tone decorative
+â”‚
+â”œâ”€ "DTC Wellness / Beverage / Lifestyle"
+â”‚   â†’ PASTEL CLOUD DREAMSCAPE (Recess)
+â”‚   â†’ Sky gradients, sharp 0px corners, lavender + violet
+â”‚
+â”œâ”€ "Food / Artisanal / Gourmet DTC"
+â”‚   â†’ ARTISANAL PROVISIONS (GRAZA)
+â”‚   â†’ Garamond + Typewriter, buttermilk bg, zest yellow CTA, 1440px max-width
+â”‚
+â”œâ”€ "Marketplace / Content platform / SaaS for creators"
+â”‚   â†’ SOFT-EDGED DIGITAL CANVAS (Podcorn)
+â”‚   â†’ Coral pink bg, sharp 0px corners, Georgia serif accent, 1105px max-width
+â”‚
+â””â”€ "Multi-feature SaaS / Course platform / Community tools"
+    â†’ PLAYFUL MARKET STALL (Podia)
+    â†’ StabilGrotesk single font, 56px pill cards, multi-pastel feature cards
 ```
 
 ---
@@ -1301,9 +1301,9 @@ body {
 :root {
   --color-canvas: #fff4ec;               /* buttermilk */
   --color-canvas-2: #f6e6d9;             /* farmhouse gray */
-  --color-text: #3c422;                  /* grove green */
+  --color-text: #3c4422;                  /* grove green */
   --color-cta: #d1e030;                  /* zest yellow */
-  --color-cta-text: #3c422;
+  --color-cta-text: #3c4422;
   --color-accent-1: #9eef80;             /* avocado cream */
   --color-accent-2: #fbd535;             /* sunbeam */
   --color-accent-3: #e8d6c8;             /* harvest ochre */
@@ -1556,7 +1556,7 @@ body {
 @theme {
   --color-buttermilk: #fff4ec;
   --color-farmhouse-gray: #f6e6d9;
-  --color-grove-green: #3c422;
+  --color-grove-green: #3c4422;
   --color-zest-yellow: #d1e030;
   --color-avocado-cream: #9eef80;
   --color-sunbeam-yellow: #fbd535;
@@ -1661,7 +1661,7 @@ body {
   </div>
   <h3 class="graza-title">Drizzle</h3>
   <p class="graza-body">Cold-pressed extra virgin olive oil for finishing dishes.</p>
-  <button class="btn-graza">Add to cart — $15</button>
+  <button class="btn-graza">Add to cart â€” $15</button>
 </article>
 ```
 
@@ -1691,19 +1691,19 @@ body {
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.021em;
-  color: #3c422;
+  color: #3c4422;
   margin: 0;
 }
 .graza-body {
   font-family: 'GT Alpina Typewriter', monospace;
   font-size: 16px;
   line-height: 1.5;
-  color: #3c422;
+  color: #3c4422;
   margin: 0;
 }
 .btn-graza {
   background: #d1e030;
-  color: #3c422;
+  color: #3c4422;
   border: none;
   border-radius: 10px;
   padding: 24px 35px;
@@ -1786,7 +1786,7 @@ body {
 <article class="podia-feature podia-feature--sky">
   <h3>Email marketing built for creators</h3>
   <p>Send beautiful newsletters that actually convert.</p>
-  <a class="podia-feature-link" href="#">Learn more →</a>
+  <a class="podia-feature-link" href="#">Learn more â†’</a>
 </article>
 ```
 
@@ -1933,8 +1933,8 @@ body {
 .seg-control { display: inline-flex; }
 .seg {
   background: transparent;
-  color: #3c422;
-  border: 1px solid #3c422;
+  color: #3c4422;
+  border: 1px solid #3c4422;
   font-family: 'GT Alpina Typewriter', monospace;
   font-size: 16px;
   padding: 12px 20px;
@@ -1961,7 +1961,7 @@ body {
 ### 17.2 Typography Audit
 - [ ] One typeface OR curated pair (display + body)
 - [ ] Custom font specified (not Inter as primary)
-- [ ] Display size ≥ 40px (mobile) / 60-120px (desktop)
+- [ ] Display size â‰¥ 40px (mobile) / 60-120px (desktop)
 - [ ] Negative letter-spacing on display (-0.02 to -0.03em)
 - [ ] OpenType features set if applicable (`"ss02"` etc.)
 - [ ] Light weights (100-300) used if airy feel desired
@@ -1972,7 +1972,7 @@ body {
    - [ ] Extreme pill (56-100px) on cards, OR
    - [ ] Sharp 0px contrast (Recess/Podcorn-style)
 - [ ] No drop shadows (or only one defined globally)
-- [ ] Section gap ≥ 40px (60-80px sweet spot)
+- [ ] Section gap â‰¥ 40px (60-80px sweet spot)
 - [ ] Card padding generous (16-75px range)
 
 ### 17.4 Layout Audit
@@ -2017,12 +2017,12 @@ body {
 
 ```
 PROMPT:                              PICK:
-"calm SaaS / productivity"        →  Pastel (Architectural Blueprint)
-"creative tools / agency"         →  Palette Supply (Warm Toolkit)
-"DTC wellness / beverage"         →  Recess (Cloud Dreamscape)
-"food / artisanal DTC"            →  GRAZA (Artisanal Provisions)
-"marketplace / SaaS"              →  Podcorn (Soft-Edged Canvas)
-"creator / community / courses"   →  Podia (Market Stall)
+"calm SaaS / productivity"        â†’  Pastel (Architectural Blueprint)
+"creative tools / agency"         â†’  Palette Supply (Warm Toolkit)
+"DTC wellness / beverage"         â†’  Recess (Cloud Dreamscape)
+"food / artisanal DTC"            â†’  GRAZA (Artisanal Provisions)
+"marketplace / SaaS"              â†’  Podcorn (Soft-Edged Canvas)
+"creator / community / courses"   â†’  Podia (Market Stall)
 ```
 
 ### 18.2 30-Second Token Set (Universal Pastel)
@@ -2038,7 +2038,7 @@ PROMPT:                              PICK:
 
   /* Tinted text */
   --text: #25385b;         /* violet OR */
-  --text: #3c422;          /* green OR */
+  --text: #3c4422;          /* green OR */
   --text: #090335;         /* indigo OR */
   --text: #111111;         /* near-black */
 
@@ -2063,13 +2063,13 @@ PROMPT:                              PICK:
 
 ```
 TASK:                       RECIPE:
-"Pastel CTA"             →  Filled button in saturated accent + tinted text + 8.8/10/100px radius
-"Pastel hero"            →  Centered display 40-120px + sub + 1 CTA on warm bg
-"Pastel card"            →  Transparent OR soft-pill OR multi-pastel feature
-"Pastel input"           →  Underline OR pill OR soft-rounded
-"Pastel photo"           →  20px radius soft card OR 50% circular crop
-"Pastel section"         →  Alternating warm bg + 60-80px vertical pad
-"Pastel illustration"    →  Outlined line art OR abstract color blocks
+"Pastel CTA"             â†’  Filled button in saturated accent + tinted text + 8.8/10/100px radius
+"Pastel hero"            â†’  Centered display 40-120px + sub + 1 CTA on warm bg
+"Pastel card"            â†’  Transparent OR soft-pill OR multi-pastel feature
+"Pastel input"           â†’  Underline OR pill OR soft-rounded
+"Pastel photo"           â†’  20px radius soft card OR 50% circular crop
+"Pastel section"         â†’  Alternating warm bg + 60-80px vertical pad
+"Pastel illustration"    â†’  Outlined line art OR abstract color blocks
 ```
 
 ---
@@ -2097,7 +2097,7 @@ Each archetype's full DESIGN.md is preserved in `../../raw/pastel/0X-<site>.md`.
 
 **END OF SKILL FILE**
 
-> When using this skill, **commit to a single archetype**. The Pastel category covers a wide range from "calm SaaS" to "artisanal food brand" — mixing them produces incoherent design.
+> When using this skill, **commit to a single archetype**. The Pastel category covers a wide range from "calm SaaS" to "artisanal food brand" â€” mixing them produces incoherent design.
 
 
 ## Supplemental Depth Pass 1: Pastel Production Expansion

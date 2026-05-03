@@ -1,4 +1,4 @@
-# Workable - Clean SaaS Source Notes
+﻿# Workable - Clean SaaS Source Notes
 
 Source: https://styles.refero.design/style/0ab4c544-6147-4998-8365-3a0f6191e54f
 Site: https://www.workable.com
@@ -59,14 +59,14 @@ The page primarily uses a full-bleed structure, with content sections extending 
 
 | Component | Role | Treatment |
 | --- | --- | --- |
-| Primary Ghost Button | Call to action with minimal visual weight | Background transparent, text color #0f161, 0px border-radius, no padding defined. Best for inline actions or secondary CTA when a filled button is elsewhere. |
-| Secondary Ghost Button | Outlined action with rounded corners | Background transparent, text color #0f161, 16px border-radius. Often used for navigation CTAs. |
+| Primary Ghost Button | Call to action with minimal visual weight | Background transparent, text color #0f161e, 0px border-radius, no padding defined. Best for inline actions or secondary CTA when a filled button is elsewhere. |
+| Secondary Ghost Button | Outlined action with rounded corners | Background transparent, text color #0f161e, 16px border-radius. Often used for navigation CTAs. |
 | Default Card | Content container for features or information blocks | Background #ffffff, 16px border-radius, 32px padding on all sides. No shadow. |
 | Highlight Card - Soft Peach | Emphasized content container with a warm background tint | Background #fde8ce, 16px border-radius, 32px padding on all sides. No shadow. |
 | Highlight Card - Fresh Teal | Emphasized content container with a vivid background tint | Background #00f5dc, 16px border-radius, 32px padding on all sides. No shadow. |
 | Highlight Card - Muted Mandarin | Emphasized content container with a warm orange background tint | Background #ffdcbf, 16px border-radius, 32px padding on all sides. No shadow. |
-| Ghost Badge | Informational tag or label | Background transparent, text color #0f161, 0px border-radius, no padding defined. Used for meta-information. |
-| Navigation Link Button | Actionable link within navigation | Text color #0f161, 16px border-radius, 0px padding. Used for 'Log in' and 'Request a demo'. |
+| Ghost Badge | Informational tag or label | Background transparent, text color #0f161e, 0px border-radius, no padding defined. Used for meta-information. |
+| Navigation Link Button | Actionable link within navigation | Text color #0f161e, 16px border-radius, 0px padding. Used for 'Log in' and 'Request a demo'. |
 | Contained Navigation Button | The primary call to action in the navigation bar | Background #004038, text color white, 16px border-radius. This is a filled button, contrasting with the ghost type. |
 
 ## Dos

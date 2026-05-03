@@ -2,7 +2,8 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Home from './pages/Home.jsx'
 import ProjectDetail from './pages/ProjectDetail.jsx'
-import Skills from './pages/Skills.jsx'
+import Skills, { SkillDemoPage } from './pages/Skills.jsx'
+import BTPSaasVitrine from './pages/BTPSaasVitrine.jsx'
 import Navbar from './components/Navbar.jsx'
 import useLenis from './hooks/useLenis.js'
 
@@ -29,6 +30,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/skills" element={<Skills />} />
+        <Route path="/skills/clean-saas/vitrine" element={<BTPSaasVitrine />} />
+        <Route path="/skills/:slug" element={<SkillDemoPage />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
       </Routes>
     </main>
