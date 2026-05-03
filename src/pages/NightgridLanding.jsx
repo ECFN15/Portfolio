@@ -197,6 +197,7 @@ export default function NightgridLanding() {
 
 // ── Nav ───────────────────────────────────────────────────────────────────────
 function NgNav() {
+  const navigate = useNavigate()
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 50,
@@ -255,6 +256,27 @@ function NgNav() {
               cursor: 'pointer', transition: 'transform 180ms ease',
             }}>
               Request Access
+            </button>
+            <button
+              onClick={() => navigate('/skills')}
+              aria-label="Back to skills"
+              className="ng-mono"
+              style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '6px 14px', height: 30, borderRadius: 6, flexShrink: 0,
+                background: 'transparent',
+                border: '1px solid rgba(174,133,255,.28)',
+                color: C.textMuted, fontSize: 10, fontWeight: 600,
+                letterSpacing: '0.14em', textTransform: 'uppercase',
+                cursor: 'pointer', transition: 'all 180ms ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(174,133,255,.65)'; e.currentTarget.style.color = C.text; e.currentTarget.style.background = 'rgba(174,133,255,.08)' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(174,133,255,.28)'; e.currentTarget.style.color = C.textMuted; e.currentTarget.style.background = 'transparent' }}
+            >
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M6.5 1.5 L2.5 5 L6.5 8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back
             </button>
           </div>
         </div>
@@ -623,6 +645,7 @@ function NgPricing() {
 
 // ── Final CTA ─────────────────────────────────────────────────────────────────
 function NgCTA() {
+  const navigate = useNavigate()
   return (
     <section style={{ padding: '56px 24px 80px', maxWidth: 1280, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', padding: 'clamp(44px,6vw,76px) clamp(24px,5vw,80px)', background: C.surface, border: `1px solid ${C.line}`, borderRadius: 12, position: 'relative', overflow: 'hidden' }}>
@@ -641,7 +664,7 @@ function NgCTA() {
             <button className="ng-cta ng-mono" style={{ padding: '14px 32px', borderRadius: 999, background: C.action, color: '#000', border: 'none', fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', transition: 'transform 180ms ease' }}>
               Request Access
             </button>
-            <button className="ng-ghost ng-mono" style={{ padding: '14px 32px', borderRadius: 999, background: 'transparent', color: C.text, border: `1px solid ${C.line}`, fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all 180ms ease' }}>
+            <button className="ng-ghost ng-mono" onClick={() => navigate('/skills/cyber-neon/map')} style={{ padding: '14px 32px', borderRadius: 999, background: 'transparent', color: C.text, border: `1px solid ${C.line}`, fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all 180ms ease' }}>
               Open Demo
             </button>
           </div>

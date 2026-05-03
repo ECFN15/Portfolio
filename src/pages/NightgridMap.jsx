@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // ── Token system ──────────────────────────────────────────────────────────────
 const C = {
@@ -299,8 +300,34 @@ export default function NightgridMap() {
 
 // ── Header ────────────────────────────────────────────────────────────────────
 function MapHeader({ time }) {
+  const navigate = useNavigate()
   return (
     <header className="nm-header">
+      {/* Back */}
+      <button
+        onClick={() => navigate('/skills')}
+        className="nm-mono"
+        style={{
+          display: 'flex', alignItems: 'center', gap: 5,
+          padding: '4px 12px', borderRadius: 999, flexShrink: 0,
+          background: 'transparent',
+          border: '1px solid rgba(174,133,255,.28)',
+          color: '#a9a3c7', fontSize: 9,
+          fontWeight: 600, letterSpacing: '0.14em',
+          textTransform: 'uppercase', cursor: 'pointer',
+          transition: 'all 180ms ease',
+        }}
+        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(174,133,255,.65)'; e.currentTarget.style.color = '#f8f7ff' }}
+        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(174,133,255,.28)'; e.currentTarget.style.color = '#a9a3c7' }}
+      >
+        <svg width="8" height="8" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+          <path d="M6.5 1.5 L2.5 5 L6.5 8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Back
+      </button>
+
+      <div className="nm-header-div" />
+
       {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
         <div style={{ width: 24, height: 24, borderRadius: 5, background: C.action, boxShadow: '0 0 12px rgba(155,92,255,.5)', display: 'grid', placeItems: 'center' }}>

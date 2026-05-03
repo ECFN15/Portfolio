@@ -7,6 +7,8 @@ import BTPSaasVitrine from './pages/BTPSaasVitrine.jsx'
 import BTPDashboard from './pages/BTPDashboard.jsx'
 import NightgridLanding from './pages/NightgridLanding.jsx'
 import NightgridMap from './pages/NightgridMap.jsx'
+import CalderaIncident from './pages/CalderaIncident.jsx'
+import CalderaTriage from './pages/CalderaTriage.jsx'
 import Navbar from './components/Navbar.jsx'
 import useLenis from './hooks/useLenis.js'
 
@@ -26,7 +28,7 @@ function ScrollToTop() {
 export default function App() {
   useLenis()
   const location = useLocation()
-  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map'
+  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage'
 
   return (
     <main className="relative w-full max-w-full overflow-x-hidden bg-ink-950 text-bone-50 grain-overlay">
@@ -39,6 +41,8 @@ export default function App() {
         <Route path="/skills/clean-saas/dashboard" element={<BTPDashboard />} />
         <Route path="/skills/cyber-neon/landing" element={<NightgridLanding />} />
         <Route path="/skills/cyber-neon/map" element={<NightgridMap />} />
+        <Route path="/skills/dark-ui/incident" element={<CalderaIncident />} />
+        <Route path="/skills/dark-ui/triage" element={<CalderaTriage />} />
         <Route path="/skills/:slug" element={<SkillDemoPage />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
       </Routes>
