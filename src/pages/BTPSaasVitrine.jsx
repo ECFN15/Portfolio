@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // ─── mock data ─────────────────────────────────────────────────────────────
@@ -46,7 +47,7 @@ const caData = [
 const pricingPlans = [
   {
     name: 'Solo',
-    price: '49',
+    price: '9.99',
     description: "Pour les artisans et TPE jusqu'à 3 utilisateurs.",
     features: ['Devis & factures illimités', '5 chantiers simultanés', 'Mailing basique', 'Support email'],
     cta: 'Démarrer',
@@ -54,7 +55,7 @@ const pricingPlans = [
   },
   {
     name: 'Pro',
-    price: '129',
+    price: '30',
     description: 'Pour les PME du bâtiment en croissance.',
     features: ['Tout Solo +', 'Chantiers illimités', 'Planning équipes', 'Analytics avancé', 'Mailing IA priorité', 'Support prioritaire'],
     cta: 'Démarrer en Pro',
@@ -94,33 +95,58 @@ function ArrowUpRight() {
 // ─── component ─────────────────────────────────────────────────────────────
 
 export default function BTPSaasVitrine() {
+  const [activeSidebarItem, setActiveSidebarItem] = useState('Dashboard')
+  const [activeNavItem, setActiveNavItem] = useState(null)
+  const [activePlan, setActivePlan] = useState('Pro')
+  const [activeGanttView, setActiveGanttView] = useState('Mois')
+  const [activeMailRow, setActiveMailRow] = useState(null)
+  const [activeChantierRow, setActiveChantierRow] = useState(null)
+  const [activeDevisRow, setActiveDevisRow] = useState(null)
+  const [activeFactureRow, setActiveFactureRow] = useState(null)
+  const [activeEquipe, setActiveEquipe] = useState(null)
+
   return (
     <div className="bg-[#fafaf9] text-[#292524]">
 
       {/* ── Sticky product nav ────────────────────────────────────────────── */}
-      <nav className="sticky top-20 z-30 border-b border-[#e7e5e4] bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 md:px-8">
+      <nav className="sticky top-0 z-30 border-b border-[#e7e5e4] bg-white/80 backdrop-blur-xl">
+        <div className="mx-auto grid max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-5 py-3 md:px-8">
+          {/* Logo — left col */}
           <div className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[#615fff] font-display text-sm font-bold text-white">B</span>
-            <span className="font-display text-lg font-semibold tracking-tight text-[#292524]">Bâtiflow</span>
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-[#615fff] font-display text-sm font-bold text-white shadow-[0_2px_8px_rgba(97,95,255,0.35)]">B</span>
+            <span className="font-display text-[15px] font-semibold tracking-[-0.02em] text-[#292524]">Bâtiflow</span>
           </div>
-          <div className="hidden items-center gap-6 md:flex">
+
+          {/* Centre nav — pill container, always centered */}
+          <div className="hidden items-center gap-0.5 rounded-full border border-[#e7e5e4] bg-[#f7f6f5] px-1.5 py-1 md:flex">
             {['Fonctions', 'Factures', 'Analytics', 'Équipes', 'Tarifs'].map((item) => (
-              <button key={item} type="button" className="text-sm font-medium text-[#79716b] transition-colors duration-200 hover:text-[#292524]">
+              <button
+                key={item}
+                type="button"
+                onClick={() => setActiveNavItem(item === activeNavItem ? null : item)}
+                className={`rounded-full px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] font-medium transition-all duration-150 ${
+                  activeNavItem === item
+                    ? 'bg-white text-[#615fff] shadow-[0_1px_4px_rgba(0,0,0,0.08)]'
+                    : 'text-[#79716b] hover:text-[#292524]'
+                }`}
+              >
                 {item}
               </button>
             ))}
           </div>
-          <div className="flex items-center gap-2.5">
+
+          {/* Right actions — right col, pushed to end */}
+          <div className="flex items-center justify-end gap-2">
             <Link
               to="/skills/clean-saas"
-              className="hidden rounded-lg border border-[#e7e5e4] bg-[#f3f2f0] px-4 py-2 text-xs font-medium text-[#79716b] transition-colors duration-200 hover:bg-[#e7e5e4] md:block"
+              className="hidden items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] font-medium text-[#79716b] transition-colors duration-150 hover:border-[#615fff]/30 hover:text-[#615fff] md:flex"
             >
-              ← Retour au skill
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M8 2L4 6l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              Retour
             </Link>
             <button
               type="button"
-              className="rounded-lg bg-[#615fff] px-4 py-2 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(97,95,255,0.32)] transition-all duration-200 hover:bg-[#4f39f6] hover:-translate-y-px active:scale-[0.98]"
+              className="rounded-full bg-[#615fff] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.08em] font-semibold text-white shadow-[0_4px_14px_rgba(97,95,255,0.35)] transition-all duration-150 hover:bg-[#4f39f6] active:scale-[0.97]"
             >
               Demander une démo
             </button>
@@ -129,7 +155,7 @@ export default function BTPSaasVitrine() {
       </nav>
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-[#e7e5e4] bg-[#fafaf9] px-5 pb-0 pt-20 md:px-8 md:pt-24">
+      <section className="relative overflow-hidden border-b border-[#e7e5e4] bg-[#fafaf9] px-5 pb-0 pt-16 md:px-8 md:pt-20">
         <div className="pointer-events-none absolute -right-72 -top-72 h-[700px] w-[700px] rounded-full bg-[#615fff] opacity-[0.05] blur-3xl" />
         <div className="pointer-events-none absolute -left-40 top-1/2 h-[400px] w-[400px] rounded-full bg-[#22b8cd] opacity-[0.04] blur-3xl" />
 
@@ -139,26 +165,26 @@ export default function BTPSaasVitrine() {
               <span className="h-1.5 w-1.5 rounded-full bg-[#615fff]" />
               Plateforme BTP tout-en-un
             </span>
-            <h1 className="font-display text-5xl font-semibold leading-[0.9] tracking-tight text-[#292524] md:text-7xl" style={{ textWrap: 'balance' }}>
+            <h1 className="font-display text-5xl font-semibold leading-[1.0] tracking-[-0.03em] text-[#292524] md:text-[64px]" style={{ textWrap: 'balance', maxWidth: '22ch' }}>
               Tous vos chantiers.<br />Une seule plateforme.
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-[#79716b]">
+            <p className="mx-auto mt-5 max-w-[52ch] text-base leading-relaxed text-[#79716b]">
               Centralisez devis, factures et infos clients. Suivez coûts et CA en temps réel. Pilotez vos équipes et plannings sans tableur.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <button
                 type="button"
-                className="rounded-lg bg-[#615fff] px-6 py-3.5 text-base font-semibold text-white shadow-[0_8px_28px_rgba(97,95,255,0.32)] transition-all duration-200 hover:bg-[#4f39f6] hover:-translate-y-0.5 active:scale-[0.98]"
+                className="rounded-lg bg-[#615fff] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(97,95,255,0.40)] transition-all duration-200 hover:bg-[#4f39f6] active:scale-[0.98]"
               >
                 Démarrer gratuitement
               </button>
-              <button
-                type="button"
-                className="flex items-center gap-2 rounded-lg border border-[#e7e5e4] bg-white px-6 py-3.5 text-base font-semibold text-[#292524] transition-all duration-200 hover:bg-[#f3f2f0]"
+              <Link
+                to="/skills/clean-saas/dashboard"
+                className="flex items-center gap-2 rounded-lg border border-[#e7e5e4] bg-white px-6 py-3.5 text-sm font-semibold text-[#292524] transition-all duration-200 hover:bg-[#f3f2f0] active:scale-[0.98]"
               >
                 Voir la démo live
                 <ArrowUpRight />
-              </button>
+              </Link>
             </div>
             <p className="mt-4 text-sm text-[#79716b]">Essai 14 jours — sans carte bancaire</p>
           </div>
@@ -191,7 +217,7 @@ export default function BTPSaasVitrine() {
                     <span className="font-display text-sm font-semibold">Bâtiflow</span>
                   </div>
                   {[
-                    { label: 'Dashboard', active: true },
+                    { label: 'Dashboard' },
                     { label: 'Chantiers' },
                     { label: 'Devis' },
                     { label: 'Factures' },
@@ -199,11 +225,13 @@ export default function BTPSaasVitrine() {
                     { label: 'Équipes' },
                     { label: 'Planning' },
                     { label: 'Mails', badge: '3' },
-                  ].map(({ label, active, badge }) => (
-                    <div
+                  ].map(({ label, badge }) => (
+                    <button
                       key={label}
-                      className={`flex items-center justify-between rounded-lg px-2.5 py-2 text-sm transition-colors duration-150 ${
-                        active
+                      type="button"
+                      onClick={() => setActiveSidebarItem(label)}
+                      className={`flex w-full cursor-pointer items-center justify-between rounded-lg px-2.5 py-2 text-sm transition-colors duration-150 ${
+                        activeSidebarItem === label
                           ? 'bg-[#edeaff] font-semibold text-[#615fff]'
                           : 'text-[#79716b] hover:bg-[#f3f2f0] hover:text-[#292524]'
                       }`}
@@ -212,7 +240,7 @@ export default function BTPSaasVitrine() {
                       {badge && (
                         <span className="rounded-full bg-[#615fff] px-1.5 py-0.5 text-[10px] font-semibold text-white">{badge}</span>
                       )}
-                    </div>
+                    </button>
                   ))}
                 </div>
 
@@ -225,7 +253,7 @@ export default function BTPSaasVitrine() {
                     </div>
                     <button
                       type="button"
-                      className="rounded-lg bg-[#615fff] px-3.5 py-2 text-xs font-semibold text-white shadow-[0_4px_12px_rgba(97,95,255,0.28)] transition-transform duration-200 hover:-translate-y-px"
+                      className="rounded-lg bg-[#615fff] px-3.5 py-2 text-xs font-semibold text-white shadow-[0_4px_12px_rgba(97,95,255,0.28)] transition-all duration-150 hover:bg-[#4f39f6] active:scale-[0.97]"
                     >
                       Nouveau devis
                     </button>
@@ -239,10 +267,10 @@ export default function BTPSaasVitrine() {
                       { label: 'Devis signés', value: '5', change: 'ce mois', ok: null },
                       { label: 'Équipe terrain', value: '12', change: '3 chantiers', ok: null },
                     ].map(({ label, value, change, ok }) => (
-                      <div key={label} className="rounded-xl border border-[#e7e5e4] bg-white p-4">
-                        <p className="text-xs text-[#79716b]">{label}</p>
-                        <p className="mt-1.5 font-display text-2xl font-semibold">{value}</p>
-                        <p className={`mt-1 text-xs font-medium ${ok ? 'text-[#10b981]' : 'text-[#79716b]'}`}>{change}</p>
+                      <div key={label} className="rounded-2xl border border-[#e7e5e4] bg-white p-4">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#79716b]">{label}</p>
+                        <p className="mt-2 font-mono text-[22px] font-medium tracking-tight text-[#292524]">{value}</p>
+                        <p className={`mt-1 font-mono text-[11px] ${ok ? 'font-semibold text-[#047857]' : 'font-normal text-[#79716b]'}`}>{change}</p>
                       </div>
                     ))}
                   </div>
@@ -255,26 +283,31 @@ export default function BTPSaasVitrine() {
                     {chantiers.map((c) => (
                       <div
                         key={c.id}
-                        className="grid grid-cols-[auto_1fr_auto_auto_auto] items-center gap-3 border-b border-[#e7e5e4] px-4 py-3 transition-colors hover:bg-[#fbfaf7] last:border-0"
+                        onClick={() => setActiveChantierRow(c.id === activeChantierRow ? null : c.id)}
+                        className={`grid cursor-pointer grid-cols-[3rem_1fr_8rem_6rem_5.5rem] items-center gap-3 border-b border-[#e7e5e4] px-4 py-3 transition-colors duration-150 last:border-0 ${
+                          activeChantierRow === c.id
+                            ? 'bg-[#edeaff]/50 shadow-[inset_3px_0_0_#615fff]'
+                            : 'hover:bg-[#f5f4f2]'
+                        }`}
                       >
-                        <span className="font-mono text-[11px] text-[#79716b]">{c.id}</span>
+                        <span className="font-mono text-[10px] tracking-[0.06em] text-[#a8a29e]">{c.id}</span>
                         <div>
                           <p className="text-sm font-semibold">{c.name}</p>
                           <p className="text-xs text-[#79716b]">{c.client}</p>
                         </div>
-                        <div className="hidden w-20 md:block">
-                          <div className="h-1.5 overflow-hidden rounded-full bg-[#e7e5e4]">
-                            <div className="h-full rounded-full bg-[#615fff]" style={{ width: `${c.avancement}%` }} />
+                        <div className="hidden md:flex items-center gap-2">
+                          <div className="flex-1 overflow-hidden rounded-full bg-[#e7e5e4]" style={{ height: '3px' }}>
+                            <div className="h-full rounded-full bg-[#615fff] transition-all duration-300" style={{ width: `${c.avancement}%` }} />
                           </div>
-                          <p className="mt-1 text-right font-mono text-[10px] text-[#79716b]">{c.avancement}%</p>
+                          <span className="w-8 shrink-0 font-mono text-[10px] tabular-nums text-[#a8a29e]">{c.avancement}%</span>
                         </div>
-                        <span className="font-display text-sm font-semibold">{c.budget}</span>
+                        <span className="text-right font-mono text-[12px] tabular-nums text-[#79716b]">{c.budget}</span>
                         <span
-                          className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${
+                          className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] font-semibold ${
                             c.status === 'Réception'
                               ? 'bg-[#ecfdf5] text-[#047857]'
                               : c.status === 'En cours'
-                              ? 'bg-[#edeaff] text-[#615fff]'
+                              ? 'bg-[#edeaff] text-[#4f46e5]'
                               : 'bg-[#fffbeb] text-[#b45309]'
                           }`}
                         >
@@ -300,10 +333,10 @@ export default function BTPSaasVitrine() {
               { value: '94 %', label: 'taux de recouvrement', source: 'délai moyen −18 j.' },
               { value: '4.8 / 5', label: 'satisfaction client', source: '127 avis vérifiés' },
             ].map(({ value, label, source }) => (
-              <div key={label} className="border-l border-[#e7e5e4] pl-6 first:border-0 first:pl-0">
-                <p className="font-display text-4xl font-semibold tracking-tight">{value}</p>
-                <p className="mt-1 text-sm text-[#292524]">{label}</p>
-                <p className="mt-1 font-mono text-[11px] text-[#79716b]">{source}</p>
+              <div key={label} className="border-l border-[#e7e5e4] pl-6 first:border-l-0 first:pl-0">
+                <p className="font-mono text-[36px] font-medium tabular-nums tracking-tight text-[#292524]">{value}</p>
+                <p className="mt-1.5 text-sm text-[#292524]">{label}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#a8a29e]">{source}</p>
               </div>
             ))}
           </div>
@@ -335,10 +368,10 @@ export default function BTPSaasVitrine() {
             <div className="rounded-2xl border border-[#e7e5e4] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
               <div className="mb-5 flex items-center justify-between">
                 <div>
-                  <p className="font-display text-lg font-semibold">Pipeline devis</p>
+                  <p className="text-base font-semibold tracking-tight text-[#292524]">Pipeline devis</p>
                   <p className="mt-1 text-sm text-[#79716b]">3 devis actifs · € 404.5k</p>
                 </div>
-                <span className="rounded-full bg-[#edeaff] px-3 py-1 text-xs font-semibold text-[#615fff]">Actif</span>
+                <span className="rounded-full bg-[#ecfdf5] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold text-[#047857]">Actif</span>
               </div>
 
               {/* Stage pipeline */}
@@ -346,32 +379,42 @@ export default function BTPSaasVitrine() {
                 {['Créé', 'Envoyé', 'En lecture', 'Signé', 'Facturé'].map((s, i) => (
                   <div key={s} className="flex shrink-0 items-center gap-1">
                     <span
-                      className={`rounded px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] ${
-                        i <= 2 ? 'bg-[#615fff] text-white' : 'bg-[#f3f2f0] text-[#79716b]'
+                      className={`rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold ${
+                        i === 2 ? 'bg-[#615fff] text-white' : i < 2 ? 'bg-[#edeaff] text-[#4f46e5]' : 'bg-[#f3f2f0] text-[#79716b]'
                       }`}
                     >
                       {s}
                     </span>
-                    {i < 4 && <span className="text-[#e7e5e4]">›</span>}
+                    {i < 4 && <span className="text-[#d4d2d0] text-xs">›</span>}
                   </div>
                 ))}
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {devisData.map((d) => (
                   <div
                     key={d.ref}
-                    className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3 rounded-xl border border-[#e7e5e4] bg-[#fbfaf7] p-3.5 transition-colors hover:bg-[#f5f1e9]"
+                    onClick={() => setActiveDevisRow(d.ref === activeDevisRow ? null : d.ref)}
+                    className={`grid cursor-pointer grid-cols-[auto_1fr_auto_auto] items-center gap-3 rounded-xl border px-3.5 py-3 transition-colors duration-150 ${
+                      activeDevisRow === d.ref
+                        ? 'border-[#615fff]/30 bg-[#edeaff]/40 shadow-[inset_3px_0_0_#615fff]'
+                        : 'border-[#e7e5e4] bg-[#fbfaf7] hover:bg-[#f5f4f2]'
+                    }`}
                   >
-                    <span className="font-mono text-[11px] text-[#79716b]">{d.ref}</span>
+                    <span className="font-mono text-[10px] tracking-[0.06em] text-[#a8a29e]">{d.ref}</span>
                     <div>
-                      <p className="text-sm font-semibold">{d.client}</p>
+                      <p className="text-sm font-semibold text-[#292524]">{d.client}</p>
                       <p className="text-xs text-[#79716b]">Envoyé le {d.envoi}</p>
                     </div>
-                    <span className="font-display text-sm font-semibold">{d.montant}</span>
+                    <span className="font-mono text-[12px] tabular-nums text-[#79716b]">{d.montant}</span>
                     <span
-                      className="rounded-full px-2.5 py-1 text-[11px] font-semibold"
-                      style={{ color: d.color, backgroundColor: `${d.color}18` }}
+                      className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] font-semibold ${
+                        d.status === 'Signé'
+                          ? 'bg-[#ecfdf5] text-[#047857]'
+                          : d.status === 'En lecture'
+                          ? 'bg-[#edeaff] text-[#4f46e5]'
+                          : 'bg-[#fffbeb] text-[#b45309]'
+                      }`}
                     >
                       {d.status}
                     </span>
@@ -384,30 +427,40 @@ export default function BTPSaasVitrine() {
             <div className="rounded-2xl border border-[#e7e5e4] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
               <div className="mb-5 flex items-center justify-between">
                 <div>
-                  <p className="font-display text-lg font-semibold">Suivi factures</p>
+                  <p className="text-base font-semibold tracking-tight text-[#292524]">Suivi factures</p>
                   <p className="mt-1 text-sm text-[#79716b]">Relances automatiques activées</p>
                 </div>
-                <div className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-[#fbfaf7] p-1">
-                  <span className="rounded-full bg-[#ecfdf5] px-3 py-1.5 text-xs font-semibold text-[#047857]">1 payée</span>
-                  <span className="px-3 py-1.5 text-xs font-medium text-[#79716b]">2 en att.</span>
+                <div className="flex items-center gap-1 rounded-full border border-[#e7e5e4] bg-[#fbfaf7] p-1">
+                  <span className="rounded-full bg-[#ecfdf5] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] font-semibold text-[#047857]">1 payée</span>
+                  <span className="px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.08em] font-medium text-[#79716b]">2 att.</span>
                 </div>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {facturesData.map((f) => (
                   <div
                     key={f.ref}
-                    className="grid grid-cols-[auto_1fr_auto_auto] items-center gap-3 rounded-xl border border-[#e7e5e4] bg-[#fbfaf7] p-3.5 transition-colors hover:bg-[#f5f1e9]"
+                    onClick={() => setActiveFactureRow(f.ref === activeFactureRow ? null : f.ref)}
+                    className={`grid cursor-pointer grid-cols-[auto_1fr_auto_auto] items-center gap-3 rounded-xl border px-3.5 py-3 transition-colors duration-150 ${
+                      activeFactureRow === f.ref
+                        ? 'border-[#615fff]/30 bg-[#edeaff]/40 shadow-[inset_3px_0_0_#615fff]'
+                        : 'border-[#e7e5e4] bg-[#fbfaf7] hover:bg-[#f5f4f2]'
+                    }`}
                   >
-                    <span className="font-mono text-[11px] text-[#79716b]">{f.ref}</span>
+                    <span className="font-mono text-[10px] tracking-[0.06em] text-[#a8a29e]">{f.ref}</span>
                     <div>
-                      <p className="text-sm font-semibold">{f.client}</p>
+                      <p className="text-sm font-semibold text-[#292524]">{f.client}</p>
                       <p className="text-xs text-[#79716b]">Éch. {f.echeance}</p>
                     </div>
-                    <span className="font-display text-sm font-semibold">{f.montant}</span>
+                    <span className="font-mono text-[12px] tabular-nums text-[#79716b]">{f.montant}</span>
                     <span
-                      className="rounded-full px-2.5 py-1 text-[11px] font-semibold"
-                      style={{ color: f.statusColor, backgroundColor: f.bg }}
+                      className={`rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] font-semibold ${
+                        f.status === 'Payée'
+                          ? 'bg-[#ecfdf5] text-[#047857]'
+                          : f.status === 'En retard'
+                          ? 'bg-[#fff1f2] text-[#b91c1c]'
+                          : 'bg-[#fffbeb] text-[#b45309]'
+                      }`}
                     >
                       {f.status}
                     </span>
@@ -432,7 +485,7 @@ export default function BTPSaasVitrine() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12">
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#615fff]">Analytics</span>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl" style={{ textWrap: 'balance' }}>
               Vos chiffres, sans les tableurs.
             </h2>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-[#79716b]">
@@ -445,10 +498,10 @@ export default function BTPSaasVitrine() {
             <div className="rounded-2xl border border-[#e7e5e4] bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]">
               <div className="mb-5 flex items-start justify-between gap-4">
                 <div>
-                  <p className="font-display text-xl font-semibold">Chiffre d'affaires prévisionnel</p>
+                  <p className="text-base font-semibold tracking-tight text-[#292524]">Chiffre d'affaires prévisionnel</p>
                   <p className="mt-1 text-sm text-[#79716b]">Réel vs prévision — Jul à Déc 2024</p>
                 </div>
-                <span className="shrink-0 rounded-full bg-[#edeaff] px-3 py-1 text-xs font-semibold text-[#615fff]">T3–T4</span>
+                <span className="shrink-0 rounded-full bg-[#f3f2f0] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold text-[#79716b]">T3–T4</span>
               </div>
               <div className="mb-5 flex items-center gap-5 text-xs text-[#79716b]">
                 <span className="flex items-center gap-1.5">
@@ -462,20 +515,18 @@ export default function BTPSaasVitrine() {
               </div>
 
               {/* Bar chart */}
-              <div className="flex h-36 items-end gap-2">
+              <div className="flex h-36 items-end gap-1.5">
                 {caData.map(({ mois, reel, prev }) => (
                   <div key={mois} className="flex flex-1 flex-col items-center gap-1.5">
-                    <div className="flex w-full items-end justify-center gap-0.5" style={{ height: '120px' }}>
+                    <div className="flex w-full items-end gap-0.5" style={{ height: '120px' }}>
                       <div
-                        className="w-full rounded-t bg-[#e7e5e4]"
+                        className="w-1/2 rounded-t bg-[#e7e5e4]"
                         style={{ height: `${(prev / maxCA) * 120}px` }}
                       />
-                      {reel && (
-                        <div
-                          className="w-full rounded-t bg-[#615fff]"
-                          style={{ height: `${(reel / maxCA) * 120}px` }}
-                        />
-                      )}
+                      <div
+                        className={`w-1/2 rounded-t ${reel ? 'bg-[#615fff]' : 'bg-[#e7e5e4]/40'}`}
+                        style={{ height: `${reel ? (reel / maxCA) * 120 : (prev / maxCA) * 60}px` }}
+                      />
                     </div>
                     <span className="font-mono text-[10px] text-[#79716b]">{mois}</span>
                   </div>
@@ -489,8 +540,8 @@ export default function BTPSaasVitrine() {
                   { label: 'Marge brute moy.', value: '34.2 %' },
                 ].map(({ label, value }) => (
                   <div key={label}>
-                    <p className="text-xs text-[#79716b]">{label}</p>
-                    <p className="mt-1 font-display text-xl font-semibold">{value}</p>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#79716b]">{label}</p>
+                    <p className="mt-1.5 font-mono text-[18px] font-medium tracking-tight text-[#292524]">{value}</p>
                   </div>
                 ))}
               </div>
@@ -500,7 +551,7 @@ export default function BTPSaasVitrine() {
             <div className="flex flex-col gap-5">
               {/* Coûts prévisionnels */}
               <div className="rounded-2xl border border-[#e7e5e4] bg-[#fbfaf7] p-5">
-                <p className="font-display font-semibold">Coûts prévisionnels</p>
+                <p className="text-base font-semibold tracking-tight text-[#292524]">Coûts prévisionnels</p>
                 <p className="mt-1 text-sm text-[#79716b]">Répartition nov. 2024</p>
                 <div className="mt-5 space-y-3.5">
                   {[
@@ -525,7 +576,7 @@ export default function BTPSaasVitrine() {
               {/* Marge par chantier */}
               <div className="rounded-2xl border border-[#e7e5e4] bg-[#fbfaf7] p-5">
                 <div className="flex items-center justify-between">
-                  <p className="font-display font-semibold">Marge par chantier</p>
+                  <p className="text-base font-semibold tracking-tight text-[#292524]">Marge par chantier</p>
                   <span className="rounded-full bg-[#ecfdf5] px-2.5 py-1 font-mono text-[11px] font-semibold text-[#047857]">Live</span>
                 </div>
                 <div className="mt-4 space-y-2">
@@ -536,7 +587,7 @@ export default function BTPSaasVitrine() {
                   ].map(({ name, marge }) => (
                     <div key={name} className="flex items-center justify-between rounded-xl bg-white px-3.5 py-2.5 ring-1 ring-[#e7e5e4]">
                       <p className="text-sm font-medium">{name}</p>
-                      <span className="font-mono text-sm font-semibold text-[#615fff]">{marge} %</span>
+                      <span className="font-mono text-[12px] tabular-nums text-[#615fff]">{marge} %</span>
                     </div>
                   ))}
                 </div>
@@ -589,7 +640,12 @@ export default function BTPSaasVitrine() {
                 {mailsData.map((mail) => (
                   <div
                     key={mail.subject}
-                    className={`flex items-start gap-4 px-5 py-4 transition-colors hover:bg-[#fbfaf7] ${mail.unread ? '' : 'opacity-70'}`}
+                    onClick={() => setActiveMailRow(mail.subject === activeMailRow ? null : mail.subject)}
+                    className={`flex cursor-pointer items-start gap-4 px-5 py-4 transition-colors duration-150 ${
+                      activeMailRow === mail.subject
+                        ? 'bg-[#edeaff]/40 shadow-[inset_3px_0_0_#615fff]'
+                        : 'hover:bg-[#fbfaf7]'
+                    } ${mail.unread ? '' : 'opacity-70'}`}
                   >
                     <div className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#f3f2f0] font-mono text-xs font-semibold text-[#79716b]">
                       {mail.from.slice(0, 1)}
@@ -603,8 +659,13 @@ export default function BTPSaasVitrine() {
                       <p className="truncate text-xs text-[#79716b]">{mail.preview}</p>
                     </div>
                     <span
-                      className="mt-1 shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold"
-                      style={{ color: mail.tagColor, backgroundColor: mail.tagBg }}
+                      className={`mt-1 shrink-0 rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.08em] font-semibold ${
+                        mail.tag === 'URGENT'
+                          ? 'bg-[#fff1f2] text-[#b91c1c]'
+                          : mail.tag === 'À traiter'
+                          ? 'bg-[#fffbeb] text-[#b45309]'
+                          : 'bg-[#f3f2f0] text-[#79716b]'
+                      }`}
                     >
                       {mail.tag}
                     </span>
@@ -627,7 +688,7 @@ export default function BTPSaasVitrine() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12">
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#615fff]">Équipes & Chantiers</span>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl" style={{ textWrap: 'balance' }}>
               Chaque chantier, chaque équipe, tout en ordre.
             </h2>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-[#79716b]">
@@ -639,7 +700,12 @@ export default function BTPSaasVitrine() {
             {equipeData.map((m) => (
               <div
                 key={m.name}
-                className="rounded-2xl border border-[#e7e5e4] bg-[#fbfaf7] p-5 transition-all duration-200 hover:border-[#615fff]/30 hover:shadow-[0_4px_20px_rgba(97,95,255,0.10)]"
+                onClick={() => setActiveEquipe(m.name === activeEquipe ? null : m.name)}
+                className={`cursor-pointer rounded-2xl border p-5 transition-colors duration-150 ${
+                  activeEquipe === m.name
+                    ? 'border-[#615fff]/30 bg-[#edeaff]/40 shadow-[inset_3px_0_0_#615fff]'
+                    : 'border-[#e7e5e4] bg-[#fbfaf7] hover:bg-[#f5f4f2]'
+                }`}
               >
                 <div className="mb-4 flex items-start justify-between">
                   <div
@@ -669,7 +735,7 @@ export default function BTPSaasVitrine() {
                 <span className="font-semibold text-[#292524]">Bâtiflow Mobile</span> — Vos équipes terrain accèdent à leurs missions, photos et rapports directement depuis leur téléphone.
               </p>
             </div>
-            <button type="button" className="shrink-0 rounded-lg border border-[#e7e5e4] bg-white px-4 py-2 text-sm font-semibold text-[#292524] transition-colors hover:bg-[#f3f2f0]">
+            <button type="button" className="shrink-0 rounded-lg border border-[#e7e5e4] bg-white px-4 py-2 text-sm font-semibold text-[#292524] transition-all duration-150 hover:bg-[#f3f2f0] active:scale-[0.97]">
               iOS & Android →
             </button>
           </div>
@@ -682,17 +748,17 @@ export default function BTPSaasVitrine() {
           <div className="grid gap-14 lg:grid-cols-[1fr_1.6fr] lg:items-center">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#615fff]">Planning</span>
-              <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl">
+              <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight md:text-5xl" style={{ textWrap: 'balance' }}>
                 Planifiez. Ajustez. Avancez.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-[#79716b]">
                 Vue Gantt, calendrier équipes et jalons partagés. Glissez-déposez pour réajuster, exportez en PDF pour vos clients.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <button type="button" className="rounded-lg bg-[#615fff] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(97,95,255,0.28)] transition-all duration-200 hover:bg-[#4f39f6]">
+                <button type="button" className="rounded-lg bg-[#615fff] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(97,95,255,0.28)] transition-all duration-150 hover:bg-[#4f39f6] active:scale-[0.97]">
                   Créer un planning
                 </button>
-                <button type="button" className="rounded-lg border border-[#e7e5e4] bg-white px-5 py-2.5 text-sm font-semibold text-[#292524] transition-all duration-200 hover:bg-[#f3f2f0]">
+                <button type="button" className="rounded-lg border border-[#e7e5e4] bg-white px-5 py-2.5 text-sm font-semibold text-[#292524] transition-all duration-150 hover:bg-[#f3f2f0] active:scale-[0.97]">
                   Voir la démo
                 </button>
               </div>
@@ -703,8 +769,20 @@ export default function BTPSaasVitrine() {
               <div className="mb-4 flex items-center justify-between">
                 <p className="font-display font-semibold">Planning novembre 2024</p>
                 <div className="flex gap-1.5">
-                  <button type="button" className="rounded-lg border border-[#e7e5e4] px-3 py-1.5 text-xs font-medium text-[#79716b] hover:bg-[#f3f2f0]">Semaine</button>
-                  <button type="button" className="rounded-lg bg-[#edeaff] px-3 py-1.5 text-xs font-semibold text-[#615fff]">Mois</button>
+                  {['Semaine', 'Mois'].map((v) => (
+                    <button
+                      key={v}
+                      type="button"
+                      onClick={() => setActiveGanttView(v)}
+                      className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors duration-150 ${
+                        activeGanttView === v
+                          ? 'bg-[#edeaff] text-[#615fff]'
+                          : 'border border-[#e7e5e4] text-[#79716b] hover:bg-[#f3f2f0]'
+                      }`}
+                    >
+                      {v}
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -772,17 +850,17 @@ export default function BTPSaasVitrine() {
           <p className="mb-8 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-[#79716b]">
             Confiance & conformité
           </p>
-          <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
             {[
-              { stat: 'RGPD', label: 'Données hébergées en France', mono: 'Certifié' },
-              { stat: '99.8 %', label: 'Uptime garanti', mono: 'SLA Enterprise' },
-              { stat: 'ISO 9001', label: 'Qualité certifiée', mono: 'Audit 2024' },
-              { stat: '127', label: 'Entreprises BTP clientes', mono: 'Utilisateurs actifs' },
-            ].map(({ stat, label, mono }) => (
-              <div key={stat} className="rounded-2xl border border-[#e7e5e4] bg-[#fbfaf7] p-5 text-center">
-                <p className="font-display text-3xl font-semibold tracking-tight">{stat}</p>
-                <p className="mt-1 text-sm text-[#292524]">{label}</p>
-                <p className="mt-1 font-mono text-[11px] text-[#79716b]">{mono}</p>
+              { stat: 'RGPD', label: 'Données hébergées en France', mono: 'Certifié', accent: false },
+              { stat: '99.8 %', label: 'Uptime garanti', mono: 'SLA Enterprise', accent: true },
+              { stat: 'ISO 9001', label: 'Qualité certifiée', mono: 'Audit 2024', accent: false },
+              { stat: '127', label: 'Entreprises BTP clientes', mono: 'Clients actifs', accent: false },
+            ].map(({ stat, label, mono, accent }) => (
+              <div key={stat} className={`rounded-2xl border p-5 ${accent ? 'border-[#615fff]/20 bg-[#edeaff]/40' : 'border-[#e7e5e4] bg-[#fbfaf7]'}`}>
+                <p className={`font-mono text-[28px] font-medium tabular-nums tracking-tight ${accent ? 'text-[#4f46e5]' : 'text-[#292524]'}`}>{stat}</p>
+                <p className="mt-1.5 text-sm text-[#292524]">{label}</p>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[#a8a29e]">{mono}</p>
               </div>
             ))}
           </div>
@@ -800,54 +878,63 @@ export default function BTPSaasVitrine() {
             <p className="mt-4 text-base text-[#79716b]">14 jours d'essai gratuit — pas de carte bancaire requise.</p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
-            {pricingPlans.map((plan) => (
-              <div
-                key={plan.name}
-                className={`overflow-hidden rounded-2xl border p-7 ${
-                  plan.accent
-                    ? 'border-[#615fff] bg-white shadow-[0_16px_48px_rgba(97,95,255,0.16)]'
-                    : 'border-[#e7e5e4] bg-white'
-                }`}
-              >
-                {plan.accent && (
-                  <div className="mb-4 inline-flex rounded-full bg-[#edeaff] px-3 py-1 text-xs font-semibold text-[#615fff]">
-                    Recommandé
-                  </div>
-                )}
-                <p className="font-display text-xl font-semibold">{plan.name}</p>
-                <div className="mt-3 flex items-end gap-1">
-                  {plan.price === 'Sur devis' ? (
-                    <p className="font-display text-3xl font-semibold">Sur devis</p>
-                  ) : (
-                    <>
-                      <p className="font-display text-4xl font-semibold tracking-tight">€ {plan.price}</p>
-                      <p className="mb-1.5 text-sm text-[#79716b]">/mois</p>
-                    </>
-                  )}
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-[#79716b]">{plan.description}</p>
-                <div className="my-6 h-px bg-[#e7e5e4]" />
-                <ul className="space-y-3">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2.5 text-sm">
-                      <CheckIcon accent={plan.accent} />
-                      <span className={plan.accent ? 'text-[#292524]' : 'text-[#79716b]'}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  className={`mt-8 w-full rounded-lg py-3 text-sm font-semibold transition-all duration-200 ${
-                    plan.accent
-                      ? 'bg-[#615fff] text-white shadow-[0_4px_16px_rgba(97,95,255,0.32)] hover:bg-[#4f39f6] hover:-translate-y-px active:scale-[0.98]'
-                      : 'border border-[#e7e5e4] bg-[#f3f2f0] text-[#292524] hover:bg-[#e7e5e4]'
+          <div className="grid items-stretch gap-4 md:grid-cols-3">
+            {pricingPlans.map((plan) => {
+              const isSelected = activePlan === plan.name
+              const isAccent = plan.accent || isSelected
+              return (
+                <div
+                  key={plan.name}
+                  onClick={() => setActivePlan(plan.name)}
+                  className={`relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border p-7 transition-all duration-200 ${
+                    isSelected
+                      ? 'border-[#615fff] bg-white shadow-[0_16px_48px_rgba(97,95,255,0.14)]'
+                      : 'border-[#e7e5e4] bg-white hover:border-[#c5c2f8] hover:shadow-[0_4px_16px_rgba(97,95,255,0.07)]'
                   }`}
                 >
-                  {plan.cta}
-                </button>
-              </div>
-            ))}
+                  {isSelected && (
+                    <div className="absolute inset-y-0 left-0 w-[3px] rounded-l-2xl bg-[#615fff]" />
+                  )}
+                  {plan.accent && (
+                    <div className="absolute right-5 top-5 inline-flex rounded-full bg-[#edeaff] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold text-[#4f46e5]">
+                      Recommandé
+                    </div>
+                  )}
+                  <p className="text-base font-semibold tracking-tight text-[#292524]">{plan.name}</p>
+                  <div className="mt-3 flex items-end gap-1">
+                    {plan.price === 'Sur devis' ? (
+                      <p className="font-mono text-[28px] font-medium tracking-tight text-[#292524]">Sur devis</p>
+                    ) : (
+                      <>
+                        <p className="font-mono text-[36px] font-medium tabular-nums tracking-tight text-[#292524]">€ {plan.price}</p>
+                        <p className="mb-1.5 font-mono text-[12px] text-[#a8a29e]">/mois</p>
+                      </>
+                    )}
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-[#79716b]">{plan.description}</p>
+                  <div className="my-6 h-px bg-[#e7e5e4]" />
+                  <ul className="flex-1 space-y-3">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-center gap-2.5 text-sm">
+                        <CheckIcon accent={isAccent} />
+                        <span className="text-[#292524]">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    type="button"
+                    onClick={(e) => e.stopPropagation()}
+                    className={`mt-8 w-full rounded-lg py-3 text-sm font-semibold transition-all duration-200 ${
+                      isAccent
+                        ? 'bg-[#615fff] text-white shadow-[0_4px_16px_rgba(97,95,255,0.28)] hover:bg-[#4f39f6] active:scale-[0.98]'
+                        : 'border border-[#e7e5e4] bg-[#f3f2f0] text-[#292524] hover:bg-[#e7e5e4] active:scale-[0.98]'
+                    }`}
+                  >
+                    {plan.cta}
+                  </button>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -864,13 +951,13 @@ export default function BTPSaasVitrine() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <button
               type="button"
-              className="rounded-lg bg-[#615fff] px-7 py-3.5 text-base font-semibold text-white shadow-[0_8px_28px_rgba(97,95,255,0.40)] transition-all duration-200 hover:bg-[#4f39f6] hover:-translate-y-0.5"
+              className="rounded-lg bg-[#615fff] px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_28px_rgba(97,95,255,0.40)] transition-all duration-150 hover:bg-[#4f39f6] active:scale-[0.98]"
             >
               Démarrer gratuitement
             </button>
             <button
               type="button"
-              className="rounded-lg border border-white/20 bg-white/10 px-7 py-3.5 text-base font-semibold text-white transition-all duration-200 hover:bg-white/15"
+              className="rounded-lg border border-white/20 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white transition-all duration-150 hover:bg-white/15 active:scale-[0.98]"
             >
               Demander une démo
             </button>
