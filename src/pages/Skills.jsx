@@ -200,15 +200,39 @@ export function SkillDemoPage() {
               {skill.description}
             </p>
             {skill.slug === 'clean-saas' && (
-              <Link
-                to="/skills/clean-saas/vitrine"
-                className="group mt-6 inline-flex items-center gap-2 rounded-full bg-bone-50 py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-white active:scale-[0.98]"
-              >
-                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Voir le site</span>
-                <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
-                  <ArrowUpRight />
-                </span>
-              </Link>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/skills/clean-saas/vitrine"
+                  className="group inline-flex items-center gap-2 rounded-full bg-bone-50 py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-white active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Voir le site</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
+                <Link
+                  to="/skills/clean-saas/dashboard"
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Dashboard</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
+              </div>
+            )}
+            {skill.slug === 'cyber-neon' && (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/skills/cyber-neon/landing"
+                  className="group inline-flex items-center gap-2 rounded-full bg-bone-50 py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-white active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Voir la landing</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
+              </div>
             )}
           </div>
         </div>
@@ -309,405 +333,113 @@ function SkillDemoPanel({ skill }) {
 }
 
 function CleanSaasDemo({ skill }) {
-  const funnelRows = [
-    { company: 'Lumen Works', owner: 'Maya', stage: 'Renewal', value: '$48.2k', risk: 'Contract terms', state: 'Review', color: '#f59e0b' },
-    { company: 'Atlas Labs', owner: 'Noah', stage: 'Expansion', value: '$82.0k', risk: 'Legal approval', state: 'Blocked', color: '#ef4444' },
-    { company: 'Northline', owner: 'Iris', stage: 'Onboarding', value: '$24.6k', risk: 'Clean handoff', state: 'Ready', color: '#10b981' },
-  ]
-
-  const automations = [
-    { label: 'CRM enrichment', progress: '98%', status: 'Live' },
-    { label: 'Invoice routing', progress: '74%', status: 'Queued' },
-    { label: 'Renewal alerts', progress: '100%', status: 'Synced' },
-  ]
-
   return (
     <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
-      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#f7f5ef] text-[#171a1f] shadow-[0_28px_90px_rgba(0,0,0,0.22)]">
-        <div className="border-b border-[#e6e1d7] bg-[#fbfaf7] px-5 py-4 md:px-7">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-[#111827] font-display text-sm font-semibold text-white">N</span>
-              <div>
-                <p className="font-display text-sm font-semibold leading-none text-[#171a1f]">Northstar Ops</p>
-                <p className="mt-1 text-xs text-[#6f756f]">Revenue operations command center</p>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2">
-              {['Pipeline', 'Workflows', 'Integrations', 'Reports'].map((item, index) => (
-                <button
-                  key={item}
-                  type="button"
-                  className={`rounded-full px-3.5 py-2 text-xs font-medium transition-colors duration-200 ease-soft-spring ${
-                    index === 0 ? 'bg-[#111827] text-white' : 'bg-white text-[#535b53] hover:bg-[#ebe7df]'
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-
-            <button
-              type="button"
-              className="rounded-full bg-[#615fff] px-4 py-2.5 text-xs font-semibold text-white shadow-[0_12px_30px_rgba(97,95,255,0.28)] transition-transform duration-200 ease-soft-spring hover:-translate-y-0.5 active:scale-[0.98]"
+      {/* Browser chrome */}
+      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#f7f6f5] shadow-[0_32px_90px_rgba(0,0,0,0.28)]">
+        {/* Chrome bar */}
+        <div className="flex items-center gap-3 border-b border-[#e7e5e4] bg-[#f3f2f0] px-4 py-3">
+          <div className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+          </div>
+          <div className="flex flex-1 items-center gap-2 rounded-lg bg-white/80 px-3 py-1.5 ring-1 ring-[#e7e5e4]">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#a8a29e]"><path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>
+            <span className="font-mono text-[11px] text-[#79716b]">localhost:5174/skills/clean-saas/dashboard</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link
+              to="/skills/clean-saas/vitrine"
+              className="flex items-center gap-1.5 rounded-full border border-[#e7e5e4] bg-white px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#79716b] transition-colors hover:text-[#615fff]"
             >
-              Resolve queue
-            </button>
+              Vitrine
+            </Link>
+            <Link
+              to="/skills/clean-saas/dashboard"
+              className="flex items-center gap-1.5 rounded-full bg-[#615fff] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold text-white shadow-[0_4px_12px_rgba(97,95,255,0.3)] transition-colors hover:bg-[#4f39f6]"
+            >
+              Ouvrir ↗
+            </Link>
           </div>
         </div>
 
-        <div className="grid gap-5 p-5 md:p-7 xl:grid-cols-[0.92fr_1.45fr]">
-          <div className="flex flex-col justify-between gap-6 rounded-[1.4rem] bg-[#111827] p-6 text-white md:p-8">
-            <div>
-              <span className="inline-flex rounded-full bg-white/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-white/70">
-                Clean SaaS demo
-              </span>
-              <h2 className="mt-5 max-w-lg font-display text-4xl font-semibold leading-[0.98] tracking-tight md:text-6xl">
-                Revenue ops without tab hopping.
-              </h2>
-              <p className="mt-5 max-w-md text-sm leading-6 text-white/70 md:text-base">
-                Prioritize pipeline risk, route approvals, and keep every integration honest from one calm operational surface.
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
-              {[
-                ['98.4%', 'Sync health'],
-                ['12', 'Live automations'],
-                ['$154k', 'At-risk value'],
-              ].map(([value, label]) => (
-                <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4">
-                  <p className="font-display text-2xl font-semibold tracking-tight">{value}</p>
-                  <p className="mt-1 text-xs text-white/60">{label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[1.4rem] border border-[#e1ddd2] bg-white p-4 shadow-[0_22px_55px_rgba(35,31,24,0.08)] md:p-5">
-            <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="font-display text-xl font-semibold tracking-tight text-[#171a1f]">Pipeline health</p>
-                <p className="mt-1 text-sm text-[#73786f]">Accounts requiring operator attention this week.</p>
-              </div>
-              <div className="flex items-center gap-2 rounded-full border border-[#e5e1d8] bg-[#fbfaf7] p-1">
-                <span className="rounded-full bg-[#e9fff6] px-3 py-1.5 text-xs font-semibold text-[#047857]">Success</span>
-                <span className="px-3 py-1.5 text-xs font-medium text-[#6f756f]">3 risks</span>
-              </div>
-            </div>
-
-            <div className="grid gap-3">
-              {funnelRows.map((row) => (
-                <div key={row.company} className="grid gap-3 rounded-2xl border border-[#ebe7df] bg-[#fbfaf7] p-4 transition-colors duration-200 ease-soft-spring hover:bg-[#f5f1e9] md:grid-cols-[1.1fr_0.75fr_0.7fr_0.75fr] md:items-center">
-                  <div>
-                    <p className="font-display text-sm font-semibold text-[#171a1f]">{row.company}</p>
-                    <p className="mt-1 text-xs text-[#73786f]">{row.owner} owns {row.risk.toLowerCase()}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-[#73786f]">Stage</p>
-                    <p className="mt-1 text-sm font-semibold text-[#171a1f]">{row.stage}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-[#73786f]">Value</p>
-                    <p className="mt-1 text-sm font-semibold text-[#171a1f]">{row.value}</p>
-                  </div>
-                  <div className="flex items-center justify-between gap-3 md:justify-end">
-                    <span className="rounded-full bg-white px-3 py-1.5 text-xs font-medium text-[#444a44] ring-1 ring-[#e5e1d8]">{row.state}</span>
-                    <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: row.color }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-5 px-5 pb-5 md:px-7 md:pb-7 xl:grid-cols-[1fr_1fr_0.8fr]">
-          <div className="rounded-[1.25rem] border border-[#e1ddd2] bg-white p-5">
-            <div className="mb-5 flex items-center justify-between">
-              <div>
-                <p className="font-display text-lg font-semibold tracking-tight">Workflow queue</p>
-                <p className="mt-1 text-sm text-[#73786f]">Clear next actions, not vague alerts.</p>
-              </div>
-              <span className="rounded-full bg-[#edeaff] px-3 py-1 text-xs font-semibold text-[#4f46e5]">4 min SLA</span>
-            </div>
-            <div className="space-y-3">
-              {['Approve discount guardrail', 'Send renewal packet', 'Reassign legal owner'].map((item, index) => (
-                <label key={item} className="flex cursor-pointer items-center gap-3 rounded-2xl bg-[#fbfaf7] p-3 text-sm font-medium text-[#22262d] ring-1 ring-[#ebe7df]">
-                  <span className={`grid h-5 w-5 place-items-center rounded-md text-[10px] ${index === 0 ? 'bg-[#615fff] text-white' : 'bg-white text-[#9a9f97] ring-1 ring-[#ded9cf]'}`}>
-                    {index === 0 ? 'OK' : ''}
-                  </span>
-                  {item}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[1.25rem] border border-[#e1ddd2] bg-white p-5">
-            <div className="mb-5 flex items-center justify-between">
-              <div>
-                <p className="font-display text-lg font-semibold tracking-tight">Automation health</p>
-                <p className="mt-1 text-sm text-[#73786f]">Progress is the action accent.</p>
-              </div>
-              <span className="rounded-full bg-[#e9fff6] px-3 py-1 text-xs font-semibold text-[#047857]">Stable</span>
-            </div>
-            <div className="space-y-4">
-              {automations.map((automation) => (
-                <div key={automation.label}>
-                  <div className="mb-2 flex items-center justify-between text-sm">
-                    <span className="font-medium text-[#22262d]">{automation.label}</span>
-                    <span className="text-xs text-[#73786f]">{automation.status}</span>
-                  </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-[#ece8df]">
-                    <div className="h-full rounded-full bg-[#615fff]" style={{ width: automation.progress }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[1.25rem] border border-[#e1ddd2] bg-[#fbfaf7] p-5">
-            <p className="font-display text-lg font-semibold tracking-tight">States covered</p>
-            <div className="mt-5 grid gap-2">
-              {[
-                ['Success', 'CRM synced 2m ago', '#047857', '#e9fff6'],
-                ['Empty', 'No orphan tasks', '#52525b', '#f4f4f5'],
-                ['Error', '1 invoice mismatch', '#b91c1c', '#fff1f2'],
-              ].map(([state, label, color, bg]) => (
-                <div key={state} className="flex items-center justify-between rounded-2xl bg-white px-3 py-2.5 ring-1 ring-[#ebe7df]">
-                  <span className="text-sm font-medium text-[#22262d]">{label}</span>
-                  <span className="rounded-full px-2.5 py-1 text-xs font-semibold" style={{ color, backgroundColor: bg }}>
-                    {state}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-[#e6e1d7] bg-[#fbfaf7] px-5 py-4 md:px-7">
-          <div className="flex flex-col gap-3 text-sm text-[#686f68] md:flex-row md:items-center md:justify-between">
-            <span>Surface contract: light canvas, quiet cards, one violet action accent.</span>
-            <div className="flex items-center gap-4">
-              <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#8a9088]">{skill.slug} / full-potential demo</span>
-              <Link
-                to="/skills/clean-saas/vitrine"
-                className="flex items-center gap-1.5 rounded-full bg-[#615fff] px-3.5 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_4px_12px_rgba(97,95,255,0.28)] transition-all duration-200 hover:bg-[#4f39f6] hover:-translate-y-px active:scale-[0.98]"
-              >
-                Voir le site
-                <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M3.5 10.5L10.5 3.5M10.5 3.5H4.5M10.5 3.5V9.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-            </div>
-          </div>
+        {/* iframe preview — scaled to fit */}
+        <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
+          <iframe
+            src="/skills/clean-saas/dashboard"
+            title="Bâtiflow Dashboard Preview"
+            className="absolute left-0 top-0 origin-top-left"
+            style={{
+              width: '1440px',
+              height: '900px',
+              transform: 'scale(var(--dash-scale, 0.72))',
+              transformOrigin: 'top left',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+            onLoad={(e) => {
+              const container = e.target.parentElement
+              const scale = container.offsetWidth / 1440
+              e.target.style.setProperty('--dash-scale', scale)
+              e.target.style.transform = `scale(${scale})`
+              container.style.height = `${900 * scale}px`
+            }}
+          />
         </div>
       </div>
     </div>
   )
 }
 
-function CyberNeonDemo({ skill }) {
-  const signalRows = [
-    { source: 'Edge camera 07', signal: 'Motion anomaly', confidence: '97.2%', state: 'Escalate', color: '#ff4fd8' },
-    { source: 'Payment stream', signal: 'Velocity spike', confidence: '84.9%', state: 'Watch', color: '#fff500' },
-    { source: 'Auth mesh', signal: 'Token drift', confidence: '91.6%', state: 'Contain', color: '#00f0ff' },
-  ]
-
-  const agents = [
-    { name: 'Sentinel', task: 'Realtime scoring', load: '71%' },
-    { name: 'Cipher', task: 'Policy diff', load: '48%' },
-    { name: 'Vector', task: 'Route planner', load: '88%' },
-  ]
-
+function CyberNeonDemo() {
   return (
     <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
-      <div className="relative overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#000000] text-white">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_14%,rgba(0,240,255,0.26),transparent_30%),radial-gradient(circle_at_78%_8%,rgba(155,92,255,0.28),transparent_28%),radial-gradient(circle_at_82%_76%,rgba(255,0,217,0.18),transparent_32%)]" />
-        <div className="pointer-events-none absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(255,255,255,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:48px_48px]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#00f0ff] to-transparent" />
-
-        <div className="relative border-b border-[#18212d] bg-black/70 px-5 py-4 md:px-7">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center rounded-full border border-[#00f0ff]/60 bg-[#00181c] font-mono text-xs font-semibold text-[#bffbff]">
-                VX
-              </span>
-              <div>
-                <p className="font-display text-sm font-semibold leading-none text-white">Vortex Signal Lab</p>
-                <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-white/50">AI risk routing console</p>
-              </div>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2">
-              {['Live feed', 'Agents', 'Routes', 'Audit'].map((item, index) => (
-                <button
-                  key={item}
-                  type="button"
-                  className={`rounded-full border px-3.5 py-2 font-mono text-[11px] uppercase tracking-[0.12em] transition-all duration-200 ease-soft-spring ${
-                    index === 0
-                      ? 'border-[#00f0ff] bg-[#00f0ff] text-black'
-                      : 'border-white/10 bg-white/[0.04] text-white/60 hover:border-[#00f0ff]/60 hover:text-white'
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-
-            <button
-              type="button"
-              className="rounded-full border border-[#00f0ff]/70 bg-[#00f0ff] px-4 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-black transition-transform duration-200 ease-soft-spring hover:-translate-y-0.5 active:scale-[0.98]"
-            >
-              Run scan
-            </button>
+      {/* Dark browser chrome */}
+      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#000000] shadow-[0_32px_90px_rgba(155,92,255,0.22)]">
+        {/* Chrome bar */}
+        <div className="flex items-center gap-3 border-b border-[rgba(174,133,255,0.18)] bg-[#090911] px-4 py-3">
+          <div className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
           </div>
+          <div className="flex flex-1 items-center gap-2 rounded-lg border border-[rgba(174,133,255,0.2)] bg-[rgba(255,255,255,0.04)] px-3 py-1.5">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#a9a3c7]">
+              <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            <span className="font-mono text-[11px] text-[#a9a3c7]">localhost:5173/skills/cyber-neon/landing</span>
+          </div>
+          <Link
+            to="/skills/cyber-neon/landing"
+            className="flex items-center gap-1.5 rounded-full bg-[#9b5cff] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_0_12px_rgba(155,92,255,0.45)] transition-all hover:shadow-[0_0_22px_rgba(155,92,255,0.65)]"
+          >
+            Ouvrir ↗
+          </Link>
         </div>
 
-        <div className="relative grid gap-5 p-5 md:p-7 xl:grid-cols-[0.9fr_1.35fr]">
-          <div className="flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[1.6rem] border border-[#1b2733] bg-[#050508]/95 p-6 md:p-8">
-            <div>
-              <span className="inline-flex rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[#9ffaff]">
-                {skill.slug} demo
-              </span>
-              <h2 className="mt-6 max-w-xl font-display text-5xl font-semibold leading-[0.88] tracking-tight md:text-7xl">
-                Threat signals routed at light speed.
-              </h2>
-              <p className="mt-6 max-w-md text-base leading-7 text-white/70">
-                A luminous operations surface for AI teams that need fast triage, readable alerts, and clear action states under pressure.
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
-              {[
-                ['12.4ms', 'Median route'],
-                ['6', 'Agents active'],
-                ['99.1%', 'Signal uptime'],
-              ].map(([value, label]) => (
-                <div key={label} className="rounded-[1.1rem] border border-white/10 bg-white/[0.035] p-4">
-                  <p className="font-mono text-2xl font-semibold tracking-tight text-[#00f0ff]">{value}</p>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-white/50">{label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[1.6rem] border border-[#1b2733] bg-[#070910]/95 p-4 md:p-5">
-            <div className="mb-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="font-display text-2xl font-semibold tracking-tight text-white">Signal intercept</p>
-                <p className="mt-1 text-sm text-white/50">Live model decisions with readable escalation states.</p>
-              </div>
-              <div className="flex items-center gap-2 rounded-full border border-[#263343] bg-black/60 p-1">
-                <span className="rounded-full bg-[#0b2c22] px-3 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-[#34d59a]">Stable</span>
-                <span className="px-3 py-1.5 font-mono text-[11px] text-white/50">3 anomalies</span>
-              </div>
-            </div>
-
-            <div className="grid gap-3">
-              {signalRows.map((row) => (
-                <div key={row.source} className="grid gap-3 rounded-[1.1rem] border border-white/10 bg-black/40 p-4 transition-colors duration-200 ease-soft-spring hover:border-[#00f0ff]/40 md:grid-cols-[1.1fr_0.95fr_0.65fr_0.7fr] md:items-center">
-                  <div>
-                    <p className="font-display text-sm font-semibold text-white">{row.source}</p>
-                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.12em] text-white/40">stream verified</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-white/50">Detected signal</p>
-                    <p className="mt-1 text-sm font-semibold text-white">{row.signal}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-white/50">Confidence</p>
-                    <p className="mt-1 font-mono text-sm font-semibold text-[#00f0ff]">{row.confidence}</p>
-                  </div>
-                  <div className="flex items-center justify-between gap-3 md:justify-end">
-                    <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.1em] text-white/70">{row.state}</span>
-                    <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: row.color }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
-              {agents.map((agent) => (
-                <div key={agent.name} className="rounded-[1rem] border border-white/10 bg-white/[0.035] p-4">
-                  <div className="mb-3 flex items-center justify-between">
-                    <p className="font-display text-sm font-semibold text-white">{agent.name}</p>
-                    <span className="font-mono text-[11px] text-[#00f0ff]">{agent.load}</span>
-                  </div>
-                  <p className="text-xs text-white/50">{agent.task}</p>
-                  <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white/10">
-                    <div className="h-full rounded-full bg-[#00f0ff]" style={{ width: agent.load }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="relative grid gap-5 px-5 pb-5 md:px-7 md:pb-7 xl:grid-cols-[0.85fr_1.1fr_1fr]">
-          <div className="rounded-[1.25rem] border border-[#1b2733] bg-[#050508] p-5">
-            <p className="font-display text-lg font-semibold tracking-tight text-white">Semantic neon roles</p>
-            <div className="mt-5 grid gap-3">
-              {[
-                ['Action', 'Aqua is for active routes and primary commands.', '#00f0ff'],
-                ['Warning', 'Yellow marks attention without becoming a CTA.', '#fff500'],
-                ['Critical', 'Pink is escalation, never body copy.', '#ff4fd8'],
-              ].map(([label, copy, color]) => (
-                <div key={label} className="flex gap-3 rounded-[0.9rem] border border-white/10 bg-white/[0.035] p-3">
-                  <span className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: color }} />
-                  <div>
-                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-white">{label}</p>
-                    <p className="mt-1 text-xs leading-5 text-white/50">{copy}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[1.25rem] border border-[#1b2733] bg-[#050508] p-5">
-            <div className="mb-5 flex items-center justify-between">
-              <div>
-                <p className="font-display text-lg font-semibold tracking-tight text-white">Route sequence</p>
-                <p className="mt-1 text-sm text-white/50">Glow marks the current decision edge.</p>
-              </div>
-              <span className="rounded-full border border-[#00f0ff]/30 bg-[#00f0ff]/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-[#9ffaff]">Live</span>
-            </div>
-            <div className="grid gap-2">
-              {['Capture event', 'Score anomaly', 'Assign agent', 'Write audit'].map((step, index) => (
-                <div key={step} className="flex items-center gap-3 rounded-[0.9rem] bg-black/50 px-3 py-3 ring-1 ring-white/10">
-                  <span className={`grid h-7 w-7 place-items-center rounded-full font-mono text-[11px] ${index === 1 ? 'bg-[#00f0ff] text-black' : 'bg-white/[0.06] text-white/50'}`}>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-sm font-medium text-white/80">{step}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-[1.25rem] border border-[#1b2733] bg-[#050508] p-5">
-            <p className="font-display text-lg font-semibold tracking-tight text-white">Interface states</p>
-            <div className="mt-5 grid gap-2">
-              {[
-                ['Ready', 'All agents responsive', '#34d59a'],
-                ['Empty', 'No unresolved scans', '#8b93a7'],
-                ['Error', 'Route cache stale', '#ff4fd8'],
-              ].map(([state, label, color]) => (
-                <div key={state} className="flex items-center justify-between rounded-[0.9rem] border border-white/10 bg-white/[0.035] px-3 py-2.5">
-                  <span className="text-sm font-medium text-white/70">{label}</span>
-                  <span className="rounded-full border border-white/10 bg-black px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em]" style={{ color }}>
-                    {state}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="relative border-t border-[#18212d] bg-black/80 px-5 py-4 md:px-7">
-          <div className="flex flex-col gap-3 text-sm text-white/50 md:flex-row md:items-center md:justify-between">
-            <span>Surface contract: pure black, near-black panels, aqua action glow, magenta only for escalation.</span>
-            <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#00f0ff]">{skill.slug} / full-potential demo</span>
-          </div>
+        {/* iframe preview */}
+        <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
+          <iframe
+            src="/skills/cyber-neon/landing"
+            title="NIGHTGRID Landing Page Preview"
+            className="absolute left-0 top-0 origin-top-left"
+            style={{
+              width: '1440px',
+              height: '900px',
+              transform: 'scale(var(--ng-scale, 0.72))',
+              transformOrigin: 'top left',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+            onLoad={(e) => {
+              const container = e.target.parentElement
+              const scale = container.offsetWidth / 1440
+              e.target.style.setProperty('--ng-scale', scale)
+              e.target.style.transform = `scale(${scale})`
+              container.style.height = `${900 * scale}px`
+            }}
+          />
         </div>
       </div>
     </div>
