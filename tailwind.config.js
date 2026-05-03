@@ -7,6 +7,9 @@ export default {
         sans: ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
         display: ['Geist', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        'editorial': ['"Playfair Display"', 'Georgia', 'serif'],
+        'ui': ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         ink: {
