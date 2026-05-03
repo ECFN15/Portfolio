@@ -17,6 +17,8 @@ import TypeFestVitrine from './pages/TypeFestVitrine.jsx'
 import TypeFestArticle from './pages/TypeFestArticle.jsx'
 import SnackPilotVitrine from './pages/SnackPilotVitrine.jsx'
 import SnackPilotBuilder from './pages/SnackPilotBuilder.jsx'
+import NovahausVitrine from './pages/NovahausVitrine.jsx'
+import NovahausModule from './pages/NovahausModule.jsx'
 import Navbar from './components/Navbar.jsx'
 import useLenis from './hooks/useLenis.js'
 
@@ -36,7 +38,7 @@ function ScrollToTop() {
 export default function App() {
   useLenis()
   const location = useLocation()
-  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter' || location.pathname.startsWith('/skills/editorial-type') || location.pathname.startsWith('/skills/experimental-type') || location.pathname.startsWith('/snackpilot')
+  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter' || location.pathname.startsWith('/skills/editorial-type') || location.pathname.startsWith('/skills/experimental-type') || location.pathname.startsWith('/skills/geometric-modern') || location.pathname.startsWith('/snackpilot') || location.pathname.startsWith('/novahaus')
 
   return (
     <main className="relative w-full max-w-full overflow-x-hidden bg-ink-950 text-bone-50 grain-overlay">
@@ -57,6 +59,10 @@ export default function App() {
         <Route path="/skills/editorial-type/article" element={<RevueArticle />} />
         <Route path="/skills/experimental-type/vitrine" element={<TypeFestVitrine />} />
         <Route path="/skills/experimental-type/article" element={<TypeFestArticle />} />
+        <Route path="/skills/geometric-modern/vitrine" element={<NovahausVitrine />} />
+        <Route path="/skills/geometric-modern/module-n24" element={<NovahausModule />} />
+        <Route path="/novahaus" element={<NovahausVitrine />} />
+        <Route path="/novahaus/module-n24" element={<NovahausModule />} />
         <Route path="/snackpilot" element={<SnackPilotVitrine />} />
         <Route path="/snackpilot/lunchbox-builder" element={<SnackPilotBuilder />} />
         <Route path="/skills/:slug" element={<SkillDemoPage />} />

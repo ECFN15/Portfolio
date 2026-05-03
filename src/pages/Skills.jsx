@@ -353,12 +353,34 @@ export function SkillDemoPage() {
                 </Link>
               </div>
             )}
+            {skill.slug === 'geometric-modern' && (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/novahaus"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#9fd06f] py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-[#b8e68b] active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Vitrine NOVAHAUS</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
+                <Link
+                  to="/novahaus/module-n24"
+                  className="group inline-flex items-center gap-2 rounded-full border border-[#9fd06f]/40 bg-[#9fd06f]/10 py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-[#9fd06f]/20 active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Module N-24</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="demo-reveal grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
           <SkillDemoPanel skill={skill} />
-          {!['clean-saas', 'cyber-neon', 'dark-ui', 'editorial-minimal', 'editorial-type', 'experimental-type', 'expressive-brand'].includes(skill.slug) && (
+          {!['clean-saas', 'cyber-neon', 'dark-ui', 'editorial-minimal', 'editorial-type', 'experimental-type', 'expressive-brand', 'geometric-modern'].includes(skill.slug) && (
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-1.5 lg:col-span-4">
               <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink-900 p-6 inset-highlight md:p-7">
                 <div>
@@ -406,6 +428,10 @@ function SkillDemoPanel({ skill }) {
 
   if (skill.slug === 'expressive-brand') {
     return <ExpressiveBrandDemo skill={skill} />
+  }
+
+  if (skill.slug === 'geometric-modern') {
+    return <GeometricModernDemo skill={skill} />
   }
 
   return (
@@ -846,6 +872,65 @@ function ExpressiveBrandDemo() {
               const container = e.target.parentElement
               const scale = container.offsetWidth / 1440
               e.target.style.setProperty('--snack-scale', scale)
+              e.target.style.transform = `scale(${scale})`
+              container.style.height = `${900 * scale}px`
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function GeometricModernDemo() {
+  return (
+    <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
+      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#f6f4ed] shadow-[0_32px_90px_rgba(159,208,111,0.16)]">
+        <div className="flex items-center gap-3 border-b border-[#111111]/20 bg-[#fffdf7] px-4 py-3">
+          <div className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+          </div>
+          <div className="flex flex-1 items-center gap-2 border border-[#111111]/20 bg-[#f6f4ed] px-3 py-1.5">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#625e55]">
+              <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            <span className="font-mono text-[11px] text-[#625e55]">localhost:5173/novahaus</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link
+              to="/novahaus/module-n24"
+              className="flex items-center gap-1.5 border border-[#111111]/30 bg-[#f6f4ed] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#111111] transition-colors hover:bg-[#e8e2d6]"
+            >
+              N-24
+            </Link>
+            <Link
+              to="/novahaus"
+              className="flex items-center gap-1.5 bg-[#111111] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#fffdf7] transition-colors hover:bg-[#2f4a38]"
+            >
+              Ouvrir ↗
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
+          <iframe
+            src="/novahaus"
+            title="NOVAHAUS Preview"
+            className="absolute left-0 top-0 origin-top-left"
+            style={{
+              width: '1440px',
+              height: '900px',
+              transform: 'scale(var(--novahaus-scale, 0.72))',
+              transformOrigin: 'top left',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+            onLoad={(e) => {
+              const container = e.target.parentElement
+              const scale = container.offsetWidth / 1440
+              e.target.style.setProperty('--novahaus-scale', scale)
               e.target.style.transform = `scale(${scale})`
               container.style.height = `${900 * scale}px`
             }}
