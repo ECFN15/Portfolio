@@ -13,6 +13,10 @@ import FieldworkIndex from './pages/FieldworkIndex.jsx'
 import FieldworkChapter from './pages/FieldworkChapter.jsx'
 import RevueVitrine from './pages/RevueVitrine.jsx'
 import RevueArticle from './pages/RevueArticle.jsx'
+import TypeFestVitrine from './pages/TypeFestVitrine.jsx'
+import TypeFestArticle from './pages/TypeFestArticle.jsx'
+import SnackPilotVitrine from './pages/SnackPilotVitrine.jsx'
+import SnackPilotBuilder from './pages/SnackPilotBuilder.jsx'
 import Navbar from './components/Navbar.jsx'
 import useLenis from './hooks/useLenis.js'
 
@@ -32,7 +36,7 @@ function ScrollToTop() {
 export default function App() {
   useLenis()
   const location = useLocation()
-  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter' || location.pathname.startsWith('/skills/editorial-type')
+  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter' || location.pathname.startsWith('/skills/editorial-type') || location.pathname.startsWith('/skills/experimental-type') || location.pathname.startsWith('/snackpilot')
 
   return (
     <main className="relative w-full max-w-full overflow-x-hidden bg-ink-950 text-bone-50 grain-overlay">
@@ -51,6 +55,10 @@ export default function App() {
         <Route path="/skills/editorial-minimal/chapter" element={<FieldworkChapter />} />
         <Route path="/skills/editorial-type/vitrine" element={<RevueVitrine />} />
         <Route path="/skills/editorial-type/article" element={<RevueArticle />} />
+        <Route path="/skills/experimental-type/vitrine" element={<TypeFestVitrine />} />
+        <Route path="/skills/experimental-type/article" element={<TypeFestArticle />} />
+        <Route path="/snackpilot" element={<SnackPilotVitrine />} />
+        <Route path="/snackpilot/lunchbox-builder" element={<SnackPilotBuilder />} />
         <Route path="/skills/:slug" element={<SkillDemoPage />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
       </Routes>
