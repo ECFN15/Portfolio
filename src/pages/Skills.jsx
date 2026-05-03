@@ -232,6 +232,15 @@ export function SkillDemoPage() {
                     <ArrowUpRight />
                   </span>
                 </Link>
+                <Link
+                  to="/skills/cyber-neon/map"
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Live Map</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
               </div>
             )}
           </div>

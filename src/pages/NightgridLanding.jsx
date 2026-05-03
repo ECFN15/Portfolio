@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 // ── Violet Control Room token system ─────────────────────────────────────────
 const C = {
   canvas:       '#000000',
@@ -263,6 +265,7 @@ function NgNav() {
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 function NgHero() {
+  const navigate = useNavigate()
   return (
     <section id="ng-overview" style={{ padding: 'clamp(60px,8vw,100px) 24px 56px', maxWidth: 1280, margin: '0 auto' }}>
       <div style={{ display: 'grid', gap: 48, alignItems: 'center' }} className="lg:grid-cols-[1.1fr_0.9fr]">
@@ -297,7 +300,7 @@ function NgHero() {
             }}>
               Launch Preview
             </button>
-            <button className="ng-ghost ng-mono" style={{
+            <button className="ng-ghost ng-mono" onClick={() => navigate('/skills/cyber-neon/map')} style={{
               padding: '13px 28px', borderRadius: 999,
               background: 'transparent', color: C.text,
               border: `1px solid ${C.line}`,
