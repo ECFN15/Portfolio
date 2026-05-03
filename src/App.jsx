@@ -11,6 +11,8 @@ import CalderaIncident from './pages/CalderaIncident.jsx'
 import CalderaTriage from './pages/CalderaTriage.jsx'
 import FieldworkIndex from './pages/FieldworkIndex.jsx'
 import FieldworkChapter from './pages/FieldworkChapter.jsx'
+import RevueVitrine from './pages/RevueVitrine.jsx'
+import RevueArticle from './pages/RevueArticle.jsx'
 import Navbar from './components/Navbar.jsx'
 import useLenis from './hooks/useLenis.js'
 
@@ -30,7 +32,7 @@ function ScrollToTop() {
 export default function App() {
   useLenis()
   const location = useLocation()
-  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter'
+  const hideNav = location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter' || location.pathname.startsWith('/skills/editorial-type')
 
   return (
     <main className="relative w-full max-w-full overflow-x-hidden bg-ink-950 text-bone-50 grain-overlay">
@@ -47,6 +49,8 @@ export default function App() {
         <Route path="/skills/dark-ui/triage" element={<CalderaTriage />} />
         <Route path="/skills/editorial-minimal/index" element={<FieldworkIndex />} />
         <Route path="/skills/editorial-minimal/chapter" element={<FieldworkChapter />} />
+        <Route path="/skills/editorial-type/vitrine" element={<RevueVitrine />} />
+        <Route path="/skills/editorial-type/article" element={<RevueArticle />} />
         <Route path="/skills/:slug" element={<SkillDemoPage />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
       </Routes>

@@ -287,12 +287,34 @@ export function SkillDemoPage() {
                 </Link>
               </div>
             )}
+            {skill.slug === 'editorial-type' && (
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Link
+                  to="/skills/editorial-type/vitrine"
+                  className="group inline-flex items-center gap-2 rounded-full bg-bone-50 py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-white active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">La Revue</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
+                <Link
+                  to="/skills/editorial-type/article"
+                  className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
+                >
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Fiche archive</span>
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight />
+                  </span>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="demo-reveal grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
           <SkillDemoPanel skill={skill} />
-          {!['clean-saas', 'cyber-neon', 'dark-ui', 'editorial-minimal'].includes(skill.slug) && (
+          {!['clean-saas', 'cyber-neon', 'dark-ui', 'editorial-minimal', 'editorial-type'].includes(skill.slug) && (
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-1.5 lg:col-span-4">
               <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink-900 p-6 inset-highlight md:p-7">
                 <div>
@@ -328,6 +350,10 @@ function SkillDemoPanel({ skill }) {
 
   if (skill.slug === 'editorial-minimal') {
     return <EditorialMinimalDemo skill={skill} />
+  }
+
+  if (skill.slug === 'editorial-type') {
+    return <EditorialTypeDemo skill={skill} />
   }
 
   return (
@@ -611,6 +637,60 @@ function EditorialMinimalDemo() {
   )
 }
 
+function EditorialTypeDemo() {
+  return (
+    <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
+      {/* Light browser chrome for editorial */}
+      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#ffffff] shadow-[0_32px_90px_rgba(0,0,0,0.15)]">
+        {/* Chrome bar */}
+        <div className="flex items-center gap-3 border-b border-[#e5e5e5] bg-[#ffffff] px-4 py-3">
+          <div className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+          </div>
+          <div className="flex flex-1 items-center gap-2 rounded-lg border border-[#e5e5e5] bg-[#fafafa] px-3 py-1.5">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#87867f]">
+              <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            <span className="font-mono text-[11px] text-[#87867f]">localhost:5173/skills/editorial-type/article</span>
+          </div>
+          <Link
+            to="/skills/editorial-type/article"
+            className="flex items-center gap-1.5 rounded-full bg-[#000000] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#ffffff] shadow-[0_0_12px_rgba(0,0,0,0.15)] transition-all hover:shadow-[0_0_22px_rgba(0,0,0,0.25)]"
+          >
+            Ouvrir ↗
+          </Link>
+        </div>
+
+        {/* iframe preview */}
+        <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
+          <iframe
+            src="/skills/editorial-type/article"
+            title="La Revue des Lieux Oubliés - Fiche Archive"
+            className="absolute left-0 top-0 origin-top-left"
+            style={{
+              width: '1440px',
+              height: '900px',
+              transform: 'scale(var(--editorial-type-scale, 0.72))',
+              transformOrigin: 'top left',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+            onLoad={(e) => {
+              const container = e.target.parentElement
+              const scale = container.offsetWidth / 1440
+              e.target.style.setProperty('--editorial-type-scale', scale)
+              e.target.style.transform = `scale(${scale})`
+              container.style.height = `${900 * scale}px`
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function SkillCard({ skill, index, span, ratio, selected }) {
   return (
     <Link
@@ -631,10 +711,10 @@ function SkillCard({ skill, index, span, ratio, selected }) {
           <div className="relative flex w-full flex-col justify-between">
             <div className="flex items-start justify-between gap-5">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone-50/40">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-bone-50/40 truncate pr-2">
                   {String(index + 1).padStart(2, '0')} - {skill.family}
                 </span>
-                <h3 className="mt-5 font-display text-4xl font-medium leading-[0.92] tracking-tight text-bone-50 md:text-5xl">
+                <h3 className="mt-5 font-display text-4xl font-medium leading-[0.92] tracking-tight text-bone-50 md:text-5xl hyphens-auto break-words">
                   {skill.title}
                 </h3>
               </div>

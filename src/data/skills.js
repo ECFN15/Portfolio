@@ -24,14 +24,6 @@ export const skills = [
     accent: '#6aa7ff',
   },
   {
-    slug: 'design-taste-frontend',
-    title: 'Design Taste Frontend',
-    family: 'UX systemique',
-    tone: 'Architecture, metrics, polish',
-    description: 'Direction UI senior pour eviter les biais generiques et produire une interface mieux composee.',
-    accent: '#f3cf75',
-  },
-  {
     slug: 'editorial-minimal',
     title: 'Editorial Minimal',
     family: 'Editorial calme',
