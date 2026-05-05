@@ -7,7 +7,8 @@ import BTPSaasVitrine from './pages/BTPSaasVitrine.jsx'
 import BTPDashboard from './pages/BTPDashboard.jsx'
 import NightgridLanding from './pages/NightgridLanding.jsx'
 import NightgridMap from './pages/NightgridMap.jsx'
-import EditorialMinimalExperience from './pages/EditorialMinimalExperience.jsx'
+import FieldworkIndex from './pages/FieldworkIndex.jsx'
+import FieldworkChapter from './pages/FieldworkChapter.jsx'
 import EditorialTypeExperience from './pages/EditorialTypeExperience.jsx'
 import ExperimentalTypeExperience from './pages/ExperimentalTypeExperience.jsx'
 import SnackPilotVitrine from './pages/SnackPilotVitrine.jsx'
@@ -154,10 +155,10 @@ export default function App() {
         <Route path="/skills/dark-ui/dashboard" element={<DarkUiExperience />} />
         <Route path="/skills/dark-ui/incident" element={<DarkUiExperience />} />
         <Route path="/skills/dark-ui/triage" element={<DarkUiExperience />} />
-        <Route path="/skills/editorial-minimal/vitrine" element={<EditorialMinimalExperience />} />
-        <Route path="/skills/editorial-minimal/dashboard" element={<EditorialMinimalExperience />} />
-        <Route path="/skills/editorial-minimal/index" element={<EditorialMinimalExperience />} />
-        <Route path="/skills/editorial-minimal/chapter" element={<EditorialMinimalExperience />} />
+        <Route path="/skills/editorial-minimal/vitrine" element={<FieldworkIndex />} />
+        <Route path="/skills/editorial-minimal/dashboard" element={<FieldworkChapter />} />
+        <Route path="/skills/editorial-minimal/index" element={<FieldworkIndex />} />
+        <Route path="/skills/editorial-minimal/chapter" element={<FieldworkChapter />} />
         <Route path="/skills/editorial-type/dashboard" element={<EditorialTypeExperience />} />
         <Route path="/skills/editorial-type/vitrine" element={<EditorialTypeExperience />} />
         <Route path="/skills/editorial-type/article" element={<EditorialTypeExperience />} />
