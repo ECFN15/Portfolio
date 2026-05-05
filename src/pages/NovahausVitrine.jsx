@@ -394,11 +394,7 @@ export const NOVAHAUS_CSS = `
 .nh-signature-plan {
   min-height: 520px;
   border: 1px solid var(--nh-line);
-  background:
-    linear-gradient(to right, rgba(17,17,17,.16) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17,17,17,.16) 1px, transparent 1px),
-    var(--nh-surface-muted);
-  background-size: 48px 48px;
+  background: var(--nh-surface-muted);
   padding: var(--nh-s-5);
   display: grid;
   grid-template-columns: 1.2fr 4.8fr 2fr;
@@ -615,7 +611,7 @@ const modules = [
     usage: 'Studio invite, bureau premium, micro-logement temporaire.',
     surface: '24 m2',
     promise: 'Le module signature : assez grand pour vivre, assez compact pour rester simple.',
-    link: '/novahaus/module-n24',
+    link: '/skills/geometric-modern/dashboard',
   },
   {
     name: 'Module N-38',
@@ -657,24 +653,24 @@ export default function NovahausVitrine() {
       <style dangerouslySetInnerHTML={{ __html: NOVAHAUS_CSS }} />
 
       <nav className="nh-nav">
-        <Link to="/novahaus" className="nh-mark">NOVAHAUS</Link>
+        <Link to="/skills/geometric-modern/vitrine" className="nh-mark">NOVAHAUS</Link>
         <div className="nh-nav-links" aria-label="Navigation NOVAHAUS">
           <a href="#modules">Modules</a>
           <a href="#usages">Usages</a>
           <a href="#process">Process</a>
           <a href="#realisations">Realisations</a>
         </div>
-        <Link to="/novahaus/module-n24" className="nh-button">Module N-24</Link>
+        <Link to="/skills/geometric-modern/dashboard" className="nh-button">Module N-24</Link>
       </nav>
 
       <header className="nh-shell nh-hero">
         <div className="nh-hero-copy">
           <span className="nh-coordinate">A01 / Grille habitable</span>
-          <h1>Des mètres carrés qui tombent juste.</h1>
+          <h1>Des metres carres qui tombent juste.</h1>
           <p className="nh-lead">Studios de jardin, bureaux exterieurs et modules habitables dessines autour de la lumiere, des usages et des dimensions reelles.</p>
           <p className="nh-coordinate" style={{ marginTop: 'var(--nh-s-5)' }}>Chaque module part d une grille. Chaque grille devient un espace.</p>
           <div className="nh-actions">
-            <Link to="/novahaus/module-n24" className="nh-button">Explorer le Module N-24</Link>
+            <Link to="/skills/geometric-modern/dashboard" className="nh-button">Explorer le Module N-24</Link>
             <a href="#usages" className="nh-button secondary">Voir les usages</a>
           </div>
         </div>
@@ -703,7 +699,7 @@ export default function NovahausVitrine() {
           <div className="nh-problem-grid">
             <div className="nh-problem-text">
               <span className="nh-coordinate">B02 / Probleme client</span>
-              <h2 className="nh-display-title" style={{ fontSize: 'clamp(36px, 5vw, 68px)' }}>Ajouter une pièce ne devrait pas ajouter du flou.</h2>
+              <h2 className="nh-display-title" style={{ fontSize: 'clamp(36px, 5vw, 68px)' }}>Ajouter une piece ne devrait pas ajouter du flou.</h2>
               <p>Quand un client cherche a creer un bureau de jardin ou une extension legere, le probleme n est pas seulement le prix. C est l incertitude : dimensions, demarches, isolation, usage reel, emplacement, delais, options, luminosite, raccordements.</p>
               <p>NOVAHAUS simplifie le projet en decoupant chaque decision en modules clairs : surface, usage, orientation, ouverture, rangement, finition et niveau d equipement.</p>
             </div>
@@ -774,7 +770,7 @@ export default function NovahausVitrine() {
                   <div key={spec}>{spec}</div>
                 ))}
               </div>
-              <Link to="/novahaus/module-n24" className="nh-button" style={{ background: 'var(--nh-surface)', color: 'var(--nh-ink)' }}>Ouvrir la fiche detaillee du Module N-24</Link>
+              <Link to="/skills/geometric-modern/dashboard" className="nh-button" style={{ background: 'var(--nh-surface)', color: 'var(--nh-ink)' }}>Ouvrir la fiche detaillee du Module N-24</Link>
             </div>
           </div>
         </section>
@@ -842,11 +838,11 @@ export default function NovahausVitrine() {
           <div className="nh-cta">
             <div>
               <span className="nh-coordinate">I09 / Module le plus demande</span>
-              <h2 className="nh-display-title" style={{ fontSize: 'clamp(38px, 6vw, 76px)' }}>Voir le module le plus demandé</h2>
+              <h2 className="nh-display-title" style={{ fontSize: 'clamp(38px, 6vw, 76px)' }}>Voir le module le plus demande</h2>
               <p className="nh-lead" style={{ color: 'rgba(17,17,17,.78)' }}>Le Module N-24 est la meilleure demo du systeme NOVAHAUS : plan, dimensions, options, usages, estimation, variantes et galerie de configuration.</p>
             </div>
             <div className="nh-actions">
-              <Link to="/novahaus/module-n24" className="nh-button">Explorer le Module N-24</Link>
+              <Link to="/skills/geometric-modern/dashboard" className="nh-button">Explorer le Module N-24</Link>
               <a href="#modules" className="nh-button secondary">Comparer les modules</a>
             </div>
           </div>
@@ -875,18 +871,18 @@ export function Footer() {
     <footer className="nh-footer">
       <div className="nh-shell nh-footer-grid">
         <div>
-          <Link to="/novahaus" className="nh-mark">NOVAHAUS</Link>
+          <Link to="/skills/geometric-modern/vitrine" className="nh-mark">NOVAHAUS</Link>
           <p className="nh-lead" style={{ fontSize: 15 }}>Modules d habitation compacts, precis et personnalisables.</p>
         </div>
         <div>
           <span className="nh-kicker">Pages</span>
-          <p><Link to="/novahaus">Vitrine</Link></p>
-          <p><Link to="/novahaus/module-n24">Module N-24</Link></p>
+          <p><Link to="/skills/geometric-modern/vitrine">Vitrine</Link></p>
+          <p><Link to="/skills/geometric-modern/dashboard">Module N-24</Link></p>
         </div>
         <div>
           <span className="nh-kicker">Explorer</span>
-          <p><a href="/novahaus#modules">Modules</a></p>
-          <p><a href="/novahaus#realisations">Realisations</a></p>
+          <p><a href="/skills/geometric-modern/vitrine#modules">Modules</a></p>
+          <p><a href="/skills/geometric-modern/vitrine#realisations">Realisations</a></p>
         </div>
         <div>
           <span className="nh-kicker">Systeme</span>

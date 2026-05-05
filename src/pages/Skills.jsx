@@ -1,9 +1,10 @@
 ﻿import { useRef } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { findSkill, skills } from '../data/skills.js'
+import { getSkillExperience, hasSkillExperience } from '../data/skillExperiences.js'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -18,7 +19,7 @@ const layout = [
 
 export default function Skills() {
   const root = useRef(null)
-  const overviewSkill = findSkill('high-end-visual-design') ?? skills[0]
+  const overviewSkill = findSkill('gpt-taste') ?? skills[0]
 
   useGSAP(
     () => {
@@ -135,7 +136,18 @@ export default function Skills() {
 export function SkillDemoPage() {
   const root = useRef(null)
   const { slug } = useParams()
+  const location = useLocation()
+  const navigate = useNavigate()
   const skill = findSkill(slug)
+
+  const goBackToSkills = () => {
+    if (location.state?.fromSkills) {
+      navigate(-1)
+      return
+    }
+
+    navigate('/skills')
+  }
 
   useGSAP(
     () => {
@@ -179,15 +191,16 @@ export function SkillDemoPage() {
       <div className="mx-auto max-w-7xl">
         <div className="demo-reveal mb-10 flex flex-col items-start justify-between gap-6 md:mb-12 md:flex-row md:items-end">
           <div>
-            <Link
-              to="/skills"
+            <button
+              type="button"
+              onClick={goBackToSkills}
               className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.045] py-2 pl-2 pr-4 text-bone-50 transition-all duration-500 ease-soft-spring hover:bg-white/[0.08] active:scale-[0.98]"
             >
               <span className="grid h-7 w-7 place-items-center rounded-full bg-bone-50 text-ink-950 transition-all duration-500 ease-soft-spring group-hover:-translate-x-0.5">
                 <ArrowLeft />
               </span>
               <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Retour aux skills</span>
-            </Link>
+            </button>
             <h1 className="mt-8 max-w-4xl font-display text-6xl font-medium leading-[0.88] tracking-tight text-bone-50 md:text-8xl">
               {skill.title}
             </h1>
@@ -246,16 +259,16 @@ export function SkillDemoPage() {
             {skill.slug === 'dark-ui' && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Link
-                  to="/skills/dark-ui/triage"
+                  to="/skills/dark-ui/vitrine"
                   className="group inline-flex items-center gap-2 rounded-full bg-bone-50 py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-white active:scale-[0.98]"
                 >
-                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">AI Triage Panel</span>
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Voir la vitrine</span>
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
                     <ArrowUpRight />
                   </span>
                 </Link>
                 <Link
-                  to="/skills/dark-ui/incident"
+                  to="/skills/dark-ui/dashboard"
                   className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
                 >
                   <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Incident Workspace</span>
@@ -268,19 +281,19 @@ export function SkillDemoPage() {
             {skill.slug === 'editorial-minimal' && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Link
-                  to="/skills/editorial-minimal/index"
+                  to="/skills/editorial-minimal/vitrine"
                   className="group inline-flex items-center gap-2 rounded-full bg-bone-50 py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-white active:scale-[0.98]"
                 >
-                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">The Quiet City Index</span>
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Voir la vitrine</span>
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
                     <ArrowUpRight />
                   </span>
                 </Link>
                 <Link
-                  to="/skills/editorial-minimal/chapter"
+                  to="/skills/editorial-minimal/dashboard"
                   className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
                 >
-                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Read Chapter</span>
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Reading Desk</span>
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight />
                   </span>
@@ -299,10 +312,10 @@ export function SkillDemoPage() {
                   </span>
                 </Link>
                 <Link
-                  to="/skills/editorial-type/article"
+                  to="/skills/editorial-type/dashboard"
                   className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
                 >
-                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Fiche archive</span>
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Issue Desk</span>
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight />
                   </span>
@@ -321,10 +334,10 @@ export function SkillDemoPage() {
                   </span>
                 </Link>
                 <Link
-                  to="/skills/experimental-type/article"
+                  to="/skills/experimental-type/dashboard"
                   className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
                 >
-                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Labo</span>
+                  <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Specimen Lab</span>
                   <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight />
                   </span>
@@ -334,7 +347,7 @@ export function SkillDemoPage() {
             {skill.slug === 'expressive-brand' && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Link
-                  to="/snackpilot"
+                  to="/skills/expressive-brand/vitrine"
                   className="group inline-flex items-center gap-2 rounded-full bg-[#ff8d4d] py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-[#ffa06b] active:scale-[0.98]"
                 >
                   <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Vitrine SnackPilot</span>
@@ -343,7 +356,7 @@ export function SkillDemoPage() {
                   </span>
                 </Link>
                 <Link
-                  to="/snackpilot/lunchbox-builder"
+                  to="/skills/expressive-brand/dashboard"
                   className="group inline-flex items-center gap-2 rounded-full border border-[#ff8d4d]/40 bg-[#ff8d4d]/10 py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-[#ff8d4d]/20 active:scale-[0.98]"
                 >
                   <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Lunchbox Builder</span>
@@ -356,7 +369,7 @@ export function SkillDemoPage() {
             {skill.slug === 'geometric-modern' && (
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Link
-                  to="/novahaus"
+                  to="/skills/geometric-modern/vitrine"
                   className="group inline-flex items-center gap-2 rounded-full bg-[#9fd06f] py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:bg-[#b8e68b] active:scale-[0.98]"
                 >
                   <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Vitrine NOVAHAUS</span>
@@ -365,7 +378,7 @@ export function SkillDemoPage() {
                   </span>
                 </Link>
                 <Link
-                  to="/novahaus/module-n24"
+                  to="/skills/geometric-modern/dashboard"
                   className="group inline-flex items-center gap-2 rounded-full border border-[#9fd06f]/40 bg-[#9fd06f]/10 py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-[#9fd06f]/20 active:scale-[0.98]"
                 >
                   <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">Module N-24</span>
@@ -375,12 +388,15 @@ export function SkillDemoPage() {
                 </Link>
               </div>
             )}
+            {hasSkillExperience(skill.slug) && (
+              <ExperienceActions skill={skill} />
+            )}
           </div>
         </div>
 
         <div className="demo-reveal grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
           <SkillDemoPanel skill={skill} />
-          {!['clean-saas', 'cyber-neon', 'dark-ui', 'editorial-minimal', 'editorial-type', 'experimental-type', 'expressive-brand', 'geometric-modern'].includes(skill.slug) && (
+          {!['clean-saas', 'cyber-neon', 'dark-ui', 'editorial-minimal', 'editorial-type', 'experimental-type', 'expressive-brand', 'geometric-modern'].includes(skill.slug) && !hasSkillExperience(skill.slug) && (
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-1.5 lg:col-span-4">
               <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink-900 p-6 inset-highlight md:p-7">
                 <div>
@@ -432,6 +448,10 @@ function SkillDemoPanel({ skill }) {
 
   if (skill.slug === 'geometric-modern') {
     return <GeometricModernDemo skill={skill} />
+  }
+
+  if (hasSkillExperience(skill.slug)) {
+    return <GenericExperienceDemo skill={skill} />
   }
 
   return (
@@ -493,6 +513,101 @@ function SkillDemoPanel({ skill }) {
   )
 }
 
+function ExperienceActions({ skill }) {
+  const experience = getSkillExperience(skill.slug)
+
+  return (
+    <div className="mt-6 flex flex-wrap items-center gap-3">
+      <Link
+        to={`/skills/${skill.slug}/vitrine`}
+        className="group inline-flex items-center gap-2 rounded-full py-2.5 pl-5 pr-1.5 text-ink-950 transition-all duration-700 ease-soft-spring hover:brightness-110 active:scale-[0.98]"
+        style={{ backgroundColor: skill.accent }}
+      >
+        <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">{experience.vitrineLabel}</span>
+        <span className="grid h-7 w-7 place-items-center rounded-full bg-ink-950 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+          <ArrowUpRight />
+        </span>
+      </Link>
+      <Link
+        to={`/skills/${skill.slug}/dashboard`}
+        className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/[0.07] py-2.5 pl-5 pr-1.5 text-bone-50 transition-all duration-700 ease-soft-spring hover:bg-white/[0.12] active:scale-[0.98]"
+      >
+        <span className="font-mono text-[11px] font-medium uppercase tracking-[0.18em]">{experience.dashboardLabel}</span>
+        <span className="grid h-7 w-7 place-items-center rounded-full bg-white/10 text-bone-50 transition-all duration-700 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+          <ArrowUpRight />
+        </span>
+      </Link>
+    </div>
+  )
+}
+
+function GenericExperienceDemo({ skill }) {
+  const experience = getSkillExperience(skill.slug)
+
+  return (
+    <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
+      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] shadow-[0_32px_90px_rgba(0,0,0,0.28)]" style={{ backgroundColor: experience.tokens.bg }}>
+        <div className="flex items-center gap-3 border-b px-4 py-3" style={{ borderColor: experience.tokens.line, backgroundColor: experience.tokens.surface2 }}>
+          <div className="flex items-center gap-1.5">
+            <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+            <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+            <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+          </div>
+          <div className="flex min-w-0 flex-1 items-center gap-2 rounded-lg border px-3 py-1.5" style={{ borderColor: experience.tokens.line, backgroundColor: experience.tokens.surface }}>
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0" style={{ color: experience.tokens.muted }}>
+              <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+            </svg>
+            <span className="truncate font-mono text-[11px]" style={{ color: experience.tokens.muted }}>{`localhost:5173/skills/${skill.slug}/dashboard`}</span>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <Link
+              to={`/skills/${skill.slug}/vitrine`}
+              className="hidden items-center gap-1.5 rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] transition-colors md:flex"
+              style={{ borderColor: experience.tokens.line, color: experience.tokens.muted, backgroundColor: experience.tokens.surface }}
+            >
+              Vitrine
+            </Link>
+            <Link
+              to={`/skills/${skill.slug}/dashboard`}
+              className="flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] transition-transform hover:-translate-y-0.5"
+              style={{ backgroundColor: experience.tokens.action, color: actionTextForExperience(experience) }}
+            >
+              Ouvrir -&gt;
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
+          <iframe
+            src={`/skills/${skill.slug}/dashboard`}
+            title={`${experience.brand} dashboard preview`}
+            className="absolute left-0 top-0 origin-top-left"
+            style={{
+              width: '1440px',
+              height: '900px',
+              transform: `scale(var(--${skill.slug}-scale, 0.72))`,
+              transformOrigin: 'top left',
+              border: 'none',
+              pointerEvents: 'none',
+            }}
+            onLoad={(e) => {
+              const container = e.target.parentElement
+              const scale = container.offsetWidth / 1440
+              e.target.style.setProperty(`--${skill.slug}-scale`, scale)
+              e.target.style.transform = `scale(${scale})`
+              container.style.height = `${900 * scale}px`
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function actionTextForExperience(experience) {
+  return ['highContrast', 'motion', 'pastel', 'playful', 'technicalUI'].includes(experience.style) ? '#0a0a0a' : '#ffffff'
+}
+
 function CleanSaasDemo({ skill }) {
   return (
     <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
@@ -520,16 +635,16 @@ function CleanSaasDemo({ skill }) {
               to="/skills/clean-saas/dashboard"
               className="flex items-center gap-1.5 rounded-full bg-[#615fff] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold text-white shadow-[0_4px_12px_rgba(97,95,255,0.3)] transition-colors hover:bg-[#4f39f6]"
             >
-              Ouvrir â†—
+              Ouvrir
             </Link>
           </div>
         </div>
 
-        {/* iframe preview â€” scaled to fit */}
+        {/* iframe preview scaled to fit */}
         <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
           <iframe
             src="/skills/clean-saas/dashboard"
-            title="BÃ¢tiflow Dashboard Preview"
+            title="Batiflow Dashboard Preview"
             className="absolute left-0 top-0 origin-top-left"
             style={{
               width: '1440px',
@@ -575,7 +690,7 @@ function CyberNeonDemo() {
             to="/skills/cyber-neon/map"
             className="flex items-center gap-1.5 rounded-full bg-[#9b5cff] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_0_12px_rgba(155,92,255,0.45)] transition-all hover:shadow-[0_0_22px_rgba(155,92,255,0.65)]"
           >
-            Ouvrir â†—
+            Ouvrir
           </Link>
         </div>
 
@@ -623,21 +738,21 @@ function DarkUIDemo() {
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#868f97]">
               <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
-            <span className="font-mono text-[11px] text-[#868f97]">localhost:5173/skills/dark-ui/triage</span>
+            <span className="font-mono text-[11px] text-[#868f97]">localhost:5173/skills/dark-ui/dashboard</span>
           </div>
           <Link
-            to="/skills/dark-ui/triage"
+            to="/skills/dark-ui/dashboard"
             className="flex items-center gap-1.5 rounded-full bg-[#6aa7ff] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#0a0a0b] shadow-[0_0_12px_rgba(106,167,255,0.45)] transition-all hover:shadow-[0_0_22px_rgba(106,167,255,0.65)]"
           >
-            Ouvrir â†—
+            Ouvrir
           </Link>
         </div>
 
         {/* iframe preview */}
         <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
           <iframe
-            src="/skills/dark-ui/triage"
-            title="CALDERA AI Triage Panel"
+            src="/skills/dark-ui/dashboard"
+            title="CALDERA Incident Command"
             className="absolute left-0 top-0 origin-top-left"
             style={{
               width: '1440px',
@@ -665,7 +780,7 @@ function EditorialMinimalDemo() {
   return (
     <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
       {/* Light browser chrome for editorial */}
-      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#faf9f5] shadow-[0_32px_90px_rgba(0,0,0,0.12)]">
+      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#faf9f5] shadow-none">
         {/* Chrome bar */}
         <div className="flex items-center gap-3 border-b border-[#d1cfc5] bg-[#f0eee6] px-4 py-3">
           <div className="flex items-center gap-1.5">
@@ -677,21 +792,21 @@ function EditorialMinimalDemo() {
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#87867f]">
               <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
-            <span className="font-mono text-[11px] text-[#87867f]">localhost:5173/skills/editorial-minimal</span>
+            <span className="font-mono text-[11px] text-[#87867f]">localhost:5173/skills/editorial-minimal/dashboard</span>
           </div>
           <Link
-            to="/skills/editorial-minimal/index"
-            className="flex items-center gap-1.5 rounded-full bg-[#141413] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#e8e6dc] shadow-[0_0_12px_rgba(0,0,0,0.15)] transition-all hover:shadow-[0_0_22px_rgba(0,0,0,0.25)]"
+            to="/skills/editorial-minimal/dashboard"
+            className="flex items-center gap-1.5 rounded-full bg-[#141413] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#e8e6dc] transition-all hover:bg-[#3d3d3a]"
           >
-            Ouvrir â†—
+            Ouvrir
           </Link>
         </div>
 
         {/* iframe preview */}
         <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
           <iframe
-            src="/skills/editorial-minimal/chapter"
-            title="FIELDWORK â€” Rooms Without Doors"
+            src="/skills/editorial-minimal/dashboard"
+            title="FIELDWORK Reading Desk"
             className="absolute left-0 top-0 origin-top-left"
             style={{
               width: '1440px',
@@ -719,7 +834,7 @@ function EditorialTypeDemo() {
   return (
     <div className="rounded-[2.4rem] border border-white/10 bg-white/[0.045] p-1.5 lg:col-span-12">
       {/* Light browser chrome for editorial */}
-      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#ffffff] shadow-[0_32px_90px_rgba(0,0,0,0.15)]">
+      <div className="overflow-hidden rounded-[calc(2.4rem-0.375rem)] bg-[#ffffff] shadow-none">
         {/* Chrome bar */}
         <div className="flex items-center gap-3 border-b border-[#e5e5e5] bg-[#ffffff] px-4 py-3">
           <div className="flex items-center gap-1.5">
@@ -731,21 +846,21 @@ function EditorialTypeDemo() {
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#87867f]">
               <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
-            <span className="font-mono text-[11px] text-[#87867f]">localhost:5173/skills/editorial-type/article</span>
+            <span className="font-mono text-[11px] text-[#87867f]">localhost:5173/skills/editorial-type/dashboard</span>
           </div>
           <Link
-            to="/skills/editorial-type/article"
-            className="flex items-center gap-1.5 rounded-full bg-[#000000] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#ffffff] shadow-[0_0_12px_rgba(0,0,0,0.15)] transition-all hover:shadow-[0_0_22px_rgba(0,0,0,0.25)]"
+            to="/skills/editorial-type/dashboard"
+            className="flex items-center gap-1.5 rounded-full bg-[#000000] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#ffffff] transition-all hover:bg-[#272727]"
           >
-            Ouvrir â†—
+            Ouvrir
           </Link>
         </div>
 
         {/* iframe preview */}
         <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
           <iframe
-            src="/skills/editorial-type/article"
-            title="La Revue des Lieux OubliÃ©s - Fiche Archive"
+            src="/skills/editorial-type/dashboard"
+            title="La Revue Issue Desk"
             className="absolute left-0 top-0 origin-top-left"
             style={{
               width: '1440px',
@@ -784,21 +899,21 @@ function ExperimentalTypeDemo() {
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#888888]">
               <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
-            <span className="font-mono text-[11px] text-[#888888]">localhost:5173/skills/experimental-type/vitrine</span>
+            <span className="font-mono text-[11px] text-[#888888]">localhost:5173/skills/experimental-type/dashboard</span>
           </div>
           <Link
-            to="/skills/experimental-type/vitrine"
+            to="/skills/experimental-type/dashboard"
             className="flex items-center gap-1.5 rounded-full bg-[#ff4d00] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#000000] shadow-[0_0_12px_rgba(255,77,0,0.15)] transition-all hover:shadow-[0_0_22px_rgba(255,77,0,0.25)]"
           >
-            Ouvrir â†—
+            Ouvrir
           </Link>
         </div>
 
         {/* iframe preview */}
         <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
           <iframe
-            src="/skills/experimental-type/vitrine"
-            title="TYPE//FEST"
+            src="/skills/experimental-type/dashboard"
+            title="TYPE//FEST Specimen Lab"
             className="absolute left-0 top-0 origin-top-left"
             style={{
               width: '1440px',
@@ -837,28 +952,28 @@ function ExpressiveBrandDemo() {
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#ff8d4d]/60">
               <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
-            <span className="font-mono text-[11px] text-[#ff8d4d]/80">localhost:5173/snackpilot</span>
+            <span className="font-mono text-[11px] text-[#ff8d4d]/80">localhost:5173/skills/expressive-brand/dashboard</span>
           </div>
           <div className="flex items-center gap-2">
             <Link
-              to="/snackpilot/lunchbox-builder"
+              to="/skills/expressive-brand/dashboard"
               className="flex items-center gap-1.5 rounded-full border border-[#ff8d4d]/20 bg-white px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#ff8d4d] transition-colors hover:bg-[#fffdfa]"
             >
               Builder
             </Link>
             <Link
-              to="/snackpilot"
+              to="/skills/expressive-brand/vitrine"
               className="flex items-center gap-1.5 rounded-full bg-[#ff8d4d] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_4px_12px_rgba(255,141,77,0.3)] transition-colors hover:bg-[#ffa06b]"
             >
-              Ouvrir â†—
+              Ouvrir
             </Link>
           </div>
         </div>
 
         <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
           <iframe
-            src="/snackpilot"
-            title="SnackPilot Preview"
+            src="/skills/expressive-brand/dashboard"
+            title="SnackPilot Lunchbox Builder Preview"
             className="absolute left-0 top-0 origin-top-left"
             style={{
               width: '1440px',
@@ -896,28 +1011,28 @@ function GeometricModernDemo() {
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" className="shrink-0 text-[#625e55]">
               <path d="M11 11L8.2 8.2M9.5 5.5a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
             </svg>
-            <span className="font-mono text-[11px] text-[#625e55]">localhost:5173/novahaus</span>
+            <span className="font-mono text-[11px] text-[#625e55]">localhost:5173/skills/geometric-modern/dashboard</span>
           </div>
           <div className="flex items-center gap-2">
             <Link
-              to="/novahaus/module-n24"
+              to="/skills/geometric-modern/dashboard"
               className="flex items-center gap-1.5 border border-[#111111]/30 bg-[#f6f4ed] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-[#111111] transition-colors hover:bg-[#e8e2d6]"
             >
               N-24
             </Link>
             <Link
-              to="/novahaus"
+              to="/skills/geometric-modern/vitrine"
               className="flex items-center gap-1.5 bg-[#111111] px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.1em] text-[#fffdf7] transition-colors hover:bg-[#2f4a38]"
             >
-              Ouvrir ↗
+              Ouvrir
             </Link>
           </div>
         </div>
 
         <div className="relative w-full overflow-hidden" style={{ height: '68vh' }}>
           <iframe
-            src="/novahaus"
-            title="NOVAHAUS Preview"
+            src="/skills/geometric-modern/dashboard"
+            title="NOVAHAUS Module N-24 Preview"
             className="absolute left-0 top-0 origin-top-left"
             style={{
               width: '1440px',
@@ -944,6 +1059,7 @@ function SkillCard({ skill, index, span, ratio, selected }) {
   return (
     <Link
       to={`/skills/${skill.slug}`}
+      state={{ fromSkills: true }}
       className={`skill-card group col-span-1 ${span} block text-left focus:outline-none focus-visible:outline-none`}
       style={{ '--skill-accent': skill.accent }}
     >

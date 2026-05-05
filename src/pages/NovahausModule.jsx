@@ -87,11 +87,7 @@ const MODULE_CSS = `
   grid-template-rows: 1fr 90px;
   gap: var(--nh-s-3);
   border: 1px solid var(--nh-line);
-  background:
-    linear-gradient(to right, rgba(17,17,17,.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(17,17,17,.12) 1px, transparent 1px),
-    var(--nh-surface-muted);
-  background-size: 44px 44px;
+  background: var(--nh-surface-muted);
   padding: var(--nh-s-5);
 }
 
@@ -346,14 +342,14 @@ export default function NovahausModule() {
       <style dangerouslySetInnerHTML={{ __html: NOVAHAUS_CSS + MODULE_CSS }} />
 
       <nav className="nh-nav">
-        <Link to="/novahaus" className="nh-mark">NOVAHAUS / N-24</Link>
+        <Link to="/skills/geometric-modern/vitrine" className="nh-mark">NOVAHAUS / N-24</Link>
         <div className="nh-nav-links" aria-label="Navigation Module N-24">
           <a href="#plan">Plan</a>
           <a href="#configurer">Configurer</a>
           <a href="#estimation">Estimation</a>
           <a href="#comparatif">Variantes</a>
         </div>
-        <Link to="/novahaus" className="nh-button secondary">Retour à NOVAHAUS</Link>
+        <Link to="/skills/geometric-modern/vitrine" className="nh-button secondary">Retour a NOVAHAUS</Link>
       </nav>
 
       <header className="nh-shell nh-product-hero">
@@ -574,9 +570,9 @@ export default function NovahausModule() {
 
         <section className="nh-shell nh-section">
           <div className="nh-bottom-nav">
-            <Link to="/novahaus">Retour à NOVAHAUS</Link>
-            <Link to="/novahaus#modules">Comparer les modules</Link>
-            <Link to="/novahaus#realisations">Voir les realisations</Link>
+            <Link to="/skills/geometric-modern/vitrine">Retour a NOVAHAUS</Link>
+            <Link to="/skills/geometric-modern/vitrine#modules">Comparer les modules</Link>
+            <Link to="/skills/geometric-modern/vitrine#realisations">Voir les realisations</Link>
             <a href="#estimation">Demander une estimation</a>
           </div>
         </section>
