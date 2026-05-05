@@ -305,7 +305,7 @@ function MapHeader({ time }) {
     <header className="nm-header">
       {/* Back */}
       <button
-        onClick={() => navigate('/skills')}
+        onClick={() => navigate({ pathname: '/skills', hash: '#skill-cyber-neon' })}
         className="nm-mono"
         style={{
           display: 'flex', alignItems: 'center', gap: 5,

@@ -254,7 +254,6 @@ function DarkDashboard() {
                     id="du-command-input"
                     value={command}
                     onChange={(event) => setCommand(event.target.value)}
-                    placeholder="rollback checkout-api v4.17.9 --region eu-west"
                   />
                   <button type="submit">Run</button>
                 </div>

@@ -258,7 +258,7 @@ function NgNav() {
               Request Access
             </button>
             <button
-              onClick={() => navigate('/skills')}
+              onClick={() => navigate({ pathname: '/skills', hash: '#skill-cyber-neon' })}
               aria-label="Back to skills"
               className="ng-mono"
               style={{

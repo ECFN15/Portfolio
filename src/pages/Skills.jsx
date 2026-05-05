@@ -1,4 +1,4 @@
-﻿import { useRef } from 'react'
+﻿import { useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
@@ -17,12 +17,86 @@ const layout = [
   { span: 'md:col-span-12 xl:col-span-3', ratio: 'min-h-[320px]' },
 ]
 
+function estimateSkillCardScrollTop(slug, skipIntro = false) {
+  const index = skills.findIndex((skill) => skill.slug === slug)
+  if (index < 0) return 0
+
+  const width = window.innerWidth
+  const sectionPaddingTop = width >= 768 ? 176 : 144
+  const introBlock = skipIntro ? 0 : width >= 1024 ? 424 : 808
+  const introMargin = skipIntro ? 0 : width >= 768 ? 64 : 64
+  const gridGap = width >= 768 ? 20 : 16
+  const navOffset = width < 768 ? 84 : 120
+
+  if (width < 768) {
+    const rowHeight = 360 + gridGap
+    return Math.max(0, sectionPaddingTop + introBlock + introMargin + index * rowHeight - navOffset)
+  }
+
+  if (width < 1280) {
+    let row = 0
+    let used = 0
+    for (let i = 0; i < index; i += 1) {
+      const span = i % layout.length === 2 || i % layout.length === 5 ? 12 : i % layout.length === 3 ? 5 : i % layout.length === 4 ? 7 : 6
+      if (used + span > 12) {
+        row += 1
+        used = 0
+      }
+      used += span
+      if (used >= 12) {
+        row += 1
+        used = 0
+      }
+    }
+    return Math.max(0, sectionPaddingTop + introBlock + introMargin + row * (360 + gridGap) - navOffset)
+  }
+
+  let row = 0
+  let used = 0
+  for (let i = 0; i < index; i += 1) {
+    const pattern = i % layout.length
+    const span = pattern === 0 || pattern === 4 ? 5 : pattern === 1 || pattern === 3 ? 4 : 3
+    if (used + span > 12) {
+      row += 1
+      used = 0
+    }
+    used += span
+    if (used >= 12) {
+      row += 1
+      used = 0
+    }
+  }
+
+  return Math.max(0, sectionPaddingTop + introBlock + introMargin + row * (380 + gridGap) - navOffset)
+}
+
+function getSkillReturnSlug(location) {
+  const hashSlug = location.hash.startsWith('#skill-') ? location.hash.replace('#skill-', '') : null
+  const stateSlug = location.state?.returnToSkill
+
+  if (typeof window === 'undefined') {
+    return hashSlug || stateSlug || null
+  }
+
+  const shouldRestore = sessionStorage.getItem('portfolio.skills.restorePending') === '1'
+  const storedSlug = shouldRestore ? sessionStorage.getItem('portfolio.skills.returnSlug') : null
+  return hashSlug || stateSlug || storedSlug || null
+}
+
 export default function Skills() {
   const root = useRef(null)
-  const overviewSkill = findSkill('gpt-taste') ?? skills[0]
+  const location = useLocation()
+  const [returnSlug, setReturnSlug] = useState(() => getSkillReturnSlug(location))
+  const activeReturnSlug = getSkillReturnSlug(location) || returnSlug
+  const isRestoringSkill = Boolean(activeReturnSlug)
 
   useGSAP(
     () => {
+      if (isRestoringSkill) {
+        ScrollTrigger.refresh()
+        return
+      }
+
       gsap.from(root.current.querySelectorAll('.skills-reveal'), {
         y: 44,
         opacity: 0,
@@ -30,6 +104,11 @@ export default function Skills() {
         duration: 1.1,
         ease: 'expo.out',
         stagger: 0.06,
+        scrollTrigger: {
+          trigger: root.current,
+          start: 'top 72%',
+          once: true,
+        },
       })
 
       root.current.querySelectorAll('.skill-card').forEach((card) => {
@@ -45,8 +124,92 @@ export default function Skills() {
         })
       })
     },
-    { scope: root },
+    { dependencies: [isRestoringSkill], scope: root },
   )
+
+  useLayoutEffect(() => {
+    const slug = getSkillReturnSlug(location)
+
+    if (!slug) {
+      setReturnSlug(null)
+      return
+    }
+
+    setReturnSlug(slug)
+
+    let isCancelled = false
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    const offset = window.innerWidth < 768 ? -84 : -120
+    const initialTarget = document.getElementById(`skill-${slug}`)
+
+    if (initialTarget) {
+      const top = initialTarget.getBoundingClientRect().top + window.scrollY + offset
+      window.scrollTo({ top: Math.max(0, top), behavior: 'instant' })
+      if (window.__lenis) {
+        window.__lenis.scrollTo(Math.max(0, top), { immediate: true, force: true })
+      }
+    } else if (window.__lenis) {
+      window.__lenis.scrollTo(estimateSkillCardScrollTop(slug), { immediate: true })
+    } else {
+      window.scrollTo({ top: estimateSkillCardScrollTop(slug), behavior: 'instant' })
+    }
+
+    const focusSkillCard = (attempt = 0) => {
+      if (isCancelled) return
+
+      const target = document.getElementById(`skill-${slug}`)
+      if (!target) {
+        if (attempt >= 4) {
+          sessionStorage.removeItem('portfolio.skills.restorePending')
+        }
+        return
+      }
+
+      ScrollTrigger.refresh()
+
+      const offset = window.innerWidth < 768 ? -84 : -120
+      if (window.__lenis && !reduceMotion) {
+        window.__lenis.scrollTo(target, {
+          offset,
+          immediate: attempt === 0,
+          duration: attempt === 0 ? 0 : 0.55,
+          easing: (t) => 1 - Math.pow(1 - t, 3),
+        })
+      } else {
+        const top = target.getBoundingClientRect().top + window.scrollY + offset
+        window.scrollTo({ top, behavior: reduceMotion || attempt === 0 ? 'instant' : 'smooth' })
+      }
+
+      const frame = target.querySelector('[data-skill-card-frame]')
+      if (frame && attempt === 0) {
+        gsap.fromTo(
+          frame,
+          { y: reduceMotion ? 0 : 10, opacity: reduceMotion ? 1 : 0.92 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: reduceMotion ? 0.01 : 0.42,
+            ease: 'power3.out',
+          },
+        )
+      }
+
+      sessionStorage.removeItem('portfolio.skills.restorePending')
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      window.__lenis?.start?.()
+      window.requestAnimationFrame(() => focusSkillCard(0))
+    })
+    const timers = [120, 360, 720].map((delay, index) => window.setTimeout(() => focusSkillCard(index + 1), delay))
+
+    return () => {
+      isCancelled = true
+      window.cancelAnimationFrame(frame)
+      timers.forEach((timer) => window.clearTimeout(timer))
+    }
+  }, [location.hash, location.key])
 
   return (
     <section ref={root} className="relative isolate min-h-[100dvh] overflow-hidden px-4 pb-28 pt-36 md:px-8 md:pb-40 md:pt-44">
@@ -77,28 +240,6 @@ export default function Skills() {
           </div>
         </div>
 
-        <div className="skills-reveal mb-16 grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-6">
-          <SkillDemoPanel skill={overviewSkill} />
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-1.5 lg:col-span-4">
-            <div className="flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink-900 p-6 inset-highlight md:p-7">
-              <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-50/50">Mode galerie</span>
-                <h2 className="mt-4 font-display text-3xl font-medium leading-none tracking-tight text-bone-50">
-                  Chaque carte ouvre sa propre page.
-                </h2>
-              </div>
-              <div className="space-y-4 text-sm leading-relaxed text-bone-50/60">
-                <p>
-                  La galerie reste propre : elle presente les skills sans garder une demo ouverte au-dessus des cartes.
-                </p>
-                <p>
-                  Clique une carte pour entrer dans sa scene dediee, puis reviens ici avec le bouton retour.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-5">
           {skills.map((skill, index) => {
             const config = layout[index % layout.length]
@@ -107,7 +248,7 @@ export default function Skills() {
                 key={skill.slug}
                 skill={skill}
                 index={index}
-                selected={false}
+                selected={skill.slug === activeReturnSlug}
                 {...config}
               />
             )
@@ -136,13 +277,18 @@ export default function Skills() {
 export function SkillDemoPage() {
   const root = useRef(null)
   const { slug } = useParams()
-  const location = useLocation()
   const navigate = useNavigate()
   const skill = findSkill(slug)
 
   const goBackToSkills = () => {
-    if (location.state?.fromSkills) {
-      navigate(-1)
+    if (skill?.slug) {
+      sessionStorage.setItem('portfolio.skills.returnSlug', skill.slug)
+      sessionStorage.setItem('portfolio.skills.restorePending', '1')
+      window.__lenis?.stop?.()
+      navigate(
+        { pathname: '/skills', hash: `#skill-${skill.slug}` },
+        { state: { returnToSkill: skill.slug } },
+      )
       return
     }
 
@@ -1056,14 +1202,22 @@ function GeometricModernDemo() {
   )
 }
 function SkillCard({ skill, index, span, ratio, selected }) {
+  const rememberSkillReturn = () => {
+    sessionStorage.setItem('portfolio.skills.returnSlug', skill.slug)
+    sessionStorage.setItem('portfolio.skills.restorePending', '1')
+  }
+
   return (
     <Link
+      id={`skill-${skill.slug}`}
       to={`/skills/${skill.slug}`}
       state={{ fromSkills: true }}
+      onClick={rememberSkillReturn}
       className={`skill-card group col-span-1 ${span} block text-left focus:outline-none focus-visible:outline-none`}
       style={{ '--skill-accent': skill.accent }}
     >
       <div
+        data-skill-card-frame
         className={`h-full rounded-[2rem] border p-1.5 transition-all duration-700 ease-soft-spring ${
           selected ? 'border-white/10 bg-white/[0.08]' : 'border-white/10 bg-white/[0.035] hover:bg-white/[0.06]'
         }`}

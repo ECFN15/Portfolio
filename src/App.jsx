@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, useNavigationType } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate, useNavigationType } from 'react-router-dom'
 import { useEffect } from 'react'
 import Home from './pages/Home.jsx'
 import ProjectDetail from './pages/ProjectDetail.jsx'
@@ -18,15 +18,33 @@ import SkillExperience from './pages/SkillExperience.jsx'
 import GlossyModernExperience from './pages/GlossyModernExperience.jsx'
 import DarkUiExperience from './pages/DarkUiExperience.jsx'
 import HighContrastExperience from './pages/HighContrastExperience.jsx'
+import HighEndDesignExperience from './pages/HighEndDesignExperience.jsx'
+import LightUiExperience from './pages/LightUiExperience.jsx'
+import MinimalDesignExperience from './pages/MinimalDesignExperience.jsx'
+import MonochromeUiExperience from './pages/MonochromeUiExperience.jsx'
+import MotionExperience from './pages/MotionExperience.jsx'
+import PastelExperience from './pages/PastelExperience.jsx'
+import PlayfulDesignExperience from './pages/PlayfulDesignExperience.jsx'
+import SerifDisplayExperience from './pages/SerifDisplayExperience.jsx'
+import SoftGradientsExperience from './pages/SoftGradientsExperience.jsx'
+import TechnicalSansExperience from './pages/TechnicalSansExperience.jsx'
+import TechnicalUiExperience from './pages/TechnicalUiExperience.jsx'
+import UtilitarianExperience from './pages/UtilitarianExperience.jsx'
+import VibrantAccentsExperience from './pages/VibrantAccentsExperience.jsx'
 import Navbar from './components/Navbar.jsx'
 import useLenis from './hooks/useLenis.js'
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { hash, pathname } = useLocation()
   const navigationType = useNavigationType()
 
   useEffect(() => {
     if (navigationType === 'POP') return
+    const hasSkillReturnTarget =
+      pathname === '/skills' &&
+      (hash.startsWith('#skill-') || sessionStorage.getItem('portfolio.skills.restorePending') === '1')
+
+    if (hasSkillReturnTarget) return
 
     // Use Lenis if available, fallback to native
     if (window.__lenis) {
@@ -34,7 +52,80 @@ function ScrollToTop() {
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
-  }, [navigationType, pathname])
+  }, [hash, navigationType, pathname])
+  return null
+}
+
+function SkillReturnMemory() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    const skillMatch = pathname.match(/^\/skills\/([^/]+)/)
+    const aliasSlug = pathname.startsWith('/snackpilot')
+      ? 'expressive-brand'
+      : pathname.startsWith('/novahaus')
+        ? 'geometric-modern'
+        : null
+    const slug = skillMatch?.[1] ?? aliasSlug
+
+    if (!slug) {
+      if (pathname !== '/skills') {
+        sessionStorage.removeItem('portfolio.skills.restorePending')
+      }
+      return
+    }
+
+    sessionStorage.setItem('portfolio.skills.returnSlug', slug)
+    sessionStorage.setItem('portfolio.skills.restorePending', '1')
+  }, [pathname])
+
+  return null
+}
+
+function SkillsReturnLinkGuard() {
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const skillMatch = pathname.match(/^\/skills\/([^/]+)/)
+    const aliasSlug = pathname.startsWith('/snackpilot')
+      ? 'expressive-brand'
+      : pathname.startsWith('/novahaus')
+        ? 'geometric-modern'
+        : null
+    const slug = skillMatch?.[1] ?? aliasSlug
+
+    if (!slug) return undefined
+
+    const prepareReturn = (event) => {
+      const anchor = event.target.closest('a[href]')
+      if (!anchor) return
+
+      const url = new URL(anchor.href, window.location.origin)
+      const isSkillsIndex = url.origin === window.location.origin && url.pathname === '/skills'
+      if (!isSkillsIndex) return
+
+      sessionStorage.setItem('portfolio.skills.returnSlug', slug)
+      sessionStorage.setItem('portfolio.skills.restorePending', '1')
+      window.__lenis?.stop?.()
+
+      if (!url.hash.startsWith('#skill-')) {
+        event.preventDefault()
+        event.stopPropagation()
+        navigate(
+          { pathname: '/skills', hash: `#skill-${slug}` },
+          { state: { returnToSkill: slug } },
+        )
+      }
+    }
+
+    document.addEventListener('click', prepareReturn, true)
+
+    return () => {
+      document.removeEventListener('click', prepareReturn, true)
+    }
+  }, [navigate, pathname])
+
   return null
 }
 
@@ -47,6 +138,8 @@ export default function App() {
   return (
     <main className="relative w-full max-w-full overflow-x-hidden bg-ink-950 text-bone-50 grain-overlay">
       <ScrollToTop />
+      <SkillReturnMemory />
+      <SkillsReturnLinkGuard />
       {!hideNav && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -78,6 +171,19 @@ export default function App() {
         <Route path="/skills/geometric-modern/module-n24" element={<NovahausModule />} />
         <Route path="/skills/glossy-modern/:view" element={<GlossyModernExperience />} />
         <Route path="/skills/high-contrast/:view" element={<HighContrastExperience />} />
+        <Route path="/skills/high-end-design/:view" element={<HighEndDesignExperience />} />
+        <Route path="/skills/light-ui/:view" element={<LightUiExperience />} />
+        <Route path="/skills/minimal-design/:view" element={<MinimalDesignExperience />} />
+        <Route path="/skills/monochrome-ui/:view" element={<MonochromeUiExperience />} />
+        <Route path="/skills/motion/:view" element={<MotionExperience />} />
+        <Route path="/skills/pastel/:view" element={<PastelExperience />} />
+        <Route path="/skills/playful-design/:view" element={<PlayfulDesignExperience />} />
+        <Route path="/skills/serif-display/:view" element={<SerifDisplayExperience />} />
+        <Route path="/skills/soft-gradients/:view" element={<SoftGradientsExperience />} />
+        <Route path="/skills/technical-sans/:view" element={<TechnicalSansExperience />} />
+        <Route path="/skills/technical-ui/:view" element={<TechnicalUiExperience />} />
+        <Route path="/skills/utilitarian/:view" element={<UtilitarianExperience />} />
+        <Route path="/skills/vibrant-accents/:view" element={<VibrantAccentsExperience />} />
         <Route path="/novahaus" element={<NovahausVitrine />} />
         <Route path="/novahaus/module-n24" element={<NovahausModule />} />
         <Route path="/snackpilot" element={<SnackPilotVitrine />} />
