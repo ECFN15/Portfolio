@@ -11,3 +11,4 @@ firebase-debug.log
 !.vscode/extensions.json
 .idea
 *.log
+.claude/worktrees/
