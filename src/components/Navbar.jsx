@@ -26,6 +26,8 @@ export default function Navbar() {
 
   const links = [
     { label: 'Travaux', to: '/#projects' },
+    { label: 'Featured', to: '/featured', route: true },
+    { label: 'Admin', to: '/backoffice', route: true },
     { label: 'Skills', to: '/skills', route: true },
     { label: 'Tarifs', to: '/#pricing' },
     { label: 'Contact', to: 'mailto:hello@atelier.studio', external: true },

@@ -4,11 +4,13 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { projects } from '../data/projects.js'
+import { useProjectImageOverrides } from '../data/projectImageOverrides.js'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export default function ProjectsShowcase() {
   const root = useRef(null)
+  const imageOverrides = useProjectImageOverrides()
 
   useGSAP(
     () => {
@@ -26,7 +28,6 @@ export default function ProjectsShowcase() {
         })
       })
 
-      // Section title scrubbing reveal
       const titleWords = root.current.querySelectorAll('.title-word')
       gsap.from(titleWords, {
         opacity: 0.15,
@@ -44,20 +45,15 @@ export default function ProjectsShowcase() {
     { scope: root },
   )
 
-  // Bento layout map — 12 cols, mathematically interlocked, no gaps.
-  // Featured (col-span-12) + 2 paired (6+6) + featured-wide (col-span-8 + 4) + 2 paired (6+6)
   const layout = [
     { span: 'md:col-span-12', ratio: 'aspect-[16/9]', size: 'massive' },
     { span: 'md:col-span-6', ratio: 'aspect-[4/5]', size: 'tall' },
     { span: 'md:col-span-6', ratio: 'aspect-[4/5]', size: 'tall' },
-    { span: 'md:col-span-8', ratio: 'aspect-[16/10]', size: 'wide' },
-    { span: 'md:col-span-4', ratio: 'aspect-[4/5]', size: 'compact' },
     { span: 'md:col-span-12', ratio: 'aspect-[16/9]', size: 'massive' },
   ]
 
   return (
     <section ref={root} id="projects" className="relative px-4 py-32 md:px-8 md:py-48">
-      {/* Section header */}
       <div className="mx-auto mb-20 flex max-w-7xl flex-col items-start justify-between gap-8 md:mb-28 md:flex-row md:items-end">
         <div>
           <div className="mb-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.24em] text-bone-50/50">
@@ -65,46 +61,43 @@ export default function ProjectsShowcase() {
             <span>Travaux</span>
           </div>
           <h2 className="section-title font-display text-balance max-w-3xl text-5xl font-medium leading-[0.95] tracking-tight md:text-7xl">
-            {'Six projets, six rituels — '
+            {'Quatre projets réels, '
               .split(' ')
               .map((w, i) => (
                 <span key={i} className="title-word inline-block pr-2 will-change-transform">
                   {w}
                 </span>
               ))}
-            <span className="title-word inline-block pr-2 italic text-bone-50/70 will-change-transform">une seule</span>{' '}
-            <span className="title-word inline-block pr-2 italic text-bone-50/70 will-change-transform">obsession.</span>
+            <span className="title-word inline-block pr-2 italic text-bone-50/70 will-change-transform">un même</span>{' '}
+            <span className="title-word inline-block pr-2 italic text-bone-50/70 will-change-transform">niveau d’exigence.</span>
           </h2>
         </div>
         <p className="max-w-md text-pretty font-display text-base text-bone-50/60 md:text-lg">
-          Des sites éditoriaux et des plateformes pensés à la lettre près. Chaque projet est une mise en scène — pas un template.
+          Des sites et plateformes pensés pour vendre, rassurer, administrer et durer. Chaque cas combine design, code, contenu et logique business.
         </p>
       </div>
 
-      {/* Bento grid */}
       <div className="mx-auto grid max-w-7xl auto-rows-auto grid-cols-1 gap-4 grid-flow-dense md:grid-cols-12 md:gap-6">
         {projects.map((p, i) => {
           const conf = layout[i % layout.length]
-          return (
-            <ProjectCard key={p.slug} project={p} index={i} {...conf} />
-          )
+          const project = { ...p, cover: imageOverrides[p.slug]?.travauxCover || p.cover }
+          return <ProjectCard key={p.slug} project={project} index={i} {...conf} />
         })}
       </div>
 
-      {/* See all */}
       <div className="mx-auto mt-20 flex max-w-7xl items-center justify-between border-t border-white/10 pt-10">
         <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-bone-50/50">
-          Index complet — 06 / 06
+          Sélection client - 04 / 04
         </span>
-        <a
-          href="mailto:hello@atelier.studio"
+        <Link
+          to="/featured"
           className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 py-2.5 pl-5 pr-1.5 text-bone-50 transition-colors duration-500 ease-soft-spring hover:bg-white/10"
         >
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] font-medium">Demander l’index complet</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] font-medium">Voir la mise en avant</span>
           <span className="grid h-7 w-7 place-items-center rounded-full bg-bone-50 text-ink-950 transition-all duration-500 ease-soft-spring group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
             <ArrowUpRight />
           </span>
-        </a>
+        </Link>
       </div>
     </section>
   )
@@ -114,26 +107,17 @@ function ProjectCard({ project, span, ratio, size, index }) {
   const big = size === 'massive' || size === 'wide'
 
   return (
-    <Link
-      to={`/projects/${project.slug}`}
-      className={`proj-card group relative col-span-1 ${span} block`}
-    >
-      {/* Outer shell — Double-Bezel */}
+    <Link to={`/projects/${project.slug}`} className={`proj-card group relative col-span-1 ${span} block`}>
       <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-1.5 transition-colors duration-700 ease-soft-spring hover:bg-white/[0.07]">
-        {/* Inner core */}
-        <div
-          className={`relative ${ratio} w-full overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink-900 inset-highlight`}
-        >
+        <div className={`relative ${ratio} w-full overflow-hidden rounded-[calc(2rem-0.375rem)] bg-ink-900 inset-highlight`}>
           <img
             src={project.cover}
             alt={project.title}
             loading={index < 2 ? 'eager' : 'lazy'}
             className="absolute inset-0 h-full w-full object-cover opacity-90 contrast-110 transition-transform duration-[1400ms] ease-soft-spring group-hover:scale-[1.06]"
           />
-          {/* Dark gradient bottom for legibility */}
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent" />
 
-          {/* Top meta */}
           <div className="absolute inset-x-0 top-0 flex items-center justify-between px-5 py-5 md:px-7 md:py-6">
             <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-bone-50/80">
               {project.discipline}
@@ -143,7 +127,6 @@ function ProjectCard({ project, span, ratio, size, index }) {
             </span>
           </div>
 
-          {/* Bottom title + role */}
           <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-6 px-5 pb-6 pt-12 md:px-7 md:pb-8">
             <div>
               <h3

@@ -32,6 +32,8 @@ import TechnicalSansExperience from './pages/TechnicalSansExperience.jsx'
 import TechnicalUiExperience from './pages/TechnicalUiExperience.jsx'
 import UtilitarianExperience from './pages/UtilitarianExperience.jsx'
 import VibrantAccentsExperience from './pages/VibrantAccentsExperience.jsx'
+import Featured from './pages/Featured.jsx'
+import Backoffice from './pages/Backoffice.jsx'
 import Navbar from './components/Navbar.jsx'
 import useLenis from './hooks/useLenis.js'
 
@@ -134,7 +136,7 @@ export default function App() {
   useLenis()
   const location = useLocation()
   const isGenericSkillExperience = /^\/skills\/[^/]+\/(vitrine|dashboard)$/.test(location.pathname)
-  const hideNav = isGenericSkillExperience || location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter' || location.pathname.startsWith('/skills/editorial-type') || location.pathname.startsWith('/skills/experimental-type') || location.pathname.startsWith('/skills/geometric-modern') || location.pathname.startsWith('/snackpilot') || location.pathname.startsWith('/novahaus')
+  const hideNav = isGenericSkillExperience || location.pathname === '/featured' || location.pathname === '/backoffice' || location.pathname.startsWith('/skills/clean-saas') || location.pathname === '/skills/cyber-neon/landing' || location.pathname === '/skills/cyber-neon/map' || location.pathname === '/skills/dark-ui/incident' || location.pathname === '/skills/dark-ui/triage' || location.pathname === '/skills/editorial-minimal/index' || location.pathname === '/skills/editorial-minimal/chapter' || location.pathname.startsWith('/skills/editorial-type') || location.pathname.startsWith('/skills/experimental-type') || location.pathname.startsWith('/skills/geometric-modern') || location.pathname.startsWith('/snackpilot') || location.pathname.startsWith('/novahaus')
 
   return (
     <main className="relative w-full max-w-full overflow-x-hidden bg-ink-950 text-bone-50 grain-overlay">
@@ -191,6 +193,8 @@ export default function App() {
         <Route path="/snackpilot/lunchbox-builder" element={<SnackPilotBuilder />} />
         <Route path="/skills/:slug/:view" element={<SkillExperience />} />
         <Route path="/skills/:slug" element={<SkillDemoPage />} />
+        <Route path="/featured" element={<Featured />} />
+        <Route path="/backoffice" element={<Backoffice />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
       </Routes>
     </main>
